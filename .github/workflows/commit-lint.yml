@@ -1,0 +1,32 @@
+name: Lint commit message
+
+on:
+  push:
+    branches: ['**']
+  pull_request:
+
+jobs:
+  lint:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.x'
+
+      - name: Install pre-commit
+        run: pip install pre-commit
+
+      - name: Extract latest commit message
+        run: git log -1 --pretty=%B > /tmp/commit-msg.txt
+
+      - name: Enforce Conventional Commit format
+        run: |
+          pre-commit run --hook-stage commit-msg check-message \
+            --commit-msg-filename /tmp/commit-msg.txt
+
+      - name: Warn if commit has no issue-id scope
+        run: python scripts/check-issue-scope.py /tmp/commit-msg.txt

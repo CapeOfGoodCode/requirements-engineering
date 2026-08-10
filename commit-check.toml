@@ -1,0 +1,7 @@
+# Config for commit-check (https://github.com/commit-check/commit-check), used by both
+# the optional local commit-msg hook and .github/workflows/commit-lint.yml in CI.
+[commit]
+# Conventional Commits, with an optional issue-id scope: feat(#12): ... or feat: ...
+# The default commit-check regex only allows [\w\-\.] in the scope, which rejects '#'
+# (needed for e.g. "fix(#7): ..."), hence the explicit override here.
+message_pattern = '^(feat|fix|docs|style|refactor|test|chore|ci|build|perf)(\(([\w\-\.#]+)\))?(!)?: .+'

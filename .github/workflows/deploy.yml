@@ -1,0 +1,77 @@
+name: Deploy cheat sheet to GitHub Pages
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch: {}
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: pages
+  cancel-in-progress: true
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Stamp version and assemble cheat-sheet/index.html
+        run: |
+          set -euo pipefail
+          mkdir -p dist/cheat-sheet
+          timestamp=$(date -u +"%Y-%m-%d %H:%M:%S")
+          short_sha=$(git rev-parse --short HEAD)
+          sed -i "s#<span>Version: [^<]*</span>#<span>Version: ${timestamp} UTC (${short_sha})</span>#" cheatsheet-body.html
+          {
+            echo '<!doctype html>'
+            echo '<html lang="de">'
+            echo '<head>'
+            echo '<meta charset="utf-8">'
+            echo '<meta name="viewport" content="width=device-width, initial-scale=1">'
+            echo '<style>*,*::before,*::after{box-sizing:border-box}body{margin:0}</style>'
+            echo '</head>'
+            echo '<body>'
+            cat cheatsheet-body.html
+            echo '</body>'
+            echo '</html>'
+          } > dist/cheat-sheet/index.html
+
+      - name: Assemble root landing page
+        run: |
+          set -euo pipefail
+          {
+            echo '<!doctype html>'
+            echo '<html lang="en">'
+            echo '<head>'
+            echo '<meta charset="utf-8">'
+            echo '<meta name="viewport" content="width=device-width, initial-scale=1">'
+            echo '<meta http-equiv="refresh" content="0; url=cheat-sheet/">'
+            echo '<title>ARE Cheat Sheet</title>'
+            echo '</head>'
+            echo '<body>'
+            echo '<p><a href="cheat-sheet/">ARE Cheat Sheet</a></p>'
+            echo '</body>'
+            echo '</html>'
+          } > dist/index.html
+
+      - name: Upload Pages artifact
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: dist
+
+  deploy:
+    needs: build
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4

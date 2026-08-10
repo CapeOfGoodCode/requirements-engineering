@@ -1,0 +1,22 @@
+# Optional local commit-message linting. Install with `pre-commit install` to catch
+# mistakes before pushing; not required -- .github/workflows/commit-lint.yml runs the
+# same checks in CI on every push, so this is a convenience, not a dependency.
+default_install_hook_types: [commit-msg]
+default_stages: [commit-msg]
+
+repos:
+  - repo: https://github.com/commit-check/commit-check
+    rev: v2.11.1
+    hooks:
+      - id: check-message
+        stages: [commit-msg]
+
+  - repo: local
+    hooks:
+      - id: check-issue-scope
+        name: warn if commit message has no issue-id scope
+        description: soft nudge only -- never blocks the commit
+        entry: python scripts/check-issue-scope.py
+        language: system
+        stages: [commit-msg]
+        verbose: true
