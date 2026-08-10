@@ -2204,22 +2204,44 @@ Response Measure    Persistenz: Latenz 1–30 s · Rettungsdienst informieren: 6
       setView('base');
     }
 
-    /* ---- Scrollspy ---- */
+    /* ---- Scrollspy ----
+       Deterministic instead of IntersectionObserver-driven: a narrow "active
+       band" (the previous approach) can be skipped entirely by short sections,
+       and the last section on the page often can never scroll into any fixed
+       band because the document simply runs out of room below it -- both
+       leave a stale, earlier section highlighted. Recomputing "the last
+       section whose top has passed a fixed line" on every scroll frame has no
+       such gap, and the explicit bottom-of-page check guarantees the final
+       nav item is highlighted once you can't scroll any further. */
     var links = Array.prototype.slice.call(document.querySelectorAll('.jump a'));
+    var sections = Array.prototype.slice.call(document.querySelectorAll('section[id]'));
     var byId = {};
     links.forEach(function (a) { byId[a.getAttribute('href').slice(1)] = a; });
 
-    var observer = new IntersectionObserver(function (entries) {
-      entries.forEach(function (entry) {
-        if (!entry.isIntersecting) { return; }
-        links.forEach(function (a) { a.removeAttribute('aria-current'); });
-        var active = byId[entry.target.id];
-        if (active) { active.setAttribute('aria-current', 'true'); }
-      });
-    }, { rootMargin: '-15% 0px -70% 0px' });
+    var setActive = function (id) {
+      links.forEach(function (a) { a.removeAttribute('aria-current'); });
+      var active = byId[id];
+      if (active) { active.setAttribute('aria-current', 'true'); }
+    };
 
-    Array.prototype.forEach.call(document.querySelectorAll('section[id]'), function (s) {
-      observer.observe(s);
-    });
+    var spyTicking = false;
+    var updateActive = function () {
+      spyTicking = false;
+      var line = window.innerHeight * 0.25;
+      var currentId = sections[0].id;
+      sections.forEach(function (s) {
+        if (s.getBoundingClientRect().top <= line) { currentId = s.id; }
+      });
+      var atBottom = window.innerHeight + window.scrollY >= document.documentElement.scrollHeight - 2;
+      if (atBottom) { currentId = sections[sections.length - 1].id; }
+      setActive(currentId);
+    };
+    var requestSpyUpdate = function () {
+      if (!spyTicking) { spyTicking = true; requestAnimationFrame(updateActive); }
+    };
+
+    window.addEventListener('scroll', requestSpyUpdate, { passive: true });
+    window.addEventListener('resize', requestSpyUpdate);
+    updateActive();
   }());
 </script>
