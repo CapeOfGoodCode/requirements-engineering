@@ -421,6 +421,15 @@
     border-left: 3px solid var(--rule); padding-left: 14px; margin: 10px 0 0;
   }
   .ex b { color: var(--ink); font-weight: 600; font-style: normal; }
+  .rung-ex {
+    font-family: var(--serif); font-size: 14px; color: var(--ink-2);
+    border-left: 3px solid var(--rule); padding-left: 12px; margin: 0;
+  }
+  .rung-ex b {
+    display: block; margin-bottom: 2px;
+    font-family: var(--mono); font-size: 10.5px; letter-spacing: .1em; text-transform: uppercase;
+    color: var(--ink-3); font-weight: 600;
+  }
 
   /* ---------- diagram ---------- */
   .diagram { overflow-x: auto; padding: 8px 0 4px; }
@@ -562,6 +571,8 @@
               <span class="tag plain">wird nicht zerlegt</span>
               <span class="tag plain">Trace-Ziel</span>
             </div>
+            <p class="rung-ex"><b>Beispiel</b>Die Take-Rate der Infotainment-Premium-Option maximieren,
+              um die hohen lokalen Fertigungskosten auszugleichen.</p>
             <p class="rung-note">
               Ein <b>Business Goal <em>hat</em> Business Objectives</b> — messbare Ziele, an denen
               sich das Goal überprüfen lässt. Business Requirements haben <b>keine Kinder</b>:
@@ -587,6 +598,8 @@
               <span class="tag plain">2–6 Monate</span>
               <span class="tag plain">Strategic Planning</span>
             </div>
+            <p class="rung-ex"><b>Beispiel</b>Als Fahrer möchte ich während der Fahrt telefonieren,
+              so dass ich weiterfahren kann.</p>
             <p class="rung-note">
               Bedürfnisse und Fähigkeiten, die Nutzer und Stakeholder verlangen. Bündelt
               zusammengehörige Funktionalität und trägt Business Value. Bewusst grob — nicht
@@ -610,6 +623,8 @@
               <span class="tag plain">1 PI ≈ 8–12 Wochen</span>
               <span class="tag plain">Increment Planning</span>
             </div>
+            <p class="rung-ex"><b>Beispiel</b>Als Fahrer möchte ich während der Fahrt eine Telefonnummer
+              wählen, so dass ich mit einem Gesprächspartner sprechen kann.</p>
             <p class="rung-note">
               Implementierungsfreie Beschreibung dessen, <em>was</em> das System leisten muss. Mit
               einem Release auslieferbar und verkaufbar. Muss <b>bounded</b> sein: vollständig in
@@ -632,6 +647,8 @@
               <span class="tag problem">implementierungsfrei</span>
               <span class="tag plain">1 Sprint · 2–4 Wochen</span>
             </div>
+            <p class="rung-ex"><b>Beispiel</b>Als Fahrer möchte ich während der Fahrt die Telefonfunktion
+              und die Wähloption auswählen, so dass ich anschließend eine Rufnummer eintippen kann.</p>
             <p class="rung-note">
               <span class="missing"><b>ISO 29148 kennt zu dieser Ebene kein Pendant.</b></span> Die
               User Story ist eine SAFe-Ebene und beschreibt weiterhin, <em>was</em> der Nutzer tun
@@ -654,6 +671,8 @@
               <span class="tag warn">implementierungsgebunden</span>
               <span class="tag plain">außerhalb des Kursumfangs</span>
             </div>
+            <p class="rung-ex"><b>Beispiel</b>Der Dialer-Service soll die eingegebene Rufnummer vor der
+              Übergabe an den Telefonie-Stack nach E.164 normalisieren.</p>
             <p class="rung-note">
               <b>Hier beginnt der Lösungsraum.</b> Die technische Spezifikation für Software,
               Hardware und deren Schnittstellen — das <em>Wie</em> statt des <em>Was</em>. Auf
