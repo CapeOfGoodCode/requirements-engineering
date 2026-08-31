@@ -73,6 +73,12 @@ by commit-check via `commit-check.toml` and `.github/workflows/commit-lint.yml`.
   needs none. But where the subject does not carry the reasoning, the body argues *why*: what
   prompted the change and what it buys the reader. The sheet is a teaching artifact whose
   wording is the product, so a diff alone often does not explain itself later.
+- **Which type applies.** The sheet is the product, not documentation *about* a product, so
+  changes to it are `feat` — rewording included, because a sheet that reads better is the
+  improvement itself. `fix` is for what the sheet got wrong or contradicted; an unclear
+  sentence is not a defect. `docs` is reserved for the repo's own documentation — this file,
+  the README. `style` and `refactor` cover markup and presentation that change nothing the
+  reader takes away, `ci` and `build` the pipeline.
 - The format is a hard gate. The `#N` scope is not: `scripts/check-issue-scope.py` only
   warns and always exits 0. Most commits here aren't tied to an issue, and that's fine.
 - `pre-commit install` wires the same checks into a local `commit-msg` hook. Optional —
