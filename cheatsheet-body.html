@@ -332,6 +332,8 @@
   .d-t { font-family:var(--mono); font-size:10.5px; font-weight:700; letter-spacing:.05em; }
   .d-s { font-family:var(--mono); font-size:9px; letter-spacing:.05em; fill:var(--ink-2); }
   .d-n { font-family:var(--sans); font-size:11.5px; fill:var(--ink-2); }
+  .d-hl { fill:var(--warn); opacity:.16; }
+  .d-hl.q { fill:var(--t-quality); }
   .d-inv { fill:var(--paper); }
   .d-e { stroke:var(--ink-3); fill:none; stroke-width:1.4; }
   .d-e-ref { stroke:var(--t-quality); fill:none; stroke-width:1.5; stroke-dasharray:5 3; }
@@ -1713,7 +1715,7 @@ Response Measure    Persistenz: Latenz 1–30 s · Rettungsdienst informieren: 6
           <rect class="bx bx-ac" x="30" y="72" width="180" height="60"/>
           <text class="d-s" x="40" y="86">ACCEPTANCE CRITERIA</text>
           <circle class="bul" cx="46" cy="98" r="1.8"/><text class="d-n" x="56" y="102">…</text>
-          <circle class="bul" cx="46" cy="112" r="1.8"/><text class="d-n" x="56" y="116" fill="var(--warn)">„Antwort &lt; 2 s“</text>
+          <circle class="bul" cx="46" cy="112" r="1.8"/><rect class="d-hl" x="53" y="105" width="94" height="15" rx="2"/><text class="d-n" x="56" y="116" fill="var(--warn)">„Antwort &lt; 2 s“</text>
           <circle class="bul" cx="46" cy="126" r="1.8"/><text class="d-n" x="56" y="130">…</text>
 
           <rect class="bx bx-system" x="20" y="152" width="200" height="96"/>
@@ -1721,7 +1723,7 @@ Response Measure    Persistenz: Latenz 1–30 s · Rettungsdienst informieren: 6
           <rect class="bx bx-ac" x="30" y="180" width="180" height="60"/>
           <text class="d-s" x="40" y="194">ACCEPTANCE CRITERIA</text>
           <circle class="bul" cx="46" cy="206" r="1.8"/><text class="d-n" x="56" y="210">…</text>
-          <circle class="bul" cx="46" cy="220" r="1.8"/><text class="d-n" x="56" y="224" fill="var(--warn)">„Antwort &lt; 2 s“</text>
+          <circle class="bul" cx="46" cy="220" r="1.8"/><rect class="d-hl" x="53" y="213" width="94" height="15" rx="2"/><text class="d-n" x="56" y="224" fill="var(--warn)">„Antwort &lt; 2 s“</text>
           <circle class="bul" cx="46" cy="234" r="1.8"/><text class="d-n" x="56" y="238">…</text>
 
           <rect class="bx bx-story" x="20" y="260" width="200" height="96"/>
@@ -1729,7 +1731,7 @@ Response Measure    Persistenz: Latenz 1–30 s · Rettungsdienst informieren: 6
           <rect class="bx bx-ac" x="30" y="288" width="180" height="60"/>
           <text class="d-s" x="40" y="302">ACCEPTANCE CRITERIA</text>
           <circle class="bul" cx="46" cy="314" r="1.8"/><text class="d-n" x="56" y="318">…</text>
-          <circle class="bul" cx="46" cy="328" r="1.8"/><text class="d-n" x="56" y="332" fill="var(--warn)">„Antwort &lt; 2 s“</text>
+          <circle class="bul" cx="46" cy="328" r="1.8"/><rect class="d-hl" x="53" y="321" width="94" height="15" rx="2"/><text class="d-n" x="56" y="332" fill="var(--warn)">„Antwort &lt; 2 s“</text>
           <circle class="bul" cx="46" cy="342" r="1.8"/><text class="d-n" x="56" y="346">…</text>
 
           <text class="d-n" x="20" y="378" fill="var(--warn)">Dieselbe Aussage steht dreimal da.</text>
@@ -1769,6 +1771,7 @@ Response Measure    Persistenz: Latenz 1–30 s · Rettungsdienst informieren: 6
 
           <rect class="bx bx-quality" x="740" y="192" width="210" height="52"/>
           <text class="d-s" x="845" y="212" text-anchor="middle" fill="var(--t-quality)">QUALITY SCENARIO</text>
+          <rect class="d-hl q" x="798" y="219" width="94" height="15" rx="2"/>
           <text class="d-n" x="845" y="230" text-anchor="middle">„Antwort &lt; 2 s“</text>
           <g class="we-svg"><rect x="926" y="184" width="26" height="14" rx="2"/><text x="939" y="194" text-anchor="middle">WE</text></g>
 
