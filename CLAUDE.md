@@ -69,6 +69,10 @@ Handled entirely in CI; there is nothing to build or install locally.
 Conventional Commits with an optional issue-id scope (`feat(#12): …` or `docs: …`), enforced
 by commit-check via `commit-check.toml` and `.github/workflows/commit-lint.yml`.
 
+- **One editorial change per commit.** The body is optional — a self-explanatory subject
+  needs none. But where the subject does not carry the reasoning, the body argues *why*: what
+  prompted the change and what it buys the reader. The sheet is a teaching artifact whose
+  wording is the product, so a diff alone often does not explain itself later.
 - The format is a hard gate. The `#N` scope is not: `scripts/check-issue-scope.py` only
   warns and always exits 0. Most commits here aren't tied to an issue, and that's fine.
 - `pre-commit install` wires the same checks into a local `commit-msg` hook. Optional —
