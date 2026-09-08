@@ -15,11 +15,12 @@ concurrency:
   cancel-in-progress: true
 
 env:
-  # Pinned so the rendered PDF does not shift when upstream publishes a new
-  # release. These are the metric-compatible open substitutes for the fonts the
-  # sources ask for; see the "Install the poster's fonts" step.
+  # Pinned by version and by checksum, so the rendered PDF cannot shift under a
+  # new upstream release and a truncated download fails here rather than three
+  # steps later. Selawik is the metric-compatible open substitute for Segoe UI;
+  # see the "Install the poster's fonts" step.
   SELAWIK_URL: https://github.com/microsoft/Selawik/releases/download/1.01/Selawik_Release.zip
-  CASCADIA_URL: https://github.com/microsoft/cascadia-code/releases/download/v2407.24/CascadiaCode-2407.24.zip
+  SELAWIK_SHA256: 3f62c51e05e3b5a1e6241cf92a371f0be2ea1183aa87b30718bbd40832a8d423
 
 jobs:
   build:
@@ -75,12 +76,18 @@ jobs:
         run: |
           set -euo pipefail
           sudo apt-get update -qq
-          sudo apt-get install -y --no-install-recommends fonts-urw-base35 poppler-utils unzip
+          # Cascadia comes from apt rather than its 150 MB upstream release: the
+          # only published asset carries every format, and a monospace font's
+          # advance width -- the one thing this layout depends on -- is stable.
+          sudo apt-get install -y --no-install-recommends \
+            fonts-urw-base35 fonts-cascadia-code poppler-utils unzip
           mkdir -p "$HOME/.local/share/fonts" /tmp/fonts
-          curl -sSL --retry 3 -o /tmp/fonts/selawik.zip  "$SELAWIK_URL"
-          curl -sSL --retry 3 -o /tmp/fonts/cascadia.zip "$CASCADIA_URL"
-          unzip -qo /tmp/fonts/selawik.zip  -d /tmp/fonts/selawik
-          unzip -qo /tmp/fonts/cascadia.zip -d /tmp/fonts/cascadia
+          # --fail matters: without it an HTTP error page is written out as if it
+          # were the archive, and the build dies at unzip with nothing to go on.
+          curl -sSL --fail --retry 5 --retry-all-errors --retry-delay 3 \
+            --connect-timeout 20 --max-time 180 -o /tmp/fonts/selawik.zip "$SELAWIK_URL"
+          echo "${SELAWIK_SHA256}  /tmp/fonts/selawik.zip" | sha256sum -c -
+          unzip -qo /tmp/fonts/selawik.zip -d /tmp/fonts/selawik
           find /tmp/fonts -name '*.ttf' -exec cp {} "$HOME/.local/share/fonts/" \;
           mkdir -p "$HOME/.config/fontconfig"
           cat > "$HOME/.config/fontconfig/fonts.conf" <<'CONF'
@@ -106,10 +113,23 @@ jobs:
           </fontconfig>
           CONF
           fc-cache -f
+          # Assert the substitution actually took. A silent fallback to DejaVu
+          # would still render a plausible-looking PDF, in the wrong metrics, and
+          # the layout check might well pass -- so check it here, loudly.
+          fail=0
+          check_font () {
+            resolved=$(fc-match "$1" family)
+            printf '  %-22s -> %s\n' "$1" "$resolved"
+            case "$resolved" in
+              *"$2"*) ;;
+              *) echo "::error::Font '$1' resolved to '$resolved', expected '$2'."; fail=1 ;;
+            esac
+          }
           echo "Resolved families:"
-          for family in "Segoe UI" "Palatino Linotype" "Cascadia Mono"; do
-            printf '  %-22s -> %s\n' "$family" "$(fc-match "$family")"
-          done
+          check_font "Segoe UI"          Selawik
+          check_font "Palatino Linotype" P052
+          check_font "Cascadia Mono"     Cascadia
+          [ "$fail" = "0" ]
 
       - name: Check each poster and render its PDF
         # Every gate runs per language, because a translation re-flows the fixed
