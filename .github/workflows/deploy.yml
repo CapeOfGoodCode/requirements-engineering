@@ -1,4 +1,4 @@
-name: Deploy cheat sheet to GitHub Pages
+name: Deploy cheat sheet and poster to GitHub Pages
 
 on:
   push:
@@ -13,6 +13,13 @@ permissions:
 concurrency:
   group: pages
   cancel-in-progress: true
+
+env:
+  # Pinned so the rendered PDF does not shift when upstream publishes a new
+  # release. These are the metric-compatible open substitutes for the fonts the
+  # sources ask for; see the "Install the poster's fonts" step.
+  SELAWIK_URL: https://github.com/microsoft/Selawik/releases/download/1.01/Selawik_Release.zip
+  CASCADIA_URL: https://github.com/microsoft/cascadia-code/releases/download/v2407.24/CascadiaCode-2407.24.zip
 
 jobs:
   build:
@@ -42,20 +49,154 @@ jobs:
             echo '</html>'
           } > dist/cheat-sheet/index.html
 
+      - name: Stamp version and assemble poster/index.html
+        run: |
+          set -euo pipefail
+          mkdir -p dist/poster
+          timestamp=$(date -u +"%Y-%m-%d %H:%M:%S")
+          short_sha=$(git rev-parse --short HEAD)
+          sed -i "s#<span>Version: [^<]*</span>#<span>Version: ${timestamp} UTC (${short_sha})</span>#" poster-body.html
+          {
+            echo '<!doctype html>'
+            echo '<html lang="de">'
+            echo '<head>'
+            echo '<meta charset="utf-8">'
+            echo '<meta name="viewport" content="width=device-width, initial-scale=1">'
+            echo '<style>*,*::before,*::after{box-sizing:border-box}body{margin:0}</style>'
+            echo '</head>'
+            echo '<body>'
+            cat poster-body.html
+            echo '</body>'
+            echo '</html>'
+          } > dist/poster/index.html
+
+      - name: Install the poster's fonts
+        # The sources name Segoe UI, Palatino Linotype and Cascadia Mono. The
+        # first two are proprietary and absent from the runner, so without this
+        # step the PDF would be laid out in whatever fallback fontconfig picks —
+        # with different metrics, which the layout check would then reject.
+        # Selawik and P052 are metric-compatible open substitutes; Cascadia Mono
+        # is itself open, so it is the real thing rather than a stand-in.
+        run: |
+          set -euo pipefail
+          sudo apt-get update -qq
+          sudo apt-get install -y --no-install-recommends fonts-urw-base35 poppler-utils unzip
+          mkdir -p "$HOME/.local/share/fonts" /tmp/fonts
+          curl -sSL --retry 3 -o /tmp/fonts/selawik.zip  "$SELAWIK_URL"
+          curl -sSL --retry 3 -o /tmp/fonts/cascadia.zip "$CASCADIA_URL"
+          unzip -qo /tmp/fonts/selawik.zip  -d /tmp/fonts/selawik
+          unzip -qo /tmp/fonts/cascadia.zip -d /tmp/fonts/cascadia
+          find /tmp/fonts -name '*.ttf' -exec cp {} "$HOME/.local/share/fonts/" \;
+          mkdir -p "$HOME/.config/fontconfig"
+          cat > "$HOME/.config/fontconfig/fonts.conf" <<'CONF'
+          <?xml version="1.0"?>
+          <!DOCTYPE fontconfig SYSTEM "fonts.dtd">
+          <fontconfig>
+            <match target="pattern">
+              <test qual="any" name="family"><string>Segoe UI Variable Display</string></test>
+              <edit name="family" mode="assign" binding="same"><string>Selawik</string></edit>
+            </match>
+            <match target="pattern">
+              <test qual="any" name="family"><string>Segoe UI</string></test>
+              <edit name="family" mode="assign" binding="same"><string>Selawik</string></edit>
+            </match>
+            <match target="pattern">
+              <test qual="any" name="family"><string>Iowan Old Style</string></test>
+              <edit name="family" mode="assign" binding="same"><string>P052</string></edit>
+            </match>
+            <match target="pattern">
+              <test qual="any" name="family"><string>Palatino Linotype</string></test>
+              <edit name="family" mode="assign" binding="same"><string>P052</string></edit>
+            </match>
+          </fontconfig>
+          CONF
+          fc-cache -f
+          echo "Resolved families:"
+          for family in "Segoe UI" "Palatino Linotype" "Cascadia Mono"; do
+            printf '  %-22s -> %s\n' "$family" "$(fc-match "$family")"
+          done
+
+      - name: Check the poster still fits on one page
+        # Hard gate. The poster is a fixed-size canvas with overflow:hidden, so
+        # a layout that outgrows it is cut off in silence — this turns that into
+        # a build failure.
+        run: python3 scripts/check-poster-layout.py "$(command -v google-chrome)" dist/poster/index.html
+
+      - name: Render the poster to PDF
+        # --headless=new is required, not cosmetic: the old headless mode ignores
+        # `@page { size }` and silently emits a Letter-sized page, cropping the
+        # poster while still reporting one page. Hence the size assertion below.
+        run: |
+          set -euo pipefail
+          google-chrome --headless=new --disable-gpu --no-sandbox \
+            --no-pdf-header-footer --virtual-time-budget=8000 \
+            --print-to-pdf=dist/poster/are-poster-a1.pdf \
+            "file://$GITHUB_WORKSPACE/dist/poster/index.html"
+
+          pages=$(pdfinfo dist/poster/are-poster-a1.pdf | awk '/^Pages:/ {print $2}')
+          width=$(pdfinfo dist/poster/are-poster-a1.pdf | awk '/^Page size:/ {print $3}')
+          height=$(pdfinfo dist/poster/are-poster-a1.pdf | awk '/^Page size:/ {print $5}')
+          echo "PDF: ${pages} page(s), ${width} x ${height} pt"
+
+          if [ "$pages" != "1" ]; then
+            echo "::error::The poster rendered to ${pages} pages; it must be exactly one."
+            exit 1
+          fi
+          # A1 is 594 x 841 mm = 1683.8 x 2383.9 pt. Allow a couple of points of
+          # rounding, nothing more.
+          ok=$(awk -v w="$width" -v h="$height" \
+                 'BEGIN { print (w > 1681 && w < 1687 && h > 2381 && h < 2387) ? "yes" : "no" }')
+          if [ "$ok" != "yes" ]; then
+            echo "::error::PDF page is ${width} x ${height} pt, expected A1 (1683.8 x 2383.9 pt)."
+            exit 1
+          fi
+
+      - name: Check the PDF actually covers its page
+        # A correctly sized page proves nothing about where the content landed:
+        # a sheet shifted off the paper still reports one A1 page while a third
+        # of it is cropped away. This measures the ink instead.
+        run: python3 scripts/check-poster-pdf.py dist/poster/are-poster-a1.pdf
+
       - name: Assemble root landing page
         run: |
           set -euo pipefail
           {
             echo '<!doctype html>'
-            echo '<html lang="en">'
+            echo '<html lang="de">'
             echo '<head>'
             echo '<meta charset="utf-8">'
             echo '<meta name="viewport" content="width=device-width, initial-scale=1">'
-            echo '<meta http-equiv="refresh" content="0; url=cheat-sheet/">'
-            echo '<title>ARE Cheat Sheet</title>'
+            echo '<title>Advanced Requirements Engineering</title>'
+            echo '<style>'
+            echo ':root{color-scheme:light dark}'
+            echo 'body{margin:0;min-height:100vh;display:grid;place-items:center;padding:24px;'
+            echo 'font-family:"Segoe UI",system-ui,-apple-system,Helvetica,Arial,sans-serif;'
+            echo 'background:#e9edf1;color:#121a24}'
+            echo '@media(prefers-color-scheme:dark){body{background:#0b1017;color:#e2e9f0}}'
+            echo 'main{max-width:640px;width:100%}'
+            echo 'h1{font-size:clamp(26px,5vw,38px);letter-spacing:-.02em;margin:0 0 8px}'
+            echo 'p.lede{margin:0 0 28px;color:#55616f}'
+            echo '@media(prefers-color-scheme:dark){p.lede{color:#97a4b2}}'
+            echo 'ul{list-style:none;margin:0;padding:0;display:grid;gap:14px}'
+            echo 'a.card{display:block;padding:20px 22px;border-radius:8px;text-decoration:none;'
+            echo 'background:#fff;border:1px solid #c9d3dc;color:inherit}'
+            echo '@media(prefers-color-scheme:dark){a.card{background:#131b24;border-color:#2a3642}}'
+            echo 'a.card b{display:block;font-size:19px;margin-bottom:4px}'
+            echo 'a.card span{color:#55616f;font-size:15px}'
+            echo '@media(prefers-color-scheme:dark){a.card span{color:#97a4b2}}'
+            echo '</style>'
             echo '</head>'
             echo '<body>'
-            echo '<p><a href="cheat-sheet/">ARE Cheat Sheet</a></p>'
+            echo '<main>'
+            echo '<h1>Advanced Requirements Engineering</h1>'
+            echo '<p class="lede">Vom Stakeholder Requirement bis zu den Acceptance Criteria.</p>'
+            echo '<ul>'
+            echo '<li><a class="card" href="cheat-sheet/"><b>Cheat Sheet</b>'
+            echo '<span>Alle elf Abschnitte, mit Format-Finder und ausführlichen Beispielen.</span></a></li>'
+            echo '<li><a class="card" href="poster/"><b>Plakat</b>'
+            echo '<span>Die verdichtete Fassung auf einem Blatt &mdash; als Seite oder als A1-PDF zum Ausdrucken.</span></a></li>'
+            echo '</ul>'
+            echo '</main>'
             echo '</body>'
             echo '</html>'
           } > dist/index.html
