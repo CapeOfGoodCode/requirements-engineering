@@ -106,14 +106,17 @@
     color: var(--ink-3);
     margin: 0;
   }
-  .feedback-btn {
+  .masthead-actions { display: flex; align-items: center; gap: 10px; flex: none; }
+  .feedback-btn, .poster-btn {
     display: inline-flex; align-items: center; gap: 7px; flex: none;
     font-family: var(--sans); font-size: 13.5px; font-weight: 600;
-    background: var(--ink); color: var(--paper);
     padding: 9px 16px; border-radius: 999px; text-decoration: none;
     white-space: nowrap;
   }
+  .feedback-btn { background: var(--ink); color: var(--paper); }
+  .poster-btn { border: 1.5px solid var(--rule); color: var(--ink); }
   .feedback-btn:hover { background: #0c6360; color: var(--paper); }
+  .poster-btn:hover { border-color: var(--ink); }
   @media (prefers-color-scheme: dark) { .feedback-btn:hover { background: #4ec6bd; } }
   h1 {
     font-size: clamp(30px, 5vw, 48px);
@@ -520,7 +523,10 @@
   <div class="wrap">
     <div class="masthead-top">
       <p class="eyebrow">Advanced Requirements Engineering · Cheat Sheet</p>
-      <a class="feedback-btn" href="https://github.com/CapeOfGoodCode/requirements-engineering/issues/new" target="_blank" rel="noopener">💬 Feedback geben</a>
+      <div class="masthead-actions">
+        <a class="poster-btn" href="../poster/">🖼 Plakat</a>
+        <a class="feedback-btn" href="https://github.com/CapeOfGoodCode/requirements-engineering/issues/new" target="_blank" rel="noopener">💬 Feedback geben</a>
+      </div>
     </div>
     <h1>Vom Stakeholder Requirement bis zu den Acceptance Criteria</h1>
     <p class="standfirst">
