@@ -2,8 +2,9 @@
 
 This repo holds the Advanced Requirements Engineering (ARE) teaching material as two
 German-language HTML *fragments* (no `<!doctype>`, `<html>`, `<head>` or `<body>`):
-`cheatsheet-body.html`, the full sheet, and `poster-body.html`, a condensed A1 poster.
-They are the only source files. `.github/workflows/deploy.yml` wraps each into a full
+`cheatsheet-body.html`, the full sheet, and `poster-body.html`, a condensed A1 poster,
+plus `poster-body.en.html`, the poster's English translation. They are the only source
+files. `.github/workflows/deploy.yml` wraps each into a full
 document and publishes both to GitHub Pages on every push to `main`.
 
 **Everything in this repo is English — code, comments, filenames, commit messages, this
@@ -90,9 +91,13 @@ by commit-check via `commit-check.toml` and `.github/workflows/commit-lint.yml`.
 ## Site layout
 
 Neither variant sits at the site root. The sheet deploys under `/cheat-sheet/`, the poster
-under `/poster/`, and the root is a generated chooser page built inline in `deploy.yml`.
-A third variant needs its own source fragment, its own `dist/<slug>/` build step, and an
-entry in that chooser.
+under `/poster/`, its English translation under `/en/poster/`, and the root is a generated
+chooser page built inline in `deploy.yml`. A new variant or language is one more `build`
+call in the "Stamp and assemble every variant" step plus an entry in that chooser.
+
+**German keeps the unprefixed paths and always will.** The poster prints its own URL in its
+colophon, so once a copy is on a wall that path can never move. English is prefixed for the
+same reason — symmetry would have cost two permanent redirects.
 
 ## The poster
 
@@ -131,6 +136,23 @@ token renamed in one does not follow into the other.
   Cascadia Mono; the runner has none of the first two, so `deploy.yml` installs Selawik and
   P052 and aliases them through fontconfig. Changing the font stack means changing that step
   too, or the layout check will fail.
+
+## Translations
+
+`poster-body.en.html` is derived from the German poster by replacing prose only: the markup,
+the SVG geometry and every class name stay identical, so the two files diff cleanly against
+each other. Keep it that way — a structural change belongs in both.
+
+- **Terminology comes from the course slides**, not from translating the German back. The
+  three ladder examples are the slides' own sentences verbatim.
+- **A translation re-flows the fixed canvas.** English is not uniformly shorter: the first
+  English draft overran column 1 by 6px and two diagram labels by a unit, because different
+  words wrap differently. Run the layout check on every language, which CI does.
+- **Established terms stay put** (Acceptance Criteria, Use Case, shall/should/will), but
+  German compound hyphenation does not survive: `User-Story-Format` becomes `User-Story
+  format`. US spelling throughout, to match Artifact and the other source terms.
+- The language switcher names languages, never flags — a flag denotes a country, and neither
+  language belongs to one.
 
 ## External references
 
