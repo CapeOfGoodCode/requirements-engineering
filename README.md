@@ -12,12 +12,13 @@ Two variants are published, and the site root is a chooser between them:
 - Poster — https://capeofgoodcode.github.io/requirements-engineering/poster/, the condensed
   version on one sheet, alongside a print-ready A1 PDF at
   [`poster/are-poster-a1.pdf`](https://capeofgoodcode.github.io/requirements-engineering/poster/are-poster-a1.pdf)
+- Cheat sheet in English — https://capeofgoodcode.github.io/requirements-engineering/en/cheat-sheet/
 - Poster in English — https://capeofgoodcode.github.io/requirements-engineering/en/poster/,
   with its own [A1 PDF](https://capeofgoodcode.github.io/requirements-engineering/en/poster/are-poster-a1.pdf)
 
 ## Setup
 
-Nothing required. Editing `cheatsheet-body.html`, `poster-body.html` or `poster-body.en.html` and pushing to `main`
+Nothing required. Editing any of the four source fragments and pushing to `main`
 is all that's needed — deployment, versioning, and the PDF happen in CI.
 
 Optional: `pre-commit install` (requires [pre-commit](https://pre-commit.com/) and Python)

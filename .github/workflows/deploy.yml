@@ -62,9 +62,10 @@ jobs:
             echo "built dist/${out_dir}/index.html (${lang})"
           }
 
-          build cheatsheet-body.html  cheat-sheet     de en en/cheat-sheet
-          build poster-body.html      poster          de en en/poster
-          build poster-body.en.html   en/poster       en de poster
+          build cheatsheet-body.html     cheat-sheet     de en en/cheat-sheet
+          build cheatsheet-body.en.html  en/cheat-sheet  en de cheat-sheet
+          build poster-body.html         poster          de en en/poster
+          build poster-body.en.html      en/poster       en de poster
 
       - name: Install the poster's fonts
         # The sources name Segoe UI, Palatino Linotype and Cascadia Mono. The
@@ -217,6 +218,8 @@ jobs:
             echo '</ul>'
             echo '<h2>English</h2>'
             echo '<ul>'
+            echo '<li><a class="card" href="en/cheat-sheet/" hreflang="en" lang="en"><b>Cheat Sheet</b>'
+            echo '<span>All eleven sections, with the format finder and worked examples.</span></a></li>'
             echo '<li><a class="card" href="en/poster/" hreflang="en" lang="en"><b>Poster</b>'
             echo '<span>The condensed version on one sheet &mdash; as a page or as an A1 PDF for printing.</span></a></li>'
             echo '</ul>'
