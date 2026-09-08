@@ -40,8 +40,10 @@ Handled entirely in CI; there is nothing to build or install locally.
 
 ## Editorial rules not stated in the page
 
-- **No company name** anywhere in the text. The proprietary Sub-System Requirement is
-  described neutrally ("proprietär" / "manche Organisationen").
+- **No customer's company name** anywhere in the text. The proprietary Sub-System
+  Requirement is described neutrally ("proprietär" / "manche Organisationen"). This is
+  about the organisations whose practices are described — the publisher's own name and
+  logo are a different matter and appear in the poster's colophon.
 - **"Story" never stands alone** — always "User Story". The only exceptions are SAFe's own
   term in the Enabler card and the `ENABLER STORY` label in the structure panel.
 - **Language split.** The document is German. Established terminology stays English and
@@ -118,6 +120,11 @@ token renamed in one does not follow into the other.
   renumbering.
 - **Print only, single theme.** No dark mode: the poster is a print deliverable, and a dark
   variant would waste toner. Colours are painted explicitly rather than inherited.
+- **The logo is a colophon mark and costs layout height.** It is embedded as a base64
+  data URI to keep the fragment self-contained, downscaled to 400px wide and quantised to
+  128 colours — the untouched PNG would have been 98KB of base64 in a 40KB file. At 130px
+  it is taller than the colophon's text line, which is why the sheet's bottom padding was
+  reduced to pay for it. Enlarging it means finding that height somewhere else.
 - **Print rules live at the end of the stylesheet.** They are single-class
   selectors, so a component rule further down outranks them at equal specificity
   — which is how the screen-only buttons once ended up in the PDF. Anything added
