@@ -120,7 +120,11 @@ token renamed in one does not follow into the other.
   renumbering.
 - **Print only, single theme.** No dark mode: the poster is a print deliverable, and a dark
   variant would waste toner. Colours are painted explicitly rather than inherited.
-- **The logo is a colophon mark and costs layout height.** It is embedded as a base64
+- **The logo is a colophon mark in both artefacts.** In the cheat sheet it needs a light
+  plate in dark mode: the wordmark is fixed brand violet and unreadable on the dark ground,
+  and recolouring someone else's logo is not ours to do. The plate is `content-box`, so it
+  grows outward instead of shrinking the mark to a different size per theme.
+- **In the poster it costs layout height.** It is embedded as a base64
   data URI to keep the fragment self-contained, downscaled to 400px wide and quantised to
   128 colours — the untouched PNG would have been 98KB of base64 in a 40KB file. At 130px
   it is taller than the colophon's text line, which is why the sheet's bottom padding was
