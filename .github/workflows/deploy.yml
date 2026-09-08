@@ -28,47 +28,42 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4
 
-      - name: Stamp version and assemble cheat-sheet/index.html
+      - name: Stamp and assemble every variant
+        # One loop over "source|output path|language", so a new variant or a new
+        # language is a line here rather than another copy of the wrapper. German
+        # keeps the unprefixed paths: the poster prints its own URL, and a printed
+        # URL cannot be moved later.
         run: |
           set -euo pipefail
-          mkdir -p dist/cheat-sheet
           timestamp=$(date -u +"%Y-%m-%d %H:%M:%S")
           short_sha=$(git rev-parse --short HEAD)
-          sed -i "s#<span>Version: [^<]*</span>#<span>Version: ${timestamp} UTC (${short_sha})</span>#" cheatsheet-body.html
-          {
-            echo '<!doctype html>'
-            echo '<html lang="de">'
-            echo '<head>'
-            echo '<meta charset="utf-8">'
-            echo '<meta name="viewport" content="width=device-width, initial-scale=1">'
-            echo '<style>*,*::before,*::after{box-sizing:border-box}body{margin:0}</style>'
-            echo '</head>'
-            echo '<body>'
-            cat cheatsheet-body.html
-            echo '</body>'
-            echo '</html>'
-          } > dist/cheat-sheet/index.html
+          site=https://capeofgoodcode.github.io/requirements-engineering
 
-      - name: Stamp version and assemble poster/index.html
-        run: |
-          set -euo pipefail
-          mkdir -p dist/poster
-          timestamp=$(date -u +"%Y-%m-%d %H:%M:%S")
-          short_sha=$(git rev-parse --short HEAD)
-          sed -i "s#<span>Version: [^<]*</span>#<span>Version: ${timestamp} UTC (${short_sha})</span>#" poster-body.html
-          {
-            echo '<!doctype html>'
-            echo '<html lang="de">'
-            echo '<head>'
-            echo '<meta charset="utf-8">'
-            echo '<meta name="viewport" content="width=device-width, initial-scale=1">'
-            echo '<style>*,*::before,*::after{box-sizing:border-box}body{margin:0}</style>'
-            echo '</head>'
-            echo '<body>'
-            cat poster-body.html
-            echo '</body>'
-            echo '</html>'
-          } > dist/poster/index.html
+          build () {
+            source_file=$1; out_dir=$2; lang=$3; alt_lang=$4; alt_href=$5
+            mkdir -p "dist/${out_dir}"
+            sed -i "s#<span>Version: [^<]*</span>#<span>Version: ${timestamp} UTC (${short_sha})</span>#" "$source_file"
+            {
+              echo '<!doctype html>'
+              echo "<html lang=\"${lang}\">"
+              echo '<head>'
+              echo '<meta charset="utf-8">'
+              echo '<meta name="viewport" content="width=device-width, initial-scale=1">'
+              echo "<link rel=\"alternate\" hreflang=\"${lang}\" href=\"${site}/${out_dir}/\">"
+              echo "<link rel=\"alternate\" hreflang=\"${alt_lang}\" href=\"${site}/${alt_href}/\">"
+              echo '<style>*,*::before,*::after{box-sizing:border-box}body{margin:0}</style>'
+              echo '</head>'
+              echo '<body>'
+              cat "$source_file"
+              echo '</body>'
+              echo '</html>'
+            } > "dist/${out_dir}/index.html"
+            echo "built dist/${out_dir}/index.html (${lang})"
+          }
+
+          build cheatsheet-body.html  cheat-sheet     de en en/cheat-sheet
+          build poster-body.html      poster          de en en/poster
+          build poster-body.en.html   en/poster       en de poster
 
       - name: Install the poster's fonts
         # The sources name Segoe UI, Palatino Linotype and Cascadia Mono. The
@@ -116,46 +111,47 @@ jobs:
             printf '  %-22s -> %s\n' "$family" "$(fc-match "$family")"
           done
 
-      - name: Check the poster still fits on one page
-        # Hard gate. The poster is a fixed-size canvas with overflow:hidden, so
-        # a layout that outgrows it is cut off in silence — this turns that into
-        # a build failure.
-        run: python3 scripts/check-poster-layout.py "$(command -v google-chrome)" dist/poster/index.html
-
-      - name: Render the poster to PDF
+      - name: Check each poster and render its PDF
+        # Every gate runs per language, because a translation re-flows the fixed
+        # canvas: the English text is not merely shorter, it wraps differently and
+        # can push a column past the edge.
+        #
         # --headless=new is required, not cosmetic: the old headless mode ignores
         # `@page { size }` and silently emits a Letter-sized page, cropping the
-        # poster while still reporting one page. Hence the size assertion below.
+        # poster while still reporting one page.
         run: |
           set -euo pipefail
-          google-chrome --headless=new --disable-gpu --no-sandbox \
-            --no-pdf-header-footer --virtual-time-budget=8000 \
-            --print-to-pdf=dist/poster/are-poster-a1.pdf \
-            "file://$GITHUB_WORKSPACE/dist/poster/index.html"
+          for dir in poster en/poster; do
+            echo "::group::${dir}"
+            python3 scripts/check-poster-layout.py "$(command -v google-chrome)" "dist/${dir}/index.html"
 
-          pages=$(pdfinfo dist/poster/are-poster-a1.pdf | awk '/^Pages:/ {print $2}')
-          width=$(pdfinfo dist/poster/are-poster-a1.pdf | awk '/^Page size:/ {print $3}')
-          height=$(pdfinfo dist/poster/are-poster-a1.pdf | awk '/^Page size:/ {print $5}')
-          echo "PDF: ${pages} page(s), ${width} x ${height} pt"
+            google-chrome --headless=new --disable-gpu --no-sandbox \
+              --no-pdf-header-footer --virtual-time-budget=8000 \
+              --print-to-pdf="dist/${dir}/are-poster-a1.pdf" \
+              "file://$GITHUB_WORKSPACE/dist/${dir}/index.html"
 
-          if [ "$pages" != "1" ]; then
-            echo "::error::The poster rendered to ${pages} pages; it must be exactly one."
-            exit 1
-          fi
-          # A1 is 594 x 841 mm = 1683.8 x 2383.9 pt. Allow a couple of points of
-          # rounding, nothing more.
-          ok=$(awk -v w="$width" -v h="$height" \
-                 'BEGIN { print (w > 1681 && w < 1687 && h > 2381 && h < 2387) ? "yes" : "no" }')
-          if [ "$ok" != "yes" ]; then
-            echo "::error::PDF page is ${width} x ${height} pt, expected A1 (1683.8 x 2383.9 pt)."
-            exit 1
-          fi
+            pdf="dist/${dir}/are-poster-a1.pdf"
+            pages=$(pdfinfo "$pdf" | awk '/^Pages:/ {print $2}')
+            width=$(pdfinfo "$pdf" | awk '/^Page size:/ {print $3}')
+            height=$(pdfinfo "$pdf" | awk '/^Page size:/ {print $5}')
+            echo "PDF: ${pages} page(s), ${width} x ${height} pt"
 
-      - name: Check the PDF actually covers its page
-        # A correctly sized page proves nothing about where the content landed:
-        # a sheet shifted off the paper still reports one A1 page while a third
-        # of it is cropped away. This measures the ink instead.
-        run: python3 scripts/check-poster-pdf.py dist/poster/are-poster-a1.pdf
+            if [ "$pages" != "1" ]; then
+              echo "::error::${dir} rendered to ${pages} pages; it must be exactly one."
+              exit 1
+            fi
+            # A1 is 594 x 841 mm = 1683.8 x 2383.9 pt. Allow a couple of points of
+            # rounding, nothing more.
+            ok=$(awk -v w="$width" -v h="$height" \
+                   'BEGIN { print (w > 1681 && w < 1687 && h > 2381 && h < 2387) ? "yes" : "no" }')
+            if [ "$ok" != "yes" ]; then
+              echo "::error::${dir} PDF page is ${width} x ${height} pt, expected A1."
+              exit 1
+            fi
+
+            python3 scripts/check-poster-pdf.py "$pdf"
+            echo "::endgroup::"
+          done
 
       - name: Assemble root landing page
         run: |
@@ -173,15 +169,17 @@ jobs:
             echo 'font-family:"Segoe UI",system-ui,-apple-system,Helvetica,Arial,sans-serif;'
             echo 'background:#e9edf1;color:#121a24}'
             echo '@media(prefers-color-scheme:dark){body{background:#0b1017;color:#e2e9f0}}'
-            echo 'main{max-width:640px;width:100%}'
+            echo 'main{max-width:680px;width:100%}'
             echo 'h1{font-size:clamp(26px,5vw,38px);letter-spacing:-.02em;margin:0 0 8px}'
             echo 'p.lede{margin:0 0 28px;color:#55616f}'
             echo '@media(prefers-color-scheme:dark){p.lede{color:#97a4b2}}'
-            echo 'ul{list-style:none;margin:0;padding:0;display:grid;gap:14px}'
-            echo 'a.card{display:block;padding:20px 22px;border-radius:8px;text-decoration:none;'
+            echo 'h2{font-size:13px;letter-spacing:.14em;text-transform:uppercase;color:#7c8794;'
+            echo 'margin:0 0 10px;font-family:ui-monospace,Consolas,monospace}'
+            echo 'ul{list-style:none;margin:0 0 26px;padding:0;display:grid;gap:12px}'
+            echo 'a.card{display:block;padding:18px 20px;border-radius:8px;text-decoration:none;'
             echo 'background:#fff;border:1px solid #c9d3dc;color:inherit}'
             echo '@media(prefers-color-scheme:dark){a.card{background:#131b24;border-color:#2a3642}}'
-            echo 'a.card b{display:block;font-size:19px;margin-bottom:4px}'
+            echo 'a.card b{display:block;font-size:18px;margin-bottom:4px}'
             echo 'a.card span{color:#55616f;font-size:15px}'
             echo '@media(prefers-color-scheme:dark){a.card span{color:#97a4b2}}'
             echo '</style>'
@@ -190,11 +188,17 @@ jobs:
             echo '<main>'
             echo '<h1>Advanced Requirements Engineering</h1>'
             echo '<p class="lede">Vom Stakeholder Requirement bis zu den Acceptance Criteria.</p>'
+            echo '<h2>Deutsch</h2>'
             echo '<ul>'
             echo '<li><a class="card" href="cheat-sheet/"><b>Cheat Sheet</b>'
             echo '<span>Alle elf Abschnitte, mit Format-Finder und ausführlichen Beispielen.</span></a></li>'
             echo '<li><a class="card" href="poster/"><b>Plakat</b>'
             echo '<span>Die verdichtete Fassung auf einem Blatt &mdash; als Seite oder als A1-PDF zum Ausdrucken.</span></a></li>'
+            echo '</ul>'
+            echo '<h2>English</h2>'
+            echo '<ul>'
+            echo '<li><a class="card" href="en/poster/" hreflang="en" lang="en"><b>Poster</b>'
+            echo '<span>The condensed version on one sheet &mdash; as a page or as an A1 PDF for printing.</span></a></li>'
             echo '</ul>'
             echo '</main>'
             echo '</body>'

@@ -50,11 +50,16 @@ window.addEventListener('load', function () {
     var scale = sr.width / vb.width;
     [].forEach.call(svg.querySelectorAll('text'), function (t) {
       var r = t.getBoundingClientRect();
-      var x0 = (r.left - sr.left) / scale, x1 = (r.right - sr.left) / scale;
-      var y0 = (r.top - sr.top) / scale,  y1 = (r.bottom - sr.top) / scale;
-      if (x0 < -0.5 || y0 < -0.5 || x1 > vb.width + 0.5 || y1 > vb.height + 0.5) {
-        problems.push('diagram ' + (i + 1) + ' label out of bounds: "' +
-                      t.textContent.trim().slice(0, 40) + '"');
+      var x0 = (r.left - sr.left) / scale + vb.x, x1 = (r.right - sr.left) / scale + vb.x;
+      var y0 = (r.top - sr.top) / scale + vb.y,  y1 = (r.bottom - sr.top) / scale + vb.y;
+      var edges = [];
+      if (x0 < vb.x - 0.5) { edges.push('left by ' + Math.round(vb.x - x0)); }
+      if (y0 < vb.y - 0.5) { edges.push('top by ' + Math.round(vb.y - y0)); }
+      if (x1 > vb.x + vb.width + 0.5) { edges.push('right by ' + Math.round(x1 - vb.x - vb.width)); }
+      if (y1 > vb.y + vb.height + 0.5) { edges.push('bottom by ' + Math.round(y1 - vb.y - vb.height)); }
+      if (edges.length) {
+        problems.push('diagram ' + (i + 1) + ' label "' + t.textContent.trim().slice(0, 34) +
+                      '" runs past the ' + edges.join(' and '));
       }
     });
   });
@@ -90,7 +95,10 @@ def main(argv):
             [chrome, "--headless=new", "--disable-gpu", "--no-sandbox",
              "--window-size=1600,1000", "--virtual-time-budget=6000",
              "--dump-dom", probe_file.as_uri()],
-            capture_output=True, text=True, timeout=180).stdout
+            capture_output=True, text=True, timeout=180,
+            # The page is UTF-8; without saying so this decodes with the system
+            # locale, which throws on Windows the moment a curly quote appears.
+            encoding="utf-8", errors="replace").stdout
 
     match = re.search(r"PROBE(\{.*?\})ENDPROBE", dom, re.S)
     if not match:
