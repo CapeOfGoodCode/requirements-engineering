@@ -1,21 +1,23 @@
 # CLAUDE.md
 
-This repo holds the Advanced Requirements Engineering (ARE) cheat sheet:
-`cheatsheet-body.html`, a German-language HTML
-*fragment* (no `<!doctype>`, `<html>`, `<head>` or `<body>`). It is the only source file.
-`.github/workflows/deploy.yml` wraps it into a full document and publishes it to GitHub
-Pages on every push to `main`.
+This repo holds the Advanced Requirements Engineering (ARE) teaching material as two
+German-language HTML *fragments* (no `<!doctype>`, `<html>`, `<head>` or `<body>`):
+`cheatsheet-body.html`, the full sheet, and `poster-body.html`, a condensed A1 poster.
+They are the only source files. `.github/workflows/deploy.yml` wraps each into a full
+document and publishes both to GitHub Pages on every push to `main`.
 
 **Everything in this repo is English — code, comments, filenames, commit messages, this
-file — except the cheat sheet's own content**, which is German (see "Language split").
+file — except what the sheet and the poster themselves say**, which is German (see
+"Language split").
 
 ## Deploy and versioning
 
 Handled entirely in CI; there is nothing to build or install locally.
 
 - `deploy.yml` stamps `<span>Version: …</span>` in `footer.colophon` with the UTC timestamp
-  plus short commit hash, wraps the fragment, and writes `dist/cheat-sheet/index.html` plus
-  a generated root redirect page. There is no committed `index.html`.
+  plus short commit hash, wraps each fragment, and writes `dist/cheat-sheet/index.html`,
+  `dist/poster/index.html`, the poster's PDF, and a generated root chooser page. Nothing
+  built is committed — there is no `index.html` and no PDF in git.
 - The stamp exists only in the deployed output and is never committed back, so the value in
   git is always a placeholder. That is expected.
 - The workflow matches the span literally via `sed` (`<span>Version: [^<]*</span>`). Keep
@@ -23,9 +25,9 @@ Handled entirely in CI; there is nothing to build or install locally.
 - GitHub Pages must stay configured with source **"GitHub Actions"**, not "Deploy from a
   branch", or the workflow cannot publish.
 
-## Editing the fragment
+## Editing the fragments
 
-- The file must stay a fragment, and it opens with a bare `<title>` — the wrapper adds none,
+- Each file must stay a fragment, and each opens with a bare `<title>` — the wrapper adds none,
   so do not remove it and do not add a second.
 - Fully self-contained: **no external** CSS, scripts, images or web fonts. One inline
   `<script>` (Format-Finder, panel toggle, scrollspy) and one inline `<style>`.
@@ -87,10 +89,48 @@ by commit-check via `commit-check.toml` and `.github/workflows/commit-lint.yml`.
 
 ## Site layout
 
-The sheet deploys under `/cheat-sheet/`, not the site root; the root is a generated redirect
-page built inline in `deploy.yml`. To add a second variant, give it its own source fragment
-and its own `dist/<slug>/` build step, and turn the root page into a real chooser instead of
-an auto-redirect.
+Neither variant sits at the site root. The sheet deploys under `/cheat-sheet/`, the poster
+under `/poster/`, and the root is a generated chooser page built inline in `deploy.yml`.
+A third variant needs its own source fragment, its own `dist/<slug>/` build step, and an
+entry in that chooser.
+
+## The poster
+
+`poster-body.html` is a fixed 2245 x 3179 px canvas — exactly A1 at 96 dpi — that must stay
+on **one page**. It carries its own stylesheet and shares no CSS with the cheat sheet, so a
+token renamed in one does not follow into the other.
+
+- **Overflow is silent.** The canvas sets `overflow: hidden`, so content that outgrows a
+  column is cut off with no error and no visible sign. Never judge a change by eye; run
+  `scripts/check-poster-layout.py <chrome> <built-html>`, which measures column capacity and
+  every SVG label against its viewBox from inside the rendered page. CI runs it as a hard
+  gate before the PDF is built.
+- **The three columns are packed by height, not by theme.** Formate (871 px) and KANO
+  (875 px) each fit only alongside one of the two small blocks, which forces Dekomposition
+  and Klassifikation to share a column. Any block that grows re-opens that packing.
+- **Numbering encodes the reading order**, which runs left to right across the top three
+  blocks and then across the bottom three — not down each column. Moving a block means
+  renumbering.
+- **Print only, single theme.** No dark mode: the poster is a print deliverable, and a dark
+  variant would waste toner. Colours are painted explicitly rather than inherited.
+- **Print rules live at the end of the stylesheet.** They are single-class
+  selectors, so a component rule further down outranks them at equal specificity
+  — which is how the screen-only buttons once ended up in the PDF. Anything added
+  after them silently wins.
+- **The preview scale never touches inline styles.** The fit script sets only a
+  `--fit` custom property; the geometry is a `@media screen` rule. Written inline
+  it survives into print, where it shifts the sheet off the paper and crops a
+  third of it while still reporting one correctly sized A1 page.
+- **The PDF is checked for coverage, not just size.** `scripts/check-poster-pdf.py`
+  measures where the ink actually lands, because a cropped sheet still passes a
+  page-count and page-size check.
+- **The PDF needs `--headless=new`.** The old headless mode ignores `@page { size }` and
+  emits a Letter page that still reports as one page, cropping the poster in silence. The
+  workflow asserts the page size in points as well as the page count.
+- **CI installs metric-compatible fonts.** The stack names Segoe UI, Palatino Linotype and
+  Cascadia Mono; the runner has none of the first two, so `deploy.yml` installs Selawik and
+  P052 and aliases them through fontconfig. Changing the font stack means changing that step
+  too, or the layout check will fail.
 
 ## External references
 

@@ -6,13 +6,17 @@ This is the cheat sheet for the "Advanced Requirements Engineering" training. It
 Requirement types to SAFe and ISO/IEC/IEEE 29148, shows the formats used at each level, and
 covers decomposition, classification, and KANO.
 
-GitHub Pages: https://capeofgoodcode.github.io/requirements-engineering/cheat-sheet/
-(the site root redirects there)
+Two variants are published, and the site root is a chooser between them:
+
+- Cheat sheet — https://capeofgoodcode.github.io/requirements-engineering/cheat-sheet/
+- Poster — https://capeofgoodcode.github.io/requirements-engineering/poster/, the condensed
+  version on one sheet, alongside a print-ready A1 PDF at
+  [`poster/are-poster-a1.pdf`](https://capeofgoodcode.github.io/requirements-engineering/poster/are-poster-a1.pdf)
 
 ## Setup
 
-Nothing required. Editing `cheatsheet-body.html` and pushing to `main` is all that's
-needed — deployment and versioning happen in CI.
+Nothing required. Editing `cheatsheet-body.html` or `poster-body.html` and pushing to `main`
+is all that's needed — deployment, versioning, and the PDF happen in CI.
 
 Optional: `pre-commit install` (requires [pre-commit](https://pre-commit.com/) and Python)
 wires up local commit-message linting, so mistakes are caught before you push instead of
