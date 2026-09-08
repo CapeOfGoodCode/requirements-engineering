@@ -1,4 +1,4 @@
-<title>ARE Cheat-Sheet — Requirements ab Stakeholder-Ebene</title>
+<title>ARE Cheat Sheet — requirements from the stakeholder level down</title>
 
 <style>
   /* ---------- tokens ---------- */
@@ -541,35 +541,34 @@
     <div class="masthead-top">
       <p class="eyebrow">Advanced Requirements Engineering · Cheat Sheet</p>
       <div class="masthead-actions">
-        <span class="lang"><span class="here">Deutsch</span><span class="sep">·</span><a href="../en/cheat-sheet/" hreflang="en" lang="en">English</a></span>
-        <a class="poster-btn" href="../poster/">🖼 Plakat</a>
-        <a class="feedback-btn" href="https://github.com/CapeOfGoodCode/requirements-engineering/issues/new" target="_blank" rel="noopener">💬 Feedback geben</a>
+        <span class="lang"><a href="../../cheat-sheet/" hreflang="de" lang="de">Deutsch</a><span class="sep">·</span><span class="here">English</span></span>
+        <a class="poster-btn" href="../poster/">🖼 Poster</a>
+        <a class="feedback-btn" href="https://github.com/CapeOfGoodCode/requirements-engineering/issues/new" target="_blank" rel="noopener">💬 Give feedback</a>
       </div>
     </div>
-    <h1>Vom Stakeholder Requirement bis zu den Acceptance Criteria</h1>
+    <h1>From Stakeholder Requirement to Acceptance Criteria</h1>
     <p class="standfirst">
-      Welche Requirement-Typen es gibt, wie sie sich auf SAFe abbilden lassen, mit welchem Format man
-      welche Ebene beschreibt und wie die Dekomposition nach unten läuft.
+      Which requirement types there are, how they map onto SAFe, which format describes which level, and how decomposition works its way down.
     </p>
     <div class="sourcebar">
-      <span><b>Grundlage:</b> ISO/IEC/IEEE 29148:2018 · SAFe · Cockburn · Bass/Clements/Kazman</span>
+      <span><b>Based on:</b> ISO/IEC/IEEE 29148:2018 · SAFe · Cockburn · Bass/Clements/Kazman</span>
     </div>
   </div>
 </header>
 
-<nav class="jump" aria-label="Abschnitte">
+<nav class="jump" aria-label="Sections">
   <div class="jump-inner">
-    <a href="#ebenen">Ebenen &amp; SAFe</a>
-    <a href="#artefakte">Artefakte</a>
-    <a href="#formate">Formate</a>
-    <a href="#dekomposition">Dekomposition</a>
+    <a href="#ebenen">Levels &amp; SAFe</a>
+    <a href="#artefakte">Artifacts</a>
+    <a href="#formate">Formats</a>
+    <a href="#dekomposition">Decomposition</a>
     <a href="#grenzen">System Boundaries</a>
     <a href="#domain">Domain Model</a>
-    <a href="#klassifikation">Klassifikation</a>
-    <a href="#qualitaet">Quality-Frage</a>
+    <a href="#klassifikation">Classification</a>
+    <a href="#qualitaet">Quality question</a>
     <a href="#kano">KANO</a>
-    <a href="#finder">Format-Finder</a>
-    <a href="#struktur">Struktur &amp; Ableitung</a>
+    <a href="#finder">Format finder</a>
+    <a href="#struktur">Structure &amp; derivation</a>
   </div>
 </nav>
 
@@ -577,11 +576,9 @@
 
   <!-- ================= 1. EBENEN ================= -->
   <section id="ebenen">
-    <div class="sec-head"><span class="sec-num">01</span><h2>Die Ebenen und die beiden Modelle</h2></div>
+    <div class="sec-head"><span class="sec-num">01</span><h2>The levels and the two models</h2></div>
     <p class="sec-lede">
-      Eine Ebene tiefer heißt: konkreter, kleiner, näher an der Lösung. Alle Ebenen bis zur User
-      Story bleiben dabei <b>implementierungsfrei</b> — sie sagen, <em>was</em> gelten soll. Erst beim
-      System Element Requirement wird festgelegt, <em>wie</em> es gebaut wird.
+      One level down means: more concrete, smaller, closer to the solution. Every level down to the User Story stays <b>implementation-free</b> — they say <em>what</em> shall hold. Only at the System Element Requirement is it settled <em>how</em> it gets built.
     </p>
 
     <div class="sheet">
@@ -591,24 +588,16 @@
           <div class="rung-rail lvl-0">
             <span class="rung-iso">ISO 29148 · Business Requirement (BRS)</span>
             <span class="rung-name"><span class="ic c-business" aria-hidden="true"><svg viewBox="0 0 20 20"><circle cx="10" cy="10" r="7" fill="none" stroke-width="1.6"/><circle cx="10" cy="10" r="2.6"/></svg></span>Business Goal</span><br>
-            <span class="rung-safe">Mission, Ziele, Opportunities</span>
+            <span class="rung-safe">Mission, goals, opportunities</span>
           </div>
           <div class="rung-body">
             <div class="rung-meta">
-              <span class="tag plain">wird nicht zerlegt</span>
-              <span class="tag plain">Trace-Ziel</span>
+              <span class="tag plain">not decomposed</span>
+              <span class="tag plain">trace target</span>
             </div>
-            <p class="rung-ex"><b>Beispiel</b>Die Take-Rate der Infotainment-Premium-Option maximieren,
-              um die hohen lokalen Fertigungskosten auszugleichen.</p>
+            <p class="rung-ex"><b>Example</b>Maximize the infotainment premium option take-rate to offset high localized manufacturing costs.</p>
             <p class="rung-note">
-              Ein <b>Business Goal <em>hat</em> Business Objectives</b> — messbare Ziele, an denen
-              sich das Goal überprüfen lässt. Business Requirements haben <b>keine Kinder</b>:
-              Stakeholder Requirements werden nicht unter ihnen aufgehängt, sondern <b>tracen</b> auf
-              sie. Das Trace-Ziel ist das <b>Business Objective</b> des Business Goal; wo keine
-              Objectives ausformuliert sind, tracen die Anforderungen direkt auf das Goal. Dieser
-              Trace ist der Relevanz-Nachweis — keine Verbindung ⇒ Gold-Plating. Neben dem Business
-              Goal stehen gleichrangig Business Process Requirement, Operational Business
-              Requirement, Business Risk und die Business Constraints (Budget, Termin, Recht).
+              A <b>Business Goal <em>has</em> Business Objectives</b> — measurable goals the goal can be checked against. Business Requirements have <b>no children</b>: Stakeholder Requirements are not hung underneath them, they <b>trace</b> to them. The trace target is the <b>Business Objective</b> of the Business Goal; where no objectives are written out, requirements trace directly to the goal. That trace is the proof of relevance — no link ⇒ gold-plating. Alongside the Business Goal, at the same rank, sit Business Process Requirement, Operational Business Requirement, Business Risk and the Business Constraints (budget, schedule, law).
             </p>
           </div>
         </div>
@@ -621,19 +610,15 @@
           </div>
           <div class="rung-body">
             <div class="rung-meta">
-              <span class="tag problem">implementierungsfrei</span>
-              <span class="tag plain">2–6 Monate</span>
+              <span class="tag problem">implementation-free</span>
+              <span class="tag plain">2–6 months</span>
               <span class="tag plain">Strategic Planning</span>
             </div>
-            <p class="rung-ex"><b>Beispiel</b>Als Fahrer möchte ich während der Fahrt telefonieren,
-              so dass ich weiterfahren kann.</p>
+            <p class="rung-ex"><b>Example</b>As a driver I want to make a phone call on the road so that I can go on driving.</p>
             <p class="rung-note">
-              Bedürfnisse und Fähigkeiten, die Nutzer und Stakeholder verlangen. Bündelt
-              zusammengehörige Funktionalität und trägt Business Value. Bewusst grob — nicht
-              <em>singular</em>, nicht <em>complete</em>, bis sie verfeinert ist. Prüfung:
-              <b>Validation</b> („bauen wir das Richtige?“). Größenmaß: T-Shirt — S = 1 PI,
-              M = 1–2 PI, L &gt; 2 PI, wobei <b>PI = Program Increment</b>, der Planungstakt von
-              8–12 Wochen bzw. 3–5 Sprints à 2–4 Wochen, in dem ein Feature fertig wird.
+              Needs and capabilities that users and stakeholders ask for. Bundles related functionality and carries business value. Deliberately coarse — not
+              <em>singular</em>, not <em>complete</em>, until it is refined. Check:
+              <b>Validation</b> (“did we build the right thing?”). Sizing: T-shirt — S = 1 PI, M = 1–2 PI, L &gt; 2 PI, where <b>PI = Program Increment</b>, the planning cadence of 8–12 weeks, or 3–5 sprints of 2–4 weeks, in which a feature is finished.
             </p>
           </div>
         </div>
@@ -646,45 +631,32 @@
           </div>
           <div class="rung-body">
             <div class="rung-meta">
-              <span class="tag problem">implementierungsfrei · in der Domäne</span>
-              <span class="tag plain">1 PI ≈ 8–12 Wochen</span>
+              <span class="tag problem">implementation-free · in the domain</span>
+              <span class="tag plain">1 PI ≈ 8–12 weeks</span>
               <span class="tag plain">Increment Planning</span>
             </div>
-            <p class="rung-ex"><b>Beispiel</b>Als Fahrer möchte ich während der Fahrt eine Telefonnummer
-              wählen, so dass ich mit einem Gesprächspartner sprechen kann.</p>
+            <p class="rung-ex"><b>Example</b>As a driver I want to dial a phone number while driving so that I can talk to a partner while driving.</p>
             <p class="rung-note">
-              Implementierungsfreie Beschreibung dessen, <em>was</em> das System leisten muss. Mit
-              einem Release auslieferbar und verkaufbar. Muss <b>bounded</b> sein: vollständig in
-              genau einem Program Increment entwickelbar und testbar. Prüfung: <b>Verification</b>
-              („bauen wir es richtig?“). Auf derselben Ebene liegen außerdem zwei Sonderfälle. Der
-              <b>Architecture Enabler</b> nimmt eine Developmental Quality auf: technische Arbeit,
-              die nach außen nichts ändert. Und das <b>Operational Feature</b>: Betrifft eine
-              Operational Quality nur ein Feature, wird sie dessen Acceptance Criterion — betrifft
-              sie mehrere, gehört sie an keines von ihnen und bekommt deshalb ein eigenes Feature.
-              Das ist unser Vorschlag, ausdrücklich anders, als SAFe es nahelegt.
+              Implementation-free description of <em>what</em> the system has to do. Shippable and sellable with one release. Must be <b>bounded</b> : fully developable and testable within exactly one Program Increment. Check: <b>Verification</b>
+              (“did we build it right?”). Two special cases sit on the same level. The
+              <b>Architecture Enabler</b> takes up a Developmental Quality: technical work that changes nothing on the outside. And the <b>Operational Feature</b>: if an Operational Quality affects only one feature, it becomes that feature’s acceptance criterion — if it affects several, it belongs to none of them and therefore gets a feature of its own. That is our proposal, deliberately different from what SAFe suggests.
             </p>
           </div>
         </div>
 
         <div class="rung">
           <div class="rung-rail lvl-3">
-            <span class="rung-iso missing">kein Pendant in ISO 29148</span>
+            <span class="rung-iso missing">no counterpart in ISO 29148</span>
             <span class="rung-name"><span class="ic c-story" aria-hidden="true"><svg viewBox="0 0 20 20"><circle cx="10" cy="5.5" r="2.6" fill="none" stroke-width="1.6"/><path d="M4.5 16.5c0-3 2.5-5 5.5-5s5.5 2 5.5 5" fill="none" stroke-width="1.6" stroke-linecap="round"/></svg></span>User Story</span>
           </div>
           <div class="rung-body">
             <div class="rung-meta">
-              <span class="tag problem">implementierungsfrei</span>
-              <span class="tag plain">1 Sprint · 2–4 Wochen</span>
+              <span class="tag problem">implementation-free</span>
+              <span class="tag plain">1 Sprint · 2–4 weeks</span>
             </div>
-            <p class="rung-ex"><b>Beispiel</b>Als Fahrer möchte ich während der Fahrt die Telefonfunktion
-              und die Wähloption auswählen, so dass ich anschließend eine Rufnummer eintippen kann.</p>
+            <p class="rung-ex"><b>Example</b>As a driver I want to select the phone functions and the dialing option while driving so that I can type in a phone number.</p>
             <p class="rung-note">
-              <span class="missing"><b>ISO 29148 kennt zu dieser Ebene kein Pendant.</b></span> Die
-              User Story ist eine SAFe-Ebene und beschreibt weiterhin, <em>was</em> der Nutzer tun
-              können soll — nicht, wie es gebaut wird. Die Regel, die sie tragfähig hält: eine User
-              Story soll die Subsysteme <em>spannen</em> und Nutzerinteraktion beschreiben, statt
-              komponentenspezifisch zu werden („CAN-Message-Matrix-Layer aktualisieren“ wäre der
-              Fehler, der den Wert verliert).
+              <span class="missing"><b>ISO 29148 has no counterpart for this level.</b></span> The User Story is a SAFe level and still describes <em>what</em> the user should be able to do — not how it is built. The rule that keeps it sound: a User Story should <em>span</em> the subsystems and describe user interaction rather than turning component-specific (“update the CAN message matrix layer” would be the mistake that loses the value).
             </p>
           </div>
         </div>
@@ -697,16 +669,12 @@
           </div>
           <div class="rung-body">
             <div class="rung-meta">
-              <span class="tag warn">implementierungsgebunden</span>
-              <span class="tag plain">außerhalb des Kursumfangs</span>
+              <span class="tag warn">implementation-bound</span>
+              <span class="tag plain">outside the course scope</span>
             </div>
-            <p class="rung-ex"><b>Beispiel</b>Der Dialer-Service soll die eingegebene Rufnummer vor der
-              Übergabe an den Telefonie-Stack nach E.164 normalisieren.</p>
+            <p class="rung-ex"><b>Example</b>The dialer service shall normalize the entered phone number to E.164 before handing it to the telephony stack.</p>
             <p class="rung-note">
-              <b>Hier beginnt der Lösungsraum.</b> Die technische Spezifikation für Software,
-              Hardware und deren Schnittstellen — das <em>Wie</em> statt des <em>Was</em>. Auf
-              derselben Ebene liegt das <b>Sub-System Requirement</b>, das manche Organisationen
-              zusätzlich führen und weiter zerlegen. Der Kurs endet eine Ebene darüber.
+              <b>This is where the solution space begins.</b> The technical specification for software, hardware and their interfaces — the <em>how</em> instead of the <em>what</em>. On the same level sits the <b>Sub-System Requirement</b>, which some organizations keep in addition and decompose further. The course ends one level above.
             </p>
           </div>
         </div>
@@ -714,36 +682,35 @@
       </div>
     </div>
 
-    <h3>Die beiden Modelle nebeneinander</h3>
+    <h3>The two models side by side</h3>
     <div class="sheet" style="margin-bottom:20px">
       <div class="swatches">
-        <div class="sw c-business"><i aria-hidden="true"><svg viewBox="0 0 20 20"><circle cx="10" cy="10" r="7" fill="none" stroke-width="1.6"/><circle cx="10" cy="10" r="2.6"/></svg></i><div><b>Business Requirement</b><br><span>Goal mit Objectives</span></div></div>
+        <div class="sw c-business"><i aria-hidden="true"><svg viewBox="0 0 20 20"><circle cx="10" cy="10" r="7" fill="none" stroke-width="1.6"/><circle cx="10" cy="10" r="2.6"/></svg></i><div><b>Business Requirement</b><br><span>goal with objectives</span></div></div>
         <div class="sw c-stakeholder"><i aria-hidden="true"><svg viewBox="0 0 20 20"><rect x="2" y="3.5" width="16" height="3" rx="1.5"/><rect x="4" y="8.5" width="12" height="3" rx="1.5"/><rect x="6" y="13.5" width="8" height="3" rx="1.5"/></svg></i><div><b>Stakeholder Requirement</b><br><span>SAFe: Epic</span></div></div>
         <div class="sw c-system"><i aria-hidden="true"><svg viewBox="0 0 20 20"><rect x="2.5" y="4" width="15" height="12" rx="2" fill="none" stroke-width="1.6"/><rect x="5.5" y="7" width="9" height="6" rx="1"/></svg></i><div><b>System Requirement</b><br><span>SAFe: Feature</span></div></div>
-        <div class="sw c-story"><i aria-hidden="true"><svg viewBox="0 0 20 20"><circle cx="10" cy="5.5" r="2.6" fill="none" stroke-width="1.6"/><path d="M4.5 16.5c0-3 2.5-5 5.5-5s5.5 2 5.5 5" fill="none" stroke-width="1.6" stroke-linecap="round"/></svg></i><div><b>User Story</b><br><span>nur in SAFe</span></div></div>
+        <div class="sw c-story"><i aria-hidden="true"><svg viewBox="0 0 20 20"><circle cx="10" cy="5.5" r="2.6" fill="none" stroke-width="1.6"/><path d="M4.5 16.5c0-3 2.5-5 5.5-5s5.5 2 5.5 5" fill="none" stroke-width="1.6" stroke-linecap="round"/></svg></i><div><b>User Story</b><br><span>SAFe only</span></div></div>
         <div class="sw c-task"><i aria-hidden="true"><svg viewBox="0 0 20 20"><rect x="3.5" y="3.5" width="13" height="13" rx="2" fill="none" stroke-width="1.6"/><rect x="7" y="7" width="6" height="6" rx="1"/></svg></i><div><b>System Element Requirement</b><br><span>SAFe: Implementation Task</span></div></div>
         <div class="sw c-quality"><i aria-hidden="true"><svg viewBox="0 0 20 20"><path d="M2 14.5h4l2.5-9 3 12 2.5-7h4" fill="none" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg></i><div><b>Quality</b><br><span>Operational Quality, Quality Scenario</span></div></div>
-        <div class="sw c-constraint"><i aria-hidden="true"><svg viewBox="0 0 20 20"><path d="M7.5 3.5h-4v13h4M12.5 3.5h4v13h-4" fill="none" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg></i><div><b>Constraint</b><br><span>nicht verhandelbar</span></div></div>
-        <div class="sw c-enabler"><i aria-hidden="true"><svg viewBox="0 0 20 20"><rect x="2.5" y="13" width="15" height="3.5" rx="1"/><path d="M10 3l4.5 5h-9z" stroke-width="1.4" stroke-linejoin="round"/></svg></i><div><b>Enabler</b><br><span>technische Arbeit</span></div></div>
+        <div class="sw c-constraint"><i aria-hidden="true"><svg viewBox="0 0 20 20"><path d="M7.5 3.5h-4v13h4M12.5 3.5h4v13h-4" fill="none" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg></i><div><b>Constraint</b><br><span>not negotiable</span></div></div>
+        <div class="sw c-enabler"><i aria-hidden="true"><svg viewBox="0 0 20 20"><rect x="2.5" y="13" width="15" height="3.5" rx="1"/><path d="M10 3l4.5 5h-9z" stroke-width="1.4" stroke-linejoin="round"/></svg></i><div><b>Enabler</b><br><span>technical work</span></div></div>
       </div>
       <p style="margin:16px 0 0;font-size:13.5px;color:var(--ink-2);max-width:none">
-        Das Badge <span class="we"></span> markiert alles, was weder in SAFe noch in ISO 29148
-        steht, sondern unser Vorschlag ist.
+        The badge <span class="we"></span> marks everything that is in neither SAFe nor ISO 29148 but is our proposal.
       </p>
     </div>
 
 
     <div class="sheet">
       <div class="panelbar">
-        <span class="swlabel">Ansicht</span>
-        <div class="seg" role="group" aria-label="Ansicht wählen">
+        <span class="swlabel">View</span>
+        <div class="seg" role="group" aria-label="Choose a view">
           <button id="p-base" aria-pressed="true">Original</button>
-          <button id="p-prop" aria-pressed="false">mit unseren Vorschlägen</button>
+          <button id="p-prop" aria-pressed="false">with our proposals</button>
         </div>
       </div>
 
       <div class="diagram panel" id="modelpanel" data-view="base">
-        <svg viewBox="0 0 1220 545" role="img" aria-label="SAFe und ISO 29148 als getrennte Felder nebeneinander, umschaltbar zwischen dem Original und unseren Vorschlägen">
+        <svg viewBox="0 0 1220 545" role="img" aria-label="SAFe and ISO 29148 as two separate fields side by side, switchable between the original and our proposals">
           <defs>
             <marker id="mp-ar" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
               <path d="M0 0 L10 5 L0 10 z" fill="currentColor"/>
@@ -773,7 +740,7 @@
 
             <rect class="bx bx-quality" x="164" y="266" width="190" height="46"/>
             <text class="d-s" x="259" y="286" text-anchor="middle" fill="var(--t-quality)">QUALITY SCENARIO</text>
-            <text class="d-s" x="259" y="300" text-anchor="middle">6-teilige Vorlage</text>
+            <text class="d-s" x="259" y="300" text-anchor="middle">6-part template</text>
             <g class="we-svg"><rect x="330" y="258" width="26" height="14" rx="2"/><text x="343" y="268" text-anchor="middle">WE</text></g>
 
             <path class="d-e" d="M259 234 L259 262" marker-end="url(#mp-ar)" color="var(--t-quality)" stroke="var(--t-quality)"/>
@@ -781,34 +748,34 @@
 
             <path class="d-e-ref" d="M384 269 L358 285" marker-end="url(#mp-ar)" color="var(--t-quality)"/>
             <path class="d-e-ref" d="M384 407 C 372 396, 364 336, 358 303" marker-end="url(#mp-ar)" color="var(--t-quality)"/>
-            <text class="d-el" x="164" y="330" fill="var(--t-quality)">n : 1 · mehrere Features teilen sie</text>
+            <text class="d-el" x="164" y="330" fill="var(--t-quality)">n : 1 · several features share it</text>
           </g>
 
           <!-- ============ SAFe · Kette ============ -->
           <rect class="bx bx-stakeholder" x="376" y="94" width="230" height="58"/>
           <text class="d-t" x="491" y="114" text-anchor="middle" fill="var(--t-stakeholder)">EPIC</text>
           <text class="d-s only-prop" x="491" y="129" text-anchor="middle">USER STORY FORMAT</text>
-          <text class="d-s only-prop" x="491" y="142" text-anchor="middle">oder REQUIREMENTS SENTENCE</text>
+          <text class="d-s only-prop" x="491" y="142" text-anchor="middle">or REQUIREMENTS SENTENCE</text>
 
           <rect class="bx bx-system" x="376" y="182" width="230" height="110"/>
           <text class="d-t" x="491" y="202" text-anchor="middle" fill="var(--t-system)">FEATURE</text>
           <text class="d-s only-prop" x="491" y="216" text-anchor="middle">USER STORY FORMAT</text>
           <rect class="bx bx-ac" x="388" y="224" width="206" height="26"/>
-          <text class="d-s only-base" x="491" y="241" text-anchor="middle">ACCEPTANCE CRITERIA · funktional</text>
+          <text class="d-s only-base" x="491" y="241" text-anchor="middle">ACCEPTANCE CRITERIA · functional</text>
           <text class="d-s only-prop" x="491" y="241" text-anchor="middle">ACCEPTANCE CRITERIA · <tspan class="fmt">USE CASE</tspan></text>
           <rect class="bx bx-ac-opt" x="388" y="256" width="206" height="26"/>
           <text class="d-s only-base" x="491" y="273" text-anchor="middle" fill="var(--t-quality)">NFR · optional</text>
-          <text class="d-s only-prop" x="491" y="273" text-anchor="middle" fill="var(--t-quality)">QUALITY SCENARIO bei 1:1 · optional</text>
+          <text class="d-s only-prop" x="491" y="273" text-anchor="middle" fill="var(--t-quality)">QUALITY SCENARIO if 1:1 · optional</text>
 
           <rect class="bx bx-story" x="376" y="320" width="230" height="110"/>
           <text class="d-t" x="491" y="340" text-anchor="middle" fill="var(--t-story)">USER STORY</text>
           <text class="d-s only-prop" x="491" y="354" text-anchor="middle">USER STORY FORMAT</text>
           <rect class="bx bx-ac" x="388" y="362" width="206" height="26"/>
-          <text class="d-s only-base" x="491" y="379" text-anchor="middle">ACCEPTANCE CRITERIA · funktional</text>
+          <text class="d-s only-base" x="491" y="379" text-anchor="middle">ACCEPTANCE CRITERIA · functional</text>
           <text class="d-s only-prop" x="491" y="379" text-anchor="middle">ACCEPTANCE CRITERIA · <tspan class="fmt">1..n GWT</tspan></text>
           <rect class="bx bx-ac-opt" x="388" y="394" width="206" height="26"/>
           <text class="d-s only-base" x="491" y="411" text-anchor="middle" fill="var(--t-quality)">NFR · optional</text>
-          <text class="d-s only-prop" x="491" y="411" text-anchor="middle" fill="var(--t-quality)">QUALITY SCENARIO bei 1:1 · optional</text>
+          <text class="d-s only-prop" x="491" y="411" text-anchor="middle" fill="var(--t-quality)">QUALITY SCENARIO if 1:1 · optional</text>
 
           <rect class="bx bx-task" x="376" y="458" width="230" height="44"/>
           <text class="d-s" x="491" y="484" text-anchor="middle" fill="var(--t-task)">IMPLEMENTATION TASK</text>
@@ -831,7 +798,7 @@
             <rect class="bx bx-stakeholder" x="686" y="94" width="230" height="58"/>
             <text class="d-s" x="801" y="114" text-anchor="middle" fill="var(--t-stakeholder)">STAKEHOLDER REQ · FUNCTIONAL</text>
             <text class="d-s" x="801" y="129" text-anchor="middle">USER STORY FORMAT</text>
-            <text class="d-s" x="801" y="142" text-anchor="middle">(AUSNAHME: REQUIREMENTS SENTENCE)</text>
+            <text class="d-s" x="801" y="142" text-anchor="middle">(EXCEPTION: REQUIREMENTS SENTENCE)</text>
 
             <rect class="bx bx-quality" x="924" y="94" width="130" height="58"/>
             <text class="d-s" x="989" y="114" text-anchor="middle" fill="var(--t-quality)">STAKEHOLDER REQ</text>
@@ -841,7 +808,7 @@
             <rect class="bx bx-constraint" x="1062" y="94" width="130" height="58"/>
             <text class="d-s" x="1127" y="116" text-anchor="middle" fill="var(--t-constraint)">CONSTRAINT</text>
             <text class="d-s" x="1127" y="132" text-anchor="middle">REQUIREMENTS SENTENCE</text>
-            <text class="d-s" x="1127" y="144" text-anchor="middle">„WILL“</text>
+            <text class="d-s" x="1127" y="144" text-anchor="middle">“WILL”</text>
 
             <g class="we-svg"><rect x="1166" y="86" width="26" height="14" rx="2"/><text x="1179" y="96" text-anchor="middle">WE</text></g>
           </g>
@@ -852,7 +819,7 @@
           <rect class="bx bx-ac only-prop" x="698" y="224" width="206" height="26"/>
           <text class="d-s only-prop" x="801" y="241" text-anchor="middle">ACCEPTANCE CRITERIA · <tspan class="fmt">USE CASE</tspan></text>
           <rect class="bx bx-ac-opt only-prop" x="698" y="256" width="206" height="26"/>
-          <text class="d-s only-prop" x="801" y="273" text-anchor="middle" fill="var(--t-quality)">QUALITY SCENARIO bei 1:1 · optional</text>
+          <text class="d-s only-prop" x="801" y="273" text-anchor="middle" fill="var(--t-quality)">QUALITY SCENARIO if 1:1 · optional</text>
 
           <rect class="bx bx-quality" x="924" y="182" width="130" height="110"/>
           <text class="d-s" x="989" y="206" text-anchor="middle" fill="var(--t-quality)">SYSTEM REQ</text>
@@ -864,12 +831,12 @@
           <text class="d-s only-base" x="1127" y="240" text-anchor="middle" fill="var(--t-constraint)">CONSTRAINT</text>
           <text class="d-s only-prop" x="1127" y="222" text-anchor="middle" fill="var(--t-constraint)">CONSTRAINT</text>
           <text class="d-s only-prop" x="1127" y="240" text-anchor="middle">REQUIREMENTS SENTENCE</text>
-          <text class="d-s only-prop" x="1127" y="252" text-anchor="middle">„WILL“</text>
+          <text class="d-s only-prop" x="1127" y="252" text-anchor="middle">“WILL”</text>
 
           <g class="only-prop">
             <rect class="bx bx-quality" x="924" y="320" width="130" height="46"/>
             <text class="d-s" x="989" y="340" text-anchor="middle" fill="var(--t-quality)">QUALITY SCENARIO</text>
-            <text class="d-s" x="989" y="354" text-anchor="middle">6-teilige Vorlage</text>
+            <text class="d-s" x="989" y="354" text-anchor="middle">6-part template</text>
             <g class="we-svg"><rect x="1030" y="312" width="26" height="14" rx="2"/><text x="1043" y="322" text-anchor="middle">WE</text></g>
             <path class="d-e" d="M989 292 L989 316" marker-end="url(#mp-ar)" color="var(--t-quality)" stroke="var(--t-quality)"/>
             <text class="d-el" x="997" y="310" fill="var(--t-quality)">1..n</text>
@@ -885,7 +852,7 @@
           <text class="d-s" x="889" y="477" text-anchor="middle" fill="var(--t-task)">SUB-SYSTEM</text>
           <text class="d-s" x="889" y="490" text-anchor="middle" fill="var(--t-task)">REQ</text>
 
-          <text class="d-s" x="824" y="518">Sub-System Req ist proprietär, weiter zerlegbar</text>
+          <text class="d-s" x="824" y="518">Sub-System Req is proprietary, decomposed further</text>
 
           <g color="var(--ink-3)">
             <path class="d-e" d="M801 152 L801 178" marker-end="url(#mp-ar)"/>
@@ -913,7 +880,7 @@
 
   <!-- ================= 2. ARTEFAKTE ================= -->
   <section id="artefakte">
-    <div class="sec-head"><span class="sec-num">02</span><h2>Die Artefakte und ihre Attribute</h2></div>
+    <div class="sec-head"><span class="sec-num">02</span><h2>The artifacts and their attributes</h2></div>
 
     <div class="cards">
 
@@ -923,24 +890,24 @@
           <span class="card-name">Stakeholder Requirement</span>
           <span class="tag problem">Epic</span>
         </div>
-        <p class="card-def">Das Bedürfnis eines Nutzers oder Stakeholders — grob, gebündelt, wertorientiert.</p>
+        <p class="card-def">What a user or stakeholder needs — coarse, bundled, value-oriented.</p>
         <div class="attrs">
-          <h5>Attribute</h5>
+          <h5>Attributes</h5>
           <dl class="attr-list">
-            <dt>Title</dt><dd>Kurzname</dd>
-            <dt>Owner</dt><dd>verantwortet die Realisierung</dd>
-            <dt>Source</dt><dd>hat die Anforderung eingebracht; mit ihr wird geklärt</dd>
-            <dt>Description</dt><dd>siehe Format unten</dd>
-            <dt>Estimate</dt><dd>T-Shirt: S = 1 PI · M = 1–2 PI · L &gt; 2 PI</dd>
-            <dt>Business&nbsp;Outcome</dt><dd>Bezug zum <b>Business Goal</b>, falls es Business Goals gibt</dd>
-            <dt>Leading&nbsp;Indicators</dt><dd>Bezug zu den <b>Business Objectives</b> des referenzierten Business Goal, falls es welche gibt</dd>
-            <dt>… ohne&nbsp;Goals</dt><dd>Gibt es weder Business Goals noch Objectives, gehören Outcome und Leading Indicators trotzdem beschrieben — sonst fehlt die Begründung, warum die Anforderung überhaupt gebaut wird</dd>
+            <dt>Title</dt><dd>short name</dd>
+            <dt>Owner</dt><dd>owns delivery</dd>
+            <dt>Source</dt><dd>brought the requirement in; open questions are settled with them</dd>
+            <dt>Description</dt><dd>see format below</dd>
+            <dt>Estimate</dt><dd>T-shirt: S = 1 PI · M = 1–2 PI · L &gt; 2 PI</dd>
+            <dt>Business&nbsp;Outcome</dt><dd>reference to the <b>Business Goal</b>, if there are Business Goals</dd>
+            <dt>Leading&nbsp;Indicators</dt><dd>reference to the <b>Business Objectives</b> of the referenced Business Goal, if there are any</dd>
+            <dt>… without&nbsp;goals</dt><dd>If there are neither Business Goals nor Objectives, outcome and leading indicators still belong in writing — otherwise the reason the requirement is being built at all is missing</dd>
           </dl>
         </div>
         <dl class="kv">
-          <dt>Format</dt><dd>funktional → <b>User-Story-Format</b><br>Quality → <b>Requirements-Sentence-Format</b><br><span style="color:var(--ink-2)">in Ausnahmen auch funktional als Requirements Sentence</span></dd>
-          <dt>Trace</dt><dd>auf ein <b>Business Objective</b></dd>
-          <dt>Elaboration</dt><dd>funktional → <b>ein</b> grober <b>Elaboration Use Case</b><br>Quality → <b>Quality Scenarios</b>, typischerweise 6–7</dd>
+          <dt>Format</dt><dd>functional → <b>User-Story format</b><br>quality → <b>Requirements-Sentence format</b><br><span style="color:var(--ink-2)">in exceptional cases functional as a Requirements Sentence</span></dd>
+          <dt>Trace</dt><dd>to a <b>Business Objective</b></dd>
+          <dt>Elaboration</dt><dd>functional → <b>one</b> coarse <b>Elaboration Use Case</b><br>quality → <b>Quality Scenarios</b>, typically 6–7</dd>
         </dl>
       </article>
 
@@ -950,23 +917,22 @@
           <span class="card-name">System Requirement</span>
           <span class="tag solution">Feature</span>
         </div>
-        <p class="card-def">Ein abgegrenzter Systembeitrag, der in genau ein PI passt und ausgeliefert werden kann.</p>
+        <p class="card-def">A bounded contribution to the system that fits into exactly one PI and can be shipped.</p>
         <div class="attrs">
-          <h5>Attribute</h5>
+          <h5>Attributes</h5>
           <dl class="attr-list">
-            <dt>Title</dt><dd>Kurzname</dd>
-            <dt>Severity</dt><dd>must · should · nice-to-have. Wer mag, führt sie zusätzlich als <a class="jumplink" href="#kano"><b>KANO-Kategorie</b></a><span class="we"></span> — die beiden Achsen decken sich oft, aber nicht immer: eine gesetzliche Auflage ist „must“, im KANO-Sinn aber häufig indifferent.</dd>
-            <dt>Description</dt><dd>siehe Format unten</dd>
-            <dt>Problem&nbsp;Statement</dt><dd>welches Problem heute besteht und hier gelöst wird</dd>
-            <dt>Benefit/Value</dt><dd>wer bekommt welchen Nutzen</dd>
-            <dt>Acceptance&nbsp;Criteria</dt><dd>der eigene Acceptance Use Case</dd>
-            <dt>… darin</dt><dd>Dependencies (setzt ein anderes Feature voraus oder ersetzt es) und
-              die zugehörigen Operational Qualities gehören in den Description-Block</dd>
+            <dt>Title</dt><dd>short name</dd>
+            <dt>Severity</dt><dd>must · should · nice-to-have. If you like, track it additionally as a <a class="jumplink" href="#kano"><b>KANO category</b></a><span class="we"></span> — the two axes often coincide, but not always: a legal obligation is a “must”, yet in KANO terms often indifferent.</dd>
+            <dt>Description</dt><dd>see format below</dd>
+            <dt>Problem&nbsp;Statement</dt><dd>which problem exists today and is solved here</dd>
+            <dt>Benefit/Value</dt><dd>who gets which benefit</dd>
+            <dt>Acceptance&nbsp;Criteria</dt><dd>its own Acceptance Use Case</dd>
+            <dt>… within&nbsp;it</dt><dd>Dependencies (requires another feature, or replaces it) and the associated Operational Qualities belong in the description block</dd>
           </dl>
         </div>
         <dl class="kv">
-          <dt>Format</dt><dd><b>User-Story-Format</b></dd>
-          <dt>Entsteht aus</dt><dd>Success Scenario, Alternative Flow oder Variation des Elaboration Use Case</dd>
+          <dt>Format</dt><dd><b>User-Story format</b></dd>
+          <dt>Comes from</dt><dd>success scenario, alternative flow or variation of the Elaboration Use Case</dd>
         </dl>
       </article>
 
@@ -974,23 +940,21 @@
         <div class="card-top">
           <span class="card-icon c-story" aria-hidden="true"><svg viewBox="0 0 20 20"><circle cx="10" cy="5.5" r="2.6" fill="none" stroke-width="1.6"/><path d="M4.5 16.5c0-3 2.5-5 5.5-5s5.5 2 5.5 5" fill="none" stroke-width="1.6" stroke-linecap="round"/></svg></span>
           <span class="card-name">User Story</span>
-          <span class="tag solution">Sprint-Item</span>
+          <span class="tag solution">sprint item</span>
         </div>
-        <p class="card-def">Eine einzelne Nutzerinteraktion aus den Acceptance Criteria des Features, in einem Sprint machbar.</p>
+        <p class="card-def">A single user interaction from the feature’s Acceptance Criteria, doable in one sprint.</p>
         <div class="attrs">
-          <h5>Attribute</h5>
+          <h5>Attributes</h5>
           <dl class="attr-list">
-            <dt>Title</dt><dd>Kurzname, optional</dd>
-            <dt>Description</dt><dd>siehe Format unten</dd>
-            <dt>Acceptance&nbsp;Criteria</dt><dd>ein oder mehrere GWT-Statements</dd>
-            <dt>Feature&nbsp;Parent</dt><dd>Link auf das Feature, aus dem sie geschnitten wurde</dd>
+            <dt>Title</dt><dd>short name, optional</dd>
+            <dt>Description</dt><dd>see format below</dd>
+            <dt>Acceptance&nbsp;Criteria</dt><dd>one or more GWT statements</dd>
+            <dt>Feature&nbsp;Parent</dt><dd>link to the feature it was sliced from</dd>
           </dl>
         </div>
         <dl class="kv">
-          <dt>Format</dt><dd><b>User-Story-Format</b></dd>
-          <dt>Merke</dt><dd>Ein Feature darf auch auf genau eine User Story abgebildet werden. Das
-            Entwicklungsteam darf auf Ausarbeitung bestehen und setzt darauf seine
-            „Definition of Ready“.</dd>
+          <dt>Format</dt><dd><b>User-Story format</b></dd>
+          <dt>Note</dt><dd>A feature may also map to exactly one User Story. The development team may insist on elaboration and builds its “Definition of Ready” on that.</dd>
         </dl>
       </article>
 
@@ -998,24 +962,24 @@
         <div class="card-top">
           <span class="card-icon plain" aria-hidden="true"><svg viewBox="0 0 20 20"><ellipse cx="10" cy="10" rx="8" ry="5.2" fill="none" stroke-width="1.6"/></svg></span>
           <span class="card-name">Use Case</span>
-          <span class="tag plain">nach Cockburn</span>
+          <span class="tag plain">after Cockburn</span>
         </div>
-        <p class="card-def">Der strukturierte Interaktionsablauf. Zwei völlig verschiedene Rollen, je nachdem wo er hängt.</p>
+        <p class="card-def">The structured interaction sequence. Two entirely different roles, depending on where it hangs.</p>
         <div class="attrs">
-          <h5>Attribute</h5>
+          <h5>Attributes</h5>
           <dl class="attr-list">
-            <dt>Name</dt><dd>Name des Use Case</dd>
-            <dt>Actors</dt><dd>beteiligte Akteure</dd>
-            <dt>Trigger</dt><dd>was den Ablauf auslöst</dd>
-            <dt>Preconditions</dt><dd>was vorher gelten muss</dd>
-            <dt>Postconditions</dt><dd>was danach gilt</dd>
-            <dt>Success&nbsp;Scenario</dt><dd>die Schritte der Interaktion</dd>
-            <dt>Alternative&nbsp;Flows</dt><dd>Abweichungen und Error Cases, nummeriert am Schritt</dd>
+            <dt>Name</dt><dd>name of the use case</dd>
+            <dt>Actors</dt><dd>actors involved</dd>
+            <dt>Trigger</dt><dd>what starts the sequence</dd>
+            <dt>Preconditions</dt><dd>what must hold beforehand</dd>
+            <dt>Postconditions</dt><dd>what holds afterwards</dd>
+            <dt>Success&nbsp;Scenario</dt><dd>the steps of the interaction</dd>
+            <dt>Alternative&nbsp;Flows</dt><dd>deviations and error cases, numbered against the step</dd>
           </dl>
         </div>
         <dl class="kv">
-          <dt>Am Stakeholder&nbsp;Req.</dt><dd><b>Elaboration Use Case</b> — genau <b>einer</b>, dafür grob: der ganze Ablauf mit Alternativen und Variationen</dd>
-          <dt>Am System&nbsp;Req.</dt><dd><b>Acceptance Use Case</b> — enger gefasst, je Feature einer. Braucht ein Feature zwei, ist es meist noch nicht bounded.</dd>
+          <dt>At the Stakeholder&nbsp;Req.</dt><dd><b>Elaboration Use Case</b> — exactly <b>one</b>, and coarse: the whole sequence with alternatives and variations</dd>
+          <dt>At the System&nbsp;Req.</dt><dd><b>Acceptance Use Case</b> — narrower, one per feature. If a feature needs two, it usually is not bounded yet.</dd>
         </dl>
       </article>
 
@@ -1025,18 +989,18 @@
           <span class="card-name">GWT-Statement</span>
           <span class="tag plain">Given-When-Then</span>
         </div>
-        <p class="card-def">Das testbare Acceptance Criterion einer User Story — Vorbedingung, Aktion, erwartete Änderung.</p>
+        <p class="card-def">The testable acceptance criterion of a User Story — precondition, action, expected change.</p>
         <div class="attrs">
-          <h5>Attribute</h5>
+          <h5>Attributes</h5>
           <dl class="attr-list">
-            <dt>Given</dt><dd>Zustand, bevor das Verhalten beginnt</dd>
-            <dt>When</dt><dd>die spezifizierte Aktion</dd>
-            <dt>Then</dt><dd>die erwartete Änderung</dd>
+            <dt>Given</dt><dd>state before the behavior starts</dd>
+            <dt>When</dt><dd>the specified action</dd>
+            <dt>Then</dt><dd>the expected change</dd>
           </dl>
         </div>
         <dl class="kv">
-          <dt>Gehört zu</dt><dd>einer <b>User Story</b>, 1..n je User Story</dd>
-          <dt>Merke</dt><dd>User Stories bekommen GWT, <b>keine Use Cases</b>. Das GWT speist direkt den Testfall.</dd>
+          <dt>Belongs to</dt><dd>one <b>User Story</b>, 1..n per User Story</dd>
+          <dt>Note</dt><dd>User Stories get GWT, <b>not Use Cases</b>. The GWT feeds the test case directly.</dd>
         </dl>
       </article>
 
@@ -1046,22 +1010,22 @@
           <span class="card-name">Quality Scenario</span>
           <span class="tag solution">Operational Quality</span>
         </div>
-        <p class="card-def">Bricht eine Operational Quality so weit herunter, dass sie messbar und damit verhandelbar wird.</p>
+        <p class="card-def">Breaks an Operational Quality down far enough to be measurable, and with that negotiable.</p>
         <div class="attrs">
-          <h5>Attribute</h5>
+          <h5>Attributes</h5>
           <dl class="attr-list">
-            <dt>Source of Stimulus</dt><dd>wer oder was löst aus</dd>
-            <dt>Stimulus</dt><dd>welches Ereignis</dd>
-            <dt>Artifact</dt><dd>welches Element ist betroffen</dd>
-            <dt>Environment</dt><dd>welcher Betriebszustand</dd>
-            <dt>Response</dt><dd>wie soll reagiert werden</dd>
-            <dt>Response&nbsp;Measure</dt><dd>wie wird die Reaktion gemessen</dd>
+            <dt>Source of Stimulus</dt><dd>who or what triggers it</dd>
+            <dt>Stimulus</dt><dd>which event</dd>
+            <dt>Artifact</dt><dd>which element is affected</dd>
+            <dt>Environment</dt><dd>which operating state</dd>
+            <dt>Response</dt><dd>how it should react</dd>
+            <dt>Response&nbsp;Measure</dt><dd>how the reaction is measured</dd>
           </dl>
         </div>
         <dl class="kv">
-          <dt>Stimulus</dt><dd>ein einzelnes Feature bzw. eine User Story, eine ganze Feature-Menge, oder deren Error Cases</dd>
-          <dt>Faustregel</dt><dd>6–7 Szenarien, um eine Quality wirklich zu verstehen</dd>
-          <dt>Merke</dt><dd>Bei metrischen Werten ein <b>Wertebereich</b>, keine harte Einzelzahl.</dd>
+          <dt>Stimulus</dt><dd>a single feature or User Story, a whole set of features, or their error cases</dd>
+          <dt>Rule of thumb</dt><dd>6–7 scenarios to really understand a quality</dd>
+          <dt>Note</dt><dd>For metric values a <b>range</b>, not one hard number.</dd>
         </dl>
       </article>
 
@@ -1069,29 +1033,23 @@
         <div class="card-top">
           <span class="card-icon c-constraint" aria-hidden="true"><svg viewBox="0 0 20 20"><path d="M7.5 3.5h-4v13h4M12.5 3.5h4v13h-4" fill="none" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
           <span class="card-name">Constraint</span>
-          <span class="tag plain">schränkt den Lösungsraum ein</span>
+          <span class="tag plain">narrows the solution space</span>
         </div>
-        <p class="card-def">Eine bereits getroffene Entscheidung, die den Lösungsraum begrenzt — kein Verhalten, das das System zeigt.</p>
+        <p class="card-def">A decision already taken that bounds the solution space — not behavior the system exhibits.</p>
         <div class="attrs">
-          <h5>Arten</h5>
+          <h5>Kinds</h5>
           <dl class="attr-list">
-            <dt>Budget</dt><dd>verfügbare Mittel</dd>
-            <dt>Termin</dt><dd>fixe Zeitpunkte, Marktfenster</dd>
-            <dt>Recht</dt><dd>Gesetze, Normen, Richtlinien</dd>
-            <dt>Technologie</dt><dd>gesetzte Plattform, Sprache, Wiederverwendung</dd>
-            <dt>Design</dt><dd>physische und gestalterische Vorgaben</dd>
-            <dt>Organisation</dt><dd>Standorte, Lieferanten, Prozesse</dd>
+            <dt>Budget</dt><dd>available funds</dd>
+            <dt>Schedule</dt><dd>fixed dates, market windows</dd>
+            <dt>Law</dt><dd>statutes, standards, guidelines</dd>
+            <dt>Technology</dt><dd>mandated platform, language, reuse</dd>
+            <dt>Design</dt><dd>physical and styling requirements</dd>
+            <dt>Organization</dt><dd>sites, suppliers, processes</dd>
           </dl>
         </div>
         <dl class="kv">
-          <dt>Format</dt><dd><b>Requirements-Sentence-Format</b> mit <b>„will“</b> — der Constraint
-            stellt eine Tatsache oder gesetzte Absicht fest und fordert kein Systemverhalten
-            („shall“ / „should“) ein.</dd>
-          <dt>Einordnung</dt><dd>Nach ISO 29148 und IREB ist der Constraint eine der drei
-            Requirement-Klassen — das verschweigen wir nicht. Wir behandeln ihn trotzdem gesondert:
-            er ist <b>nicht verhandelbar</b>, wird nicht dekomponiert und bekommt keine Acceptance
-            Criteria. Damit fehlt ihm das, was eine Anforderung ausmacht — er ist eine gesetzte
-            Entscheidung, kein ausgehandelter Bedarf.</dd>
+          <dt>Format</dt><dd><b>Requirements-Sentence format</b> with <b>“will”</b> — the constraint states a fact or a settled intention; it does not demand system behavior (“shall” / “should”).</dd>
+          <dt>Where it fits</dt><dd>Under ISO 29148 and IREB the constraint is one of the three requirement classes — we do not hide that. We still treat it separately: it is <b>not negotiable</b>, is not decomposed and gets no Acceptance Criteria. That leaves it without what makes a requirement — it is a settled decision, not a negotiated need.</dd>
         </dl>
       </article>
 
@@ -1099,68 +1057,56 @@
         <div class="card-top">
           <span class="card-icon c-enabler" aria-hidden="true"><svg viewBox="0 0 20 20"><rect x="2.5" y="13" width="15" height="3.5" rx="1"/><path d="M10 3l4.5 5h-9z" stroke-width="1.4" stroke-linejoin="round"/></svg></span>
           <span class="card-name">Enabler</span>
-          <span class="tag plain">nicht nutzersichtbar</span>
+          <span class="tag plain">not user-visible</span>
         </div>
-        <p class="card-def">Technische Arbeit ohne unmittelbaren Nutzerwert — Vorarbeit, die Features
-          erst möglich macht, und gezielte technische Verbesserung des Bestehenden.</p>
+        <p class="card-def">Technical work without immediate user value — groundwork that makes features possible in the first place, and deliberate technical improvement of what already exists.</p>
         <div class="attrs">
-          <h5>Wofür</h5>
+          <h5>What for</h5>
           <dl class="attr-list">
-            <dt>Vorarbeit</dt><dd>schafft die Voraussetzung für kommende Features</dd>
-            <dt>Verbesserung</dt><dd>hebt eine <b>Developmental Quality</b> — Modularität, Testbarkeit,
-              Wartbarkeit, Wiederverwendbarkeit — ohne dass sich nach außen etwas ändert</dd>
-            <dt>Architecture Enabler</dt><dd>der Enabler auf System-Requirement-Ebene: Sein Ergebnis ist
-              eine Architekturentscheidung — er verändert die Sys-, SW- oder HW-Architektur, nicht das
-              Verhalten nach außen</dd>
-            <dt>Enabler Story</dt><dd>auch <em>Enabler Task</em> — auf Sprint-Ebene, neben den User Stories unter einem Feature</dd>
+            <dt>Groundwork</dt><dd>creates the precondition for coming features</dd>
+            <dt>Improvement</dt><dd>raises a <b>Developmental Quality</b> — modularity, testability, maintainability, reusability — without anything changing on the outside</dd>
+            <dt>Architecture Enabler</dt><dd>the enabler at System Requirement level: its result is an architecture decision — it changes the system, software or hardware architecture, not the outward behavior</dd>
+            <dt>Enabler Story</dt><dd>also <em>Enabler Task</em> — at sprint level, alongside the User Stories under a feature</dd>
           </dl>
         </div>
         <dl class="kv">
-          <dt>Verantwortung</dt><dd>System-/Software-Architekt und Entwicklungsteam</dd>
+          <dt>Responsibility</dt><dd>system/software architect and development team</dd>
         </dl>
       </article>
 
     </div>
 
-    <h3>Die sechs Arten von Benefit/Value</h3>
+    <h3>The six kinds of benefit/value</h3>
     <p>
-      Das Feld <b>Benefit/Value</b> am System Requirement ist die Stelle, an der über Umsetzung,
-      Priorisierung und Release-Zuordnung entschieden wird. Es gibt sechs wiederkehrende Muster —
-      zwei davon sind direkt <a class="jumplink" href="#kano">KANO-Kategorien</a>.
+      The field <b>Benefit/Value</b> on the System Requirement is where delivery, prioritization and release assignment are decided. There are six recurring patterns — two of them are <a class="jumplink" href="#kano">KANO categories</a>.
     </p>
     <div class="sheet scroller">
       <table>
-        <thead><tr><th>Art</th><th>Worin der Wert liegt</th></tr></thead>
+        <thead><tr><th>Kind</th><th>Where the value lies</th></tr></thead>
         <tbody>
           <tr>
             <td><b>Increase revenue</b></td>
-            <td>Neue oder erweiterte Features, für die Kunden nachweislich zu zahlen bereit sind — auf
-              Anfrage mehrerer Kunden oder eines großen Kunden.</td>
+            <td>New or extended features customers demonstrably will pay for — at the request of several customers, or of one large one.</td>
           </tr>
           <tr>
             <td><b>Save time / avoid costs</b></td>
-            <td>Jede Sekunde, die eine typische Transaktion kürzer wird, spart im Call-Center Agenten
-              und damit Geld.</td>
+            <td>Every second a typical transaction gets shorter saves agents in the call center, and with them money.</td>
           </tr>
           <tr>
             <td><b>Improve service quality</b> <span class="tag ok">KANO Performance</span></td>
-            <td>Bestehende Fähigkeiten verbessern. Bessere Videoqualität ist kein neues Feature, hat
-              aber Wert: mehr Kunden bleiben, wenn die Gesprächsqualität steigt.</td>
+            <td>Improving existing capabilities. Better video quality is not a new feature, but it has value: more customers stay when call quality goes up.</td>
           </tr>
           <tr>
             <td><b>Meet regulations</b></td>
-            <td>Vorgeschriebenes, etwa eine „Do Not Call“-Liste. Nicht verhandelbar, unabhängig vom
-              Zufriedenheitsgewinn.</td>
+            <td>What is prescribed, such as a “do not call” list. Not negotiable, regardless of the satisfaction it buys.</td>
           </tr>
           <tr>
             <td><b>Build reputation</b> <span class="tag ok">KANO Delighter</span></td>
-            <td>Sichtbarkeit im Markt und Markenbildung, etwa eine kostenlose Demo-Version — indirekt
-              ebenfalls Umsatz.</td>
+            <td>Visibility in the market and brand building, such as a free demo version — indirectly revenue as well.</td>
           </tr>
           <tr>
             <td><b>Generate information</b></td>
-            <td>Wir als Anbieter oder der Nutzer selbst braucht bessere Information für eine
-              Entscheidung — etwa ein A/B-Test.</td>
+            <td>We as the vendor, or the user, need better information for a decision — an A/B test, for instance.</td>
           </tr>
         </tbody>
       </table>
@@ -1169,111 +1115,105 @@
 
   <!-- ================= 3. FORMATE ================= -->
   <section id="formate">
-    <div class="sec-head"><span class="sec-num">03</span><h2>Die Formate — welches wofür<span class="we"></span></h2></div>
+    <div class="sec-head"><span class="sec-num">03</span><h2>The formats — which one for what<span class="we"></span></h2></div>
     <p class="sec-lede">
-      Welches Format auf welcher Ebene gilt, sagt weder SAFe noch ISO 29148 — die Zuordnung unten
-      ist unser Vorschlag. Sie ist keine Geschmacksfrage: sie folgt daraus, ob hinter der Anforderung ein
-      <em>Nutzer mit einem Wert</em> steht (User-Story-Format) oder eine <em>Systemeigenschaft</em>
-      (Requirements-Sentence-Format) — und auf welcher Ebene sie steht.
+      Neither SAFe nor ISO 29148 says which format applies at which level — the mapping below is our proposal. It is not a matter of taste: it follows from whether there is a
+      <em>user with a value</em> behind the requirement (User-Story format) or a <em>system property</em>
+      (Requirements-Sentence format) — and which level it sits on.
     </p>
 
     <div class="sheet scroller" style="margin-bottom: 24px;">
       <table>
         <thead>
-          <tr><th>Format der Description</th><th>Wird verwendet für</th><th>Beantwortet</th><th>Prüffrage</th></tr>
+          <tr><th>Format of the description</th><th>Used for</th><th>Answers</th><th>Check</th></tr>
         </thead>
         <tbody>
           <tr>
-            <td><span class="ic c-story" aria-hidden="true"><svg viewBox="0 0 20 20"><circle cx="10" cy="5.5" r="2.6" fill="none" stroke-width="1.6"/><path d="M4.5 16.5c0-3 2.5-5 5.5-5s5.5 2 5.5 5" fill="none" stroke-width="1.6" stroke-linecap="round"/></svg></span><b>User-Story-Format</b></td>
+            <td><span class="ic c-story" aria-hidden="true"><svg viewBox="0 0 20 20"><circle cx="10" cy="5.5" r="2.6" fill="none" stroke-width="1.6"/><path d="M4.5 16.5c0-3 2.5-5 5.5-5s5.5 2 5.5 5" fill="none" stroke-width="1.6" stroke-linecap="round"/></svg></span><b>User-Story format</b></td>
             <td><ul class="cell-list">
-              <li>Stakeholder Requirement <span class="tag problem">funktional</span> · SAFe: Epic</li>
-              <li>System Requirement <span class="tag problem">funktional</span> · SAFe: Feature</li>
+              <li>Stakeholder Requirement <span class="tag problem">functional</span> · SAFe: Epic</li>
+              <li>System Requirement <span class="tag problem">functional</span> · SAFe: Feature</li>
               <li>User Story</li>
             </ul></td>
-            <td>Wer? Was? Warum?</td>
-            <td>Gibt es einen benennbaren Nutzer <em>und</em> einen Wert für ihn?</td>
+            <td>Who? What? Why?</td>
+            <td>Is there a nameable user <em>and</em> a value for them?</td>
           </tr>
           <tr>
-            <td><span class="ic c-system" aria-hidden="true"><svg viewBox="0 0 20 20"><path d="M2.5 6h9M2.5 14h9" fill="none" stroke-width="1.8" stroke-linecap="round"/><path d="M13.5 5.5l4 4.5-4 4.5" fill="none" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></span><b>Requirements-Sentence-Format</b></td>
+            <td><span class="ic c-system" aria-hidden="true"><svg viewBox="0 0 20 20"><path d="M2.5 6h9M2.5 14h9" fill="none" stroke-width="1.8" stroke-linecap="round"/><path d="M13.5 5.5l4 4.5-4 4.5" fill="none" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></span><b>Requirements-Sentence format</b></td>
             <td><ul class="cell-list">
               <li>Stakeholder Requirement <span class="tag problem">Operational Quality</span></li>
               <li>Constraint</li>
             </ul></td>
-            <td>Was muss das System unter welcher Bedingung tun?</td>
-            <td>Ist die Verbindlichkeit explizit — shall, should oder will?</td>
+            <td>What must the system do under which condition?</td>
+            <td>Is the obligation explicit — shall, should or will?</td>
           </tr>
           <tr>
-            <td><span class="ic c-plain" aria-hidden="true"><svg viewBox="0 0 20 20"><ellipse cx="10" cy="10" rx="8" ry="5.2" fill="none" stroke-width="1.6"/></svg></span><b>Use-Case-Format</b></td>
+            <td><span class="ic c-plain" aria-hidden="true"><svg viewBox="0 0 20 20"><ellipse cx="10" cy="10" rx="8" ry="5.2" fill="none" stroke-width="1.6"/></svg></span><b>Use-Case format</b></td>
             <td><ul class="cell-list">
-              <li><b>Elaboration Use Case</b> am Stakeholder Requirement · SAFe: Epic</li>
-              <li><b>Acceptance Use Case</b> am System Requirement · SAFe: Feature</li>
+              <li><b>Elaboration Use Case</b> on the Stakeholder Requirement · SAFe: Epic</li>
+              <li><b>Acceptance Use Case</b> on the System Requirement · SAFe: Feature</li>
             </ul></td>
-            <td>Wie interagieren Nutzer und System Schritt für Schritt?</td>
-            <td>Erklärt das Success Scenario einem neuen Nutzer die Anforderung?</td>
+            <td>How do user and system interact, step by step?</td>
+            <td>Does the success scenario explain the requirement to a new user?</td>
           </tr>
           <tr>
-            <td><span class="ic c-plain" aria-hidden="true"><svg viewBox="0 0 20 20"><path d="M3 5.5h14M3 10h10M3 14.5h6" fill="none" stroke-width="1.8" stroke-linecap="round"/></svg></span><b>GWT-Format</b></td>
+            <td><span class="ic c-plain" aria-hidden="true"><svg viewBox="0 0 20 20"><path d="M3 5.5h14M3 10h10M3 14.5h6" fill="none" stroke-width="1.8" stroke-linecap="round"/></svg></span><b>GWT format</b></td>
             <td><ul class="cell-list">
-              <li>Acceptance Criteria der User Story</li>
+              <li>Acceptance Criteria of the User Story</li>
             </ul></td>
-            <td>Ausgangszustand, Aktion, erwartete Änderung</td>
-            <td>Ist daraus direkt ein Testfall ableitbar?</td>
+            <td>Initial state, action, expected change</td>
+            <td>Can a test case be derived from it directly?</td>
           </tr>
           <tr>
-            <td><span class="ic c-quality" aria-hidden="true"><svg viewBox="0 0 20 20"><path d="M2 14.5h4l2.5-9 3 12 2.5-7h4" fill="none" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg></span><b>Quality-Scenario-Format</b></td>
+            <td><span class="ic c-quality" aria-hidden="true"><svg viewBox="0 0 20 20"><path d="M2 14.5h4l2.5-9 3 12 2.5-7h4" fill="none" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg></span><b>Quality-Scenario format</b></td>
             <td><ul class="cell-list">
-              <li>Ausformulierung einer Operational Quality</li>
+              <li>Spelling out an Operational Quality</li>
             </ul></td>
-            <td>Wer löst was aus, an welchem Artefakt, in welchem Zustand — und was ist die messbare Reaktion?</td>
-            <td>Ist das Response Measure wirklich messbar, und als Bereich formuliert?</td>
+            <td>Who triggers what, on which artifact, in which state — and what is the measurable reaction?</td>
+            <td>Is the response measure really measurable, and stated as a range?</td>
           </tr>
         </tbody>
       </table>
     </div>
 
-    <h3>User-Story-Format — Value Focus</h3>
+    <h3>User-Story format — value focus</h3>
     <div class="sheet">
-      <div class="tpl problem">Als ein &lt;Rolle / Typ von Nutzer&gt;
-möchte ich &lt;dies tun&gt;,
-so dass &lt;ich dieses Ziel erreiche&gt;.</div>
-      <p class="ex"><b>Beispiel:</b> Als <b>Fahrer</b> möchte ich Anrufe über das Infotainment-System
-        einleiten, <b>so dass</b> ich die Hände am Lenkrad behalten kann.</p>
-      <p class="ex" style="border-left-color: var(--warn)"><b>Zu grob — das ist ein Epic, kein Feature:</b>
-        Als Fahrer möchte ich unterwegs telefonieren, so dass ich weiterfahren kann. Ein Bündel von
-        Funktionalität, das erst über den Use Case in abgegrenzte Features zerfällt.</p>
+      <div class="tpl problem">As a &lt;role / type of user&gt;
+I want &lt;to do this&gt;,
+so that &lt;I achieve this goal&gt;.</div>
+      <p class="ex"><b>Example:</b> As a <b>driver</b> I want to place calls through the infotainment system, <b>so that</b> I can keep my hands on the wheel.</p>
+      <p class="ex" style="border-left-color: var(--warn)"><b>Too coarse — this is an epic, not a feature:</b>
+        As a driver I want to make phone calls on the road so that I can go on driving. A bundle of functionality that only falls apart into bounded features by way of the use case.</p>
     </div>
 
-    <h3>Requirements-Sentence-Format — System Focus</h3>
+    <h3>Requirements-Sentence format — system focus</h3>
     <div class="sheet">
       <div class="tpl">[Condition]  ·  Subject  ·  Imperative  ·  Action  ·  Object  ·  [Constraint]
 
-Condition   optional — Trigger oder Kontext ("when", "while", "within")
-Subject     das konkrete System oder der Akteur
-Imperative  shall  = verbindliche Anforderung
-            should = Ziel oder Empfehlung, nicht bindend
-            will   = Tatsachenfeststellung oder gesetzte Absicht  → Constraints
-Action      das beobachtbare Verhalten
-Object      das Objekt der Handlung
-Constraint  optional — Performance- oder Qualitätskriterium</div>
-      <p class="ex"><b>Operational Quality:</b> Das Infotainment-System <b>shall</b> weniger als 5 W
-        Leistung aufnehmen, <b>when</b> die Zündung ausgeschaltet ist.</p>
-      <p class="ex"><b>Constraint mit „will“:</b> Das Infotainment-System <b>will</b> die im Fahrzeug
-        vorhandene CAN-Bus-Schnittstelle nutzen. — Eine gesetzte Technologieentscheidung, kein
-        gefordertes Verhalten.</p>
+Condition   optional — trigger or context ("when", "while", "within")
+Subject     the concrete system or actor
+Imperative  shall  = binding requirement
+            should = goal or recommendation, not binding
+            will   = statement of fact or settled intention  → Constraints
+Action      the observable behavior
+Object      the object of the action
+Constraint  optional — performance or quality criterion</div>
+      <p class="ex"><b>Operational Quality:</b> The infotainment system <b>shall</b> draw less than 5 W, <b>when</b> the ignition is switched off.</p>
+      <p class="ex"><b>Constraint with “will”:</b> The infotainment system <b>will</b> use the CAN bus interface present in the vehicle. — A settled technology decision, not required behavior.</p>
     </div>
 
-    <h3>Use-Case-Format (nach Cockburn)</h3>
+    <h3>Use-Case format (after Cockburn)</h3>
     <div class="sheet">
-      <p class="tpl-label">Vorlage</p>
-      <div class="tpl">Name                    &lt;Name des Use Case&gt;
-Actors                  &lt;beteiligte Akteure&gt;
-Trigger                 &lt;was den Ablauf auslöst&gt;
-Preconditions           &lt;was vorher gelten muss&gt;
-Postconditions          &lt;was danach gilt&gt;
-Success Scenario        &lt;1..n Schritte der Interaktion&gt;
-Alternative Flows       &lt;Abweichungen und Error Cases, nummeriert am Schritt&gt;</div>
+      <p class="tpl-label">Template</p>
+      <div class="tpl">Name                    &lt;name of the use case&gt;
+Actors                  &lt;actors involved&gt;
+Trigger                 &lt;what starts the sequence&gt;
+Preconditions           &lt;what must hold beforehand&gt;
+Postconditions          &lt;what holds afterwards&gt;
+Success Scenario        &lt;1..n steps of the interaction&gt;
+Alternative Flows       &lt;deviations and error cases, numbered against the step&gt;</div>
 
-      <p class="tpl-label">Beispiel Infotainment</p>
+      <p class="tpl-label">Infotainment example</p>
       <div class="tpl">Name                    Make a Call
 Actors                  User, Call Partner
 Trigger                 User indicates call wish
@@ -1288,62 +1228,57 @@ Alternative Flows       2a. Call cannot be established → 3a. "Network error"
                         2b. Partner's line is busy     → 3b. "busy"
                         2c. Partner rejects the call   → 3c. "rejected"</div>
       <p style="margin-top:14px; color: var(--ink-2); font-size: 14.5px;">
-        Quelle: Alistair Cockburn, <em>Writing Effective Use Cases</em>.
+        Source: Alistair Cockburn, <em>Writing Effective Use Cases</em>.
       </p>
     </div>
 
-    <h3>GWT-Format — Acceptance Criteria der User Story</h3>
+    <h3>GWT format — Acceptance Criteria of the User Story</h3>
     <div class="sheet">
-      <div class="tpl">Given  der Zustand der Welt, bevor das Verhalten beginnt (Vorbedingung)
-When   das Verhalten / die Aktion, die spezifiziert wird
-Then   die erwartete Änderung als Folge dieser Aktion</div>
-      <p class="ex"><b>Beispiel:</b> <b>Given</b> das System läuft in einer anderen Funktion als
-        Telefonie, <b>when</b> der Fahrer die Telefonoption wählt, <b>then</b> kann er unmittelbar
-        danach eine Rufnummer eintippen.</p>
+      <div class="tpl">Given  the state of the world before the behavior starts (precondition)
+When   the behavior / action being specified
+Then   the expected change that follows from that action</div>
+      <p class="ex"><b>Example:</b> <b>Given</b> the system is running a function other than telephony, <b>when</b> the driver selects the phone option, <b>then</b> they can type in a phone number immediately afterwards.</p>
     </div>
 
-    <h3>Quality-Scenario-Format — sechs Teile</h3>
+    <h3>Quality-Scenario format — six parts</h3>
     <div class="sheet">
-      <p class="tpl-label">Vorlage</p>
-      <div class="tpl">Source of Stimulus         wer oder was löst aus                (intern / extern)
-Stimulus            WHEN   welches Ereignis                     (periodisch / stochastisch / sporadisch)
-Artifact                   welches Element ist betroffen        (System, Komponente, Speicher, Kommunikation)
-Environment         GIVEN  welcher Betriebszustand              (Normal / Peak / Overload / Degraded / Wartung)
-Response            THEN   wie soll das Element reagieren
-Response Measure           wie wird die Reaktion gemessen       (Latency, Deadline, Jitter, Throughput,
-                                                                 Miss Rate, Repair Time, Verfügbarkeitsrate)</div>
+      <p class="tpl-label">Template</p>
+      <div class="tpl">Source of Stimulus         who or what triggers it              (internal / external)
+Stimulus            WHEN   which event                          (periodic / stochastic / sporadic)
+Artifact                   which element is affected            (system, component, storage, communication)
+Environment         GIVEN  which operating state                (normal / peak / overload / degraded / maintenance)
+Response            THEN   how the element should react
+Response Measure           how the reaction is measured         (latency, deadline, jitter, throughput,
+                                                                 miss rate, repair time, availability rate)</div>
 
-      <p class="tpl-label">Beispiel Telemedizin — Performance unter Normal Load</p>
-      <div class="tpl">Source of Stimulus  Intern
-Stimulus            Periodisches Ereignis: Patienten-Gesundheitsdaten alle 60 s
+      <p class="tpl-label">Telemedicine example — performance under normal load</p>
+      <div class="tpl">Source of Stimulus  Internal
+Stimulus            Periodic event: patient health data every 60 s
 Artifact            System
 Environment         Normal Load
-Response            Daten persistieren, potenziellen Notfall erkennen
-Response Measure    Persistenz: Latenz 1–10 s, Jitter &lt; 1 s · Notfallerkennung: Latenz 2–5 s</div>
+Response            Persist the data, detect a potential emergency
+Response Measure    Persistence: latency 1–10 s, jitter &lt; 1 s · Emergency detection: latency 2–5 s</div>
 
-      <p class="tpl-label">Zweites Szenario derselben Quality — Notfallmeldungen, hier unter Normal Load</p>
-      <div class="tpl">Source of Stimulus  Intern
-Stimulus            Stochastisches Ereignis: Notfall für 75.000 Geräte innerhalb 10 s
+      <p class="tpl-label">Second scenario of the same quality — emergency alerts, here under normal load</p>
+      <div class="tpl">Source of Stimulus  Internal
+Stimulus            Stochastic event: emergency for 75,000 devices within 10 s
 Artifact            System
 Environment         Normal Load
-Response            Notfall persistieren, Rettungsdienst informieren
-Response Measure    Persistenz: Latenz 1–10 s · Rettungsdienst informieren: Latenz 10–20 s</div>
+Response            Persist the emergency, alert the emergency service
+Response Measure    Persistence: latency 1–10 s · Alerting the service: latency 10–20 s</div>
 
-      <p class="tpl-label">Dasselbe Szenario unter Overload — Environment, Ereignismenge und Measure verschieben sich gemeinsam</p>
-      <div class="tpl">Stimulus            Stochastisches Ereignis: Notfall für &gt; 125.000 Geräte innerhalb 10 s
+      <p class="tpl-label">The same scenario under overload — environment, event volume and measure shift together</p>
+      <div class="tpl">Stimulus            Stochastic event: emergency for &gt; 125,000 devices within 10 s
 Environment         Overload
-Response Measure    Persistenz: Latenz 1–30 s · Rettungsdienst informieren: 60–120 s
-                    Miss Rate: darf überhaupt ein Notfall verloren gehen?</div>
+Response Measure    Persistence: latency 1–30 s · Alerting the service: 60–120 s
+                    Miss rate: may an emergency be lost at all?</div>
 
       <div class="callout">
-        <h4>Die drei Teile, auf die es ankommt</h4>
+        <h4>The three parts that matter</h4>
         <ul>
-          <li><b>Environment</b> ist der Hebel: dieselbe Quality wird unter Normal Load,
-            Peak Load und Overload unterschiedlich streng — erst dadurch wird sie verhandelbar statt utopisch.</li>
-          <li><b>Artifact</b> stellt scharf, worauf sich die Quality bezieht: das Gesamtsystem, ein
-            Prozess, der Speicher, die Kommunikationsstrecke.</li>
-          <li><b>Response Measure</b> ist die Brücke zur Testbarkeit. Ein Response ohne Measure ist
-            eine Absichtserklärung.</li>
+          <li><b>Environment</b> is the lever: the same quality is held to a different standard under normal load, peak load and overload — that is what makes it negotiable instead of utopian.</li>
+          <li><b>Artifact</b> brings into focus what the quality refers to: the whole system, a process, storage, the communication path.</li>
+          <li><b>Response Measure</b> is the bridge to testability. A response without a measure is a statement of intent.</li>
         </ul>
       </div>
     </div>
@@ -1352,16 +1287,14 @@ Response Measure    Persistenz: Latenz 1–30 s · Rettungsdienst informieren: 6
 
   <!-- ================= 4. DEKOMPOSITION ================= -->
   <section id="dekomposition">
-    <div class="sec-head"><span class="sec-num">04</span><h2>Dekomposition — wie man nach unten kommt</h2></div>
+    <div class="sec-head"><span class="sec-num">04</span><h2>Decomposition — how you get down</h2></div>
     <p class="sec-lede">
-      Der Use Case ist das Werkzeug, das aus einem groben Stakeholder Requirement mehrere
-      abgegrenzte Features macht. Nicht raten, sondern ableiten: jeder Pfad des Use Case ist ein
-      Kandidat für ein eigenes Feature.
+      The use case is the tool that turns one coarse Stakeholder Requirement into several bounded features. Do not guess, derive: every path through the use case is a candidate for a feature of its own.
     </p>
 
     <div class="sheet">
       <div class="diagram">
-        <svg viewBox="0 0 980 400" role="img" aria-label="Dekomposition vom Stakeholder Requirement über den Elaboration Use Case zu Features, User Stories und GWT-Statements">
+        <svg viewBox="0 0 980 400" role="img" aria-label="Decomposition from the Stakeholder Requirement through the Elaboration Use Case to features, User Stories and GWT statements">
           <defs>
             <marker id="dk" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
               <path d="M 0 0 L 10 5 L 0 10 z" fill="currentColor"/>
@@ -1370,38 +1303,38 @@ Response Measure    Persistenz: Latenz 1–30 s · Rettungsdienst informieren: 6
 
           <rect class="bx bx-business" x="20" y="16" width="210" height="40"/>
           <text class="d-s" x="34" y="34" fill="var(--t-business)">BUSINESS OBJECTIVE</text>
-          <text class="d-n" x="34" y="49">wird nicht zerlegt</text>
+          <text class="d-n" x="34" y="49">not decomposed</text>
 
           <rect class="bx bx-stakeholder" x="20" y="98" width="210" height="52"/>
           <text class="d-s" x="34" y="118" fill="var(--t-stakeholder)">STAKEHOLDER REQ · EPIC</text>
-          <text class="d-n" x="34" y="137">„Unterwegs telefonieren“</text>
+          <text class="d-n" x="34" y="137">“Making calls on the road”</text>
           <path class="d-e-dash" d="M 125 96 L 125 60" marker-end="url(#dk)" color="var(--ink-3)"/>
-          <text class="d-el" x="133" y="82">traced auf</text>
+          <text class="d-el" x="133" y="82">traces to</text>
 
           <rect class="bx bx-ac" x="20" y="196" width="210" height="116"/>
           <text class="d-s" x="34" y="216">ELABORATION USE CASE</text>
           <text class="d-n" x="34" y="238">Success Scenario</text>
           <text class="d-n" x="34" y="258">Alternative Flows</text>
-          <text class="d-n" x="34" y="278">Variationen</text>
-          <text class="d-s" x="34" y="298">einer je Epic — grob</text>
+          <text class="d-n" x="34" y="278">Variations</text>
+          <text class="d-s" x="34" y="298">one per epic — coarse</text>
           <path class="d-e" d="M 125 150 L 125 192" marker-end="url(#dk)" color="var(--ink-3)"/>
           <text class="d-el" x="133" y="176">elaborated by</text>
 
           <rect class="bx bx-system" x="330" y="98" width="250" height="48"/>
           <text class="d-s" x="344" y="117" fill="var(--t-system)">FEATURE ← SUCCESS SCENARIO</text>
-          <text class="d-n" x="344" y="135">„Nummer wählen“</text>
+          <text class="d-n" x="344" y="135">“Dial a number”</text>
 
           <rect class="bx bx-system" x="330" y="160" width="250" height="48"/>
           <text class="d-s" x="344" y="179" fill="var(--t-system)">FEATURE ← ALTERNATIVE FLOW</text>
-          <text class="d-n" x="344" y="197">„Letzte Nummer erneut wählen“</text>
+          <text class="d-n" x="344" y="197">“Redial the last number”</text>
 
           <rect class="bx bx-system" x="330" y="222" width="250" height="48"/>
           <text class="d-s" x="344" y="241" fill="var(--t-system)">FEATURE ← VARIATION A</text>
-          <text class="d-n" x="344" y="259">„Aus dem Telefonbuch wählen“</text>
+          <text class="d-n" x="344" y="259">“Dial from the phone book”</text>
 
           <rect class="bx bx-system" x="330" y="284" width="250" height="48"/>
           <text class="d-s" x="344" y="303" fill="var(--t-system)">FEATURE ← VARIATION B</text>
-          <text class="d-n" x="344" y="321">„Über das Lenkrad wählen“</text>
+          <text class="d-n" x="344" y="321">“Dial from the steering wheel”</text>
 
           <g color="var(--ink-3)">
             <path class="d-e" d="M 234 240 C 288 240, 288 122, 326 122" marker-end="url(#dk)"/>
@@ -1409,18 +1342,18 @@ Response Measure    Persistenz: Latenz 1–30 s · Rettungsdienst informieren: 6
             <path class="d-e" d="M 234 252 C 288 252, 288 246, 326 246" marker-end="url(#dk)"/>
             <path class="d-e" d="M 234 258 C 288 264, 288 308, 326 308" marker-end="url(#dk)"/>
           </g>
-          <text class="d-el" x="240" y="352">jeder Pfad = ein Feature-Kandidat</text>
+          <text class="d-el" x="240" y="352">every path = one feature candidate</text>
 
           <rect class="bx bx-ac" x="660" y="98" width="300" height="48"/>
-          <text class="d-s" x="674" y="117">ACCEPTANCE CRITERIA · EIGENER USE CASE</text>
-          <text class="d-n" x="674" y="135">enger gefasst, je Feature einer</text>
+          <text class="d-s" x="674" y="117">ACCEPTANCE CRITERIA · ITS OWN USE CASE</text>
+          <text class="d-n" x="674" y="135">narrower, one per feature</text>
           <path class="d-e" d="M 584 122 L 656 122" marker-end="url(#dk)" color="var(--ink-3)"/>
 
           <rect class="bx bx-story" x="660" y="176" width="300" height="42"/>
-          <text class="d-n" x="674" y="202" fill="var(--t-story)">USER STORY · „Telefonfunktion wählen“</text>
+          <text class="d-n" x="674" y="202" fill="var(--t-story)">USER STORY · “Select the phone function”</text>
 
           <rect class="bx bx-story" x="660" y="232" width="300" height="42"/>
-          <text class="d-n" x="674" y="258" fill="var(--t-story)">USER STORY · „Laufenden Anruf beenden“</text>
+          <text class="d-n" x="674" y="258" fill="var(--t-story)">USER STORY · “End a running call”</text>
 
           <g color="var(--ink-3)">
             <path class="d-e" d="M 584 134 C 620 134, 620 192, 656 192" marker-end="url(#dk)"/>
@@ -1429,31 +1362,22 @@ Response Measure    Persistenz: Latenz 1–30 s · Rettungsdienst informieren: 6
           <text class="d-el" x="592" y="170">broken into 1..n</text>
 
           <rect class="bx bx-ac" x="660" y="304" width="300" height="54"/>
-          <text class="d-s" x="674" y="323">GWT · ACCEPTANCE CRITERIA DER USER STORY</text>
+          <text class="d-s" x="674" y="323">GWT · ACCEPTANCE CRITERIA OF THE USER STORY</text>
           <text class="d-n" x="674" y="341">Given … When … Then …</text>
-          <text class="d-s" x="674" y="354">1..n je User Story · speist den Testfall</text>
+          <text class="d-s" x="674" y="354">1..n per User Story · feeds the test case</text>
           <path class="d-e" d="M 810 276 L 810 300" marker-end="url(#dk)" color="var(--ink-3)"/>
         </svg>
       </div>
     </div>
 
-    <h3>Das Vorgehen in fünf Schritten</h3>
+    <h3>The procedure in five steps</h3>
     <div class="sheet">
       <ol class="tight" style="padding-left: 22px;">
-        <li><b>Stakeholder Requirement prüfen.</b> Steht ein Nutzer mit einem Wert dahinter? Dann
-          User-Story-Format. Sonst Requirements-Sentence-Format. Und: Auf welches Business Objective
-          traced es?</li>
-        <li><b>Den groben Use Case schreiben</b> — einen je Stakeholder Requirement: komplettes
-          Success Scenario, die Alternative Flows und die Error Cases.</li>
-        <li><b>Features ableiten</b> — aus dem Success Scenario, aus jedem Alternative Flow, aus jeder
-          Variation. Jedes abgeleitete Feature muss in ein PI passen und wird auf den Schritt bzw.
-          Flow zurückgemappt, aus dem es stammt.</li>
-        <li><b>Je Feature einen eigenen, engeren Use Case</b> als Acceptance Criteria schreiben —
-          Interaktion, <b>kein UI-Design</b>. Auf bereits vorhandene Bedienelemente darf man sich
-          dabei beziehen („über die Tasten am Lenkrad“); neue zu entwerfen ist Sache der
-          Umsetzung.</li>
-        <li><b>Features in User Stories schneiden</b> — je eine oder mehrere Interaktionen aus diesen
-          Acceptance Criteria — und je User Story GWT-Statements formulieren.</li>
+        <li><b>Check the Stakeholder Requirement.</b> Is there a user with a value behind it? Then User-Story format. Otherwise Requirements-Sentence format. And: which Business Objective does it trace to?</li>
+        <li><b>Write the coarse use case</b> — one per Stakeholder Requirement: the complete success scenario, the alternative flows and the error cases.</li>
+        <li><b>Derive features</b> — from the success scenario, from every alternative flow, from every variation. Every derived feature has to fit into one PI and is mapped back to the step or flow it came from.</li>
+        <li><b>Write a narrower use case per feature</b> as its Acceptance Criteria — interaction, <b>not UI design</b>. Referring to controls that already exist is fine (“via the buttons on the steering wheel”); designing new ones is up to delivery.</li>
+        <li><b>Slice features into User Stories</b> — one or more interactions from those Acceptance Criteria each — and write GWT statements per User Story.</li>
       </ol>
     </div>
 
@@ -1463,14 +1387,12 @@ Response Measure    Persistenz: Latenz 1–30 s · Rettungsdienst informieren: 6
   <section id="grenzen">
     <div class="sec-head"><span class="sec-num">05</span><h2>System Boundaries</h2></div>
     <p class="sec-lede">
-      Spätestens bevor die ersten System Requirements geschrieben werden, muss die Grenze stehen:
-      Was gehört zum System, was ist Nachbar — und welche Schnittstellen liegen dazwischen? Ohne
-      diese Antwort schreibt man Anforderungen an etwas, dessen Umfang niemand kennt.
+      The boundary has to stand before the first System Requirements are written, at the latest: what belongs to the system, what is a neighbour — and which interfaces lie between? Without that answer you are writing requirements for something whose scope nobody knows.
     </p>
 
     <div class="sheet">
       <div class="diagram">
-        <svg viewBox="0 0 920 300" role="img" aria-label="Kontextdiagramm dieses Cheat Sheets: Leser links, ausliefernde Systeme rechts, Quellen unten, dazwischen benannte Schnittstellen">
+        <svg viewBox="0 0 920 300" role="img" aria-label="Context diagram of this cheat sheet: readers on the left, delivering systems on the right, sources below, named interfaces in between">
           <g color="var(--ink-3)">
             <path class="d-e" d="M182 80 L336 126"/>
             <path class="d-e" d="M182 216 L336 172"/>
@@ -1482,12 +1404,12 @@ Response Measure    Persistenz: Latenz 1–30 s · Rettungsdienst informieren: 6
           </g>
 
           <rect class="bx bx-blackbox" x="340" y="110" width="220" height="76"/>
-          <text class="d-t d-inv" x="450" y="142" text-anchor="middle">DIESES CHEAT SHEET</text>
-          <text class="d-n d-inv" x="450" y="162" text-anchor="middle">eine eigenständige HTML-Seite</text>
+          <text class="d-t d-inv" x="450" y="142" text-anchor="middle">THIS CHEAT SHEET</text>
+          <text class="d-n d-inv" x="450" y="162" text-anchor="middle">a self-contained HTML page</text>
 
           <rect class="bx bx-stakeholder" x="40" y="58" width="142" height="42"/>
           <g class="pers"><circle cx="62" cy="70" r="4.6"/><path d="M53 88c0-5 4-8.4 9-8.4s9 3.4 9 8.4"/></g>
-          <text class="d-s" x="126" y="84" text-anchor="middle" fill="var(--t-stakeholder)">TEILNEHMER</text>
+          <text class="d-s" x="126" y="84" text-anchor="middle" fill="var(--t-stakeholder)">PARTICIPANTS</text>
           <rect class="bx bx-stakeholder" x="40" y="196" width="142" height="42"/>
           <g class="pers"><circle cx="62" cy="208" r="4.6"/><path d="M53 226c0-5 4-8.4 9-8.4s9 3.4 9 8.4"/></g>
           <text class="d-s" x="126" y="222" text-anchor="middle" fill="var(--t-stakeholder)">TRAINER</text>
@@ -1497,34 +1419,32 @@ Response Measure    Persistenz: Latenz 1–30 s · Rettungsdienst informieren: 6
           <rect class="bx bx-ac" x="736" y="120" width="160" height="42"/>
           <text class="d-s" x="816" y="146" text-anchor="middle">GITHUB PAGES</text>
           <rect class="bx bx-ac" x="736" y="194" width="160" height="42"/>
-          <text class="d-s" x="816" y="220" text-anchor="middle">DRUCKER</text>
+          <text class="d-s" x="816" y="220" text-anchor="middle">PRINTER</text>
 
           <rect class="bx bx-ac" x="228" y="240" width="160" height="40"/>
-          <text class="d-s" x="308" y="265" text-anchor="middle">KURSUNTERLAGEN</text>
+          <text class="d-s" x="308" y="265" text-anchor="middle">COURSE MATERIAL</text>
           <rect class="bx bx-ac" x="512" y="240" width="170" height="40"/>
-          <text class="d-s" x="597" y="265" text-anchor="middle">SYSTEM-THEME</text>
+          <text class="d-s" x="597" y="265" text-anchor="middle">SYSTEM THEME</text>
 
           <rect class="ifc" x="606" y="82" width="80" height="20"/>
           <text class="d-el" x="646" y="96" text-anchor="middle">HTML / CSS</text>
           <rect class="ifc" x="624" y="133" width="58" height="20"/>
           <text class="d-el" x="653" y="147" text-anchor="middle">HTTPS</text>
           <rect class="ifc risk" x="626" y="182" width="54" height="20"/>
-          <text class="d-el" x="653" y="196" text-anchor="middle" fill="var(--warn)">DRUCK</text>
+          <text class="d-el" x="653" y="196" text-anchor="middle" fill="var(--warn)">PRINT</text>
           <rect class="ifc risk" x="308" y="200" width="72" height="20"/>
-          <text class="d-el" x="344" y="214" text-anchor="middle" fill="var(--warn)">FOLIENDECKS</text>
+          <text class="d-el" x="344" y="214" text-anchor="middle" fill="var(--warn)">SLIDE DECKS</text>
           <rect class="ifc" x="470" y="206" width="126" height="20"/>
           <text class="d-el" x="533" y="220" text-anchor="middle">prefers-color-scheme</text>
 
-          <text class="d-n" x="20" y="292" fill="var(--warn)">rot umrandet = technisches Risiko — Druckbild und fremdbestimmte Quelle</text>
+          <text class="d-n" x="20" y="292" fill="var(--warn)">red outline = technical risk — print output, and a source we do not control</text>
         </svg>
       </div>
 
       <ul class="tight" style="margin-top:16px">
-        <li><b>Was hineingehört:</b> das System als eine <b>Black Box</b>, die Akteure und die
-          Nachbarsysteme.</li>
-        <li><b>Wozu:</b> Die Black Box legt den Umfang fest — alles außerhalb ist gegeben.</li>
-        <li><b>Nebenprodukt:</b> Schnittstellen, deren Verhalten unklar oder fremdbestimmt ist, sind
-          die <b>technischen Risiken</b> — sie gehören markiert, solange der Zuschnitt noch änderbar ist.</li>
+        <li><b>What belongs in it:</b> the system as one <b>black box</b>, the actors and the neighbouring systems.</li>
+        <li><b>What for:</b> The black box fixes the scope — everything outside it is given.</li>
+        <li><b>By-product:</b> Interfaces whose behavior is unclear or outside our control are the <b>technical risks</b> — they belong marked while the cut can still be changed.</li>
       </ul>
     </div>
   </section>
@@ -1533,21 +1453,20 @@ Response Measure    Persistenz: Latenz 1–30 s · Rettungsdienst informieren: 6
   <section id="domain">
     <div class="sec-head"><span class="sec-num">06</span><h2>Domain Model</h2></div>
     <p class="sec-lede">
-      Ein Bild der Begriffe: Entitäten mit ihren Attributen und den Beziehungen dazwischen —
-      <b>ausdrücklich kein UML</b>. Es dient der gemeinsamen Sprache und deckt dabei verlässlich
-      Anforderungen auf, die im Text niemand aufgeschrieben hatte.
+      A picture of the vocabulary: entities with their attributes and the relationships between them —
+      <b>explicitly not UML</b>. It serves the shared language, and reliably uncovers requirements nobody had written down.
     </p>
 
     <div class="sheet">
       <div class="diagram">
-        <svg viewBox="0 0 900 300" role="img" aria-label="Domänenmodell dieses Cheat Sheets: Abschnitte enthalten Bausteine, die als Tabelle, Diagramm oder Karte auftreten; eine Karte beschreibt einen Requirement-Typ">
+        <svg viewBox="0 0 900 300" role="img" aria-label="Domain model of this cheat sheet: sections contain building blocks that appear as a table, a diagram or a card; a card describes a requirement type">
           <defs>
             <marker id="dm" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
               <path d="M0 0 L10 5 L0 10 z" fill="currentColor"/>
             </marker>
           </defs>
 
-          <text class="d-h" x="30" y="20">SYSTEM: DIESES CHEAT SHEET</text>
+          <text class="d-h" x="30" y="20">SYSTEM: THIS CHEAT SHEET</text>
 
           <g color="var(--ink-3)">
             <path class="d-e" d="M204 90 L366 112" marker-end="url(#dm)"/>
@@ -1557,54 +1476,54 @@ Response Measure    Persistenz: Latenz 1–30 s · Rettungsdienst informieren: 6
             <path class="d-e" d="M675 172 L675 78" marker-end="url(#dm)"/>
           </g>
           <text class="d-el" x="252" y="92">1..n</text>
-          <text class="d-el" x="683" y="134">beschreibt</text>
+          <text class="d-el" x="683" y="134">describes</text>
           <text class="d-el" x="683" y="94">1</text>
 
           <rect class="bx bx-ac" x="30" y="60" width="170" height="56"/>
-          <text class="d-s" x="115" y="82" text-anchor="middle">ABSCHNITT</text>
-          <text class="d-n" x="44" y="104">Nummer · Titel</text>
+          <text class="d-s" x="115" y="82" text-anchor="middle">SECTION</text>
+          <text class="d-n" x="44" y="104">number · title</text>
 
           <rect class="bx bx-ac" x="370" y="96" width="170" height="44"/>
-          <text class="d-s" x="455" y="124" text-anchor="middle">BAUSTEIN</text>
+          <text class="d-s" x="455" y="124" text-anchor="middle">BUILDING BLOCK</text>
 
           <rect class="bx bx-ac" x="250" y="190" width="150" height="40"/>
-          <text class="d-s" x="325" y="215" text-anchor="middle">TABELLE</text>
+          <text class="d-s" x="325" y="215" text-anchor="middle">TABLE</text>
           <rect class="bx bx-ac" x="420" y="190" width="150" height="40"/>
-          <text class="d-s" x="495" y="215" text-anchor="middle">DIAGRAMM</text>
+          <text class="d-s" x="495" y="215" text-anchor="middle">DIAGRAM</text>
 
           <rect class="bx bx-ac" x="590" y="176" width="170" height="68"/>
-          <text class="d-s" x="675" y="198" text-anchor="middle">KARTE</text>
-          <text class="d-n" x="604" y="218">Name · Icon</text>
-          <text class="d-n" x="604" y="234">Attributliste</text>
+          <text class="d-s" x="675" y="198" text-anchor="middle">CARD</text>
+          <text class="d-n" x="604" y="218">name · icon</text>
+          <text class="d-n" x="604" y="234">attribute list</text>
 
           <rect class="bx bx-ac" x="590" y="34" width="170" height="44"/>
-          <text class="d-s" x="675" y="62" text-anchor="middle">REQUIREMENT-TYP</text>
+          <text class="d-s" x="675" y="62" text-anchor="middle">REQUIREMENT TYPE</text>
 
-          <text class="d-n" x="30" y="272">Substantive aus dem Use Case sind gute Kandidaten für Entitäten,</text>
-          <text class="d-n" x="30" y="290">Verben für Beziehungen — und die dürfen selbst Attribute tragen.</text>
+          <text class="d-n" x="30" y="272">Nouns from the use case are good candidates for entities,</text>
+          <text class="d-n" x="30" y="290">verbs for relationships — and those may carry attributes themselves.</text>
         </svg>
       </div>
     </div>
 
-    <h3>Wann wir modellieren — und mit wem</h3>
+    <h3>When we model — and with whom</h3>
     <div class="sheet scroller">
       <table>
-        <thead><tr><th>Zeitpunkt</th><th>Mit wem</th><th>Wozu</th></tr></thead>
+        <thead><tr><th>When</th><th>With whom</th><th>What for</th></tr></thead>
         <tbody>
           <tr>
-            <td><b>Bei den Stakeholder Requirements</b></td>
-            <td>Kunde und Nutzer</td>
-            <td>Gemeinsame Sprache und Glossar — bevor über Anforderungen gestritten wird, wird über Begriffe geeinigt.</td>
+            <td><b>At the Stakeholder Requirements</b></td>
+            <td>customer and users</td>
+            <td>Shared language and glossary — before anyone argues about requirements, agree on the terms.</td>
           </tr>
           <tr>
-            <td><b>Bei den System Requirements</b></td>
-            <td>Product Owner, Product Manager</td>
-            <td>Klärung und Ableitung: das Modell deckt Zustände, Sonderfälle und fehlende Anforderungen auf. Oder es dient der Klärung von Anforderungen und der Beseitigung von Unklarheiten bzw. Ungereimtheiten.</td>
+            <td><b>At the System Requirements</b></td>
+            <td>product owner, product manager</td>
+            <td>Clarification and derivation: the model uncovers states, special cases and missing requirements. Or it serves to clarify requirements and remove ambiguities and inconsistencies.</td>
           </tr>
           <tr>
-            <td><b>In Architektur und Umsetzung</b></td>
-            <td>Product Owner, Architekt, Entwicklungsteam</td>
-            <td>Keine weitere Ableitung mehr — das Modell wird in der Software <b>gespiegelt</b>.</td>
+            <td><b>In architecture and delivery</b></td>
+            <td>product owner, architect, development team</td>
+            <td>No further derivation — the model is <b>mirrored</b>.</td>
           </tr>
         </tbody>
       </table>
@@ -1614,125 +1533,112 @@ Response Measure    Persistenz: Latenz 1–30 s · Rettungsdienst informieren: 6
 
   <!-- ================= 7. KLASSIFIKATION ================= -->
   <section id="klassifikation">
-    <div class="sec-head"><span class="sec-num">07</span><h2>Klassifikation und was sie steuert</h2></div>
+    <div class="sec-head"><span class="sec-num">07</span><h2>Classification and what it drives</h2></div>
     <p class="sec-lede">
-      Ein Requirement ist entweder
-      funktional oder eine Quality; Qualities teilen sich in <b>Operational Qualities</b> (extern, vom
-      Nutzer erlebbar) und <b>Developmental Qualities</b> (intern). Die Kategorie entscheidet über das Format und über das
-      weitere Refinement.
+      A requirement is either functional or a quality; qualities split into <b>Operational Qualities</b> (external, experienced by the user) and <b>Developmental Qualities</b> (internal). The category decides the format and the further refinement.
     </p>
 
     <div class="sheet scroller">
       <table>
         <thead>
-          <tr><th>Kategorie</th><th>Auch bekannt als</th><th>Format</th><th>Wird verfeinert durch</th><th>Prüfung</th></tr>
+          <tr><th>Category</th><th>Also known as</th><th>Format</th><th>Refined by</th><th>Check</th></tr>
         </thead>
         <tbody>
           <tr>
             <td><b>Functional</b></td>
             <td>Functional Requirement</td>
-            <td>User-Story-Format</td>
+            <td>User-Story format</td>
             <td>Use Case → System Requirements (Features) → User Stories → GWT</td>
-            <td>Validation gegen das Business Objective</td>
+            <td>Validation against the Business Objective</td>
           </tr>
           <tr>
             <td><b>Operational Quality</b></td>
-            <td>External Non-Functional Requirement — vom Nutzer erlebbar: Performance, Verfügbarkeit,
-              Usability, Security, Kompatibilität</td>
-            <td>Requirements-Sentence-Format</td>
-            <td>Quality Scenarios — als AC eines Features/einer User Story oder als eigenes Operational Feature</td>
-            <td>Response Measure, messbar als Wertebereich</td>
+            <td>External Non-Functional Requirement — experienced by the user: performance, availability, usability, security, compatibility</td>
+            <td>Requirements-Sentence format</td>
+            <td>Quality Scenarios — as AC of a feature or User Story, or as its own Operational Feature</td>
+            <td>Response Measure, measurable as a range</td>
           </tr>
           <tr>
             <td><b>Developmental Quality</b></td>
-            <td>Internal Non-Functional Requirement — für Entwicklung und Wartung: Modularität,
-              Testbarkeit, Wiederverwendbarkeit, Analysierbarkeit</td>
-            <td>Requirements-Sentence-Format</td>
-            <td>Architecture Enabler → Sys/SW/HW-Architektur</td>
-            <td>Architekturentscheidung</td>
+            <td>Internal Non-Functional Requirement — for development and maintenance: modularity, testability, reusability, analyzability</td>
+            <td>Requirements-Sentence format</td>
+            <td>Architecture Enabler → sys/SW/HW architecture</td>
+            <td>architecture decision</td>
           </tr>
           <tr>
-            <td><b>Constraint</b><br><span style="color:var(--ink-2); font-size:13px">nach ISO eine Requirement-Klasse, aber nicht verhandelbar</span></td>
-            <td>Budget, Termin, Recht, Technologie, Design, Organisation</td>
-            <td>Requirements-Sentence-Format mit <b>„will“</b></td>
-            <td>nichts — Constraints werden nicht zerlegt</td>
-            <td>Wird er eingehalten?</td>
+            <td><b>Constraint</b><br><span style="color:var(--ink-2); font-size:13px">a requirement class under ISO, but not negotiable</span></td>
+            <td>Budget, schedule, law, technology, design, organization</td>
+            <td>Requirements-Sentence format with <b>“will”</b></td>
+            <td>nothing — Constraints are not decomposed</td>
+            <td>Is it being met?</td>
           </tr>
         </tbody>
       </table>
     </div>
 
-    <h3>Qualitätskriterien auf Stakeholder-Ebene</h3>
+    <h3>Quality criteria at the stakeholder level</h3>
     <p>
-      Die ISO-29148-Kriterien greifen auf dieser Ebene nur teilweise: ein Stakeholder Requirement ist
-      per Konstruktion ein Bündel, also weder <em>singular</em> noch <em>complete</em>, und noch
-      nicht verifizierbar. SMART passt besser — aber auch davon sind
-      <b>nur zwei Kriterien hier wirklich anwendbar</b>:
+      The ISO 29148 criteria only partly apply at this level: a Stakeholder Requirement is by construction a bundle, so neither <em>singular</em> nor <em>complete</em>, and not yet verifiable. SMART fits better — but even of those,
+      <b>only two criteria really apply here</b>:
     </p>
     <div class="sheet scroller">
       <table>
-        <thead><tr><th>SMART</th><th>ISO 29148</th><th>Was auf Stakeholder-Ebene tatsächlich gilt</th></tr></thead>
+        <thead><tr><th>SMART</th><th>ISO 29148</th><th>What actually holds at the stakeholder level</th></tr></thead>
         <tbody>
           <tr class="highlight">
-            <td><b>Specific</b> <span class="tag ok">anwendbar</span></td>
+            <td><b>Specific</b> <span class="tag ok">applicable</span></td>
             <td>Unambiguous / Singular</td>
-            <td>Das User-Story-Format erzwingt <em>wer</em>, <em>was</em>, <em>warum</em> und drängt
-              vage Formulierungen heraus. <b>Hier lässt sich die Anforderung sofort prüfen und verbessern.</b></td>
+            <td>The User-Story format forces <em>who</em>, <em>what</em>, <em>why</em> and squeezes out vague wording. <b>Here the requirement can be checked and improved immediately.</b></td>
           </tr>
           <tr class="highlight">
-            <td><b>Relevant</b> <span class="tag ok">anwendbar</span></td>
+            <td><b>Relevant</b> <span class="tag ok">applicable</span></td>
             <td>Necessary</td>
-            <td>Ist die Anforderung auf ein Business Objective getraced? Wenn nein: Gold-Plating.
-              <b>Ebenfalls sofort und ohne Refinement entscheidbar.</b></td>
+            <td>Is the requirement traced to a Business Objective? If not: gold-plating.
+              <b>Decidable immediately as well, without any refinement.</b></td>
           </tr>
           <tr>
             <td>Measurable</td><td>Verifiable</td>
-            <td>Auf dieser Ebene <em>nicht</em> testbar. Messbar nur in dem indirekten Sinn, dass
-              bestimmte System Requirements erfüllt sein müssen.</td>
+            <td>At this level <em>not</em> testable. Measurable only in the indirect sense that certain System Requirements have to be met.</td>
           </tr>
           <tr>
             <td>Attainable</td><td>Feasible</td>
-            <td>Der Realitätscheck kommt erst beim Refinement zu System Requirements und tiefer.</td>
+            <td>The reality check only arrives with the refinement to System Requirements and below.</td>
           </tr>
           <tr>
-            <td>Time-bound</td><td>— in ISO nicht enthalten</td>
-            <td>Ergibt sich erst aus dem Estimate: passt es nicht in Sprint bzw. Increment, muss
-              geteilt werden.</td>
+            <td>Time-bound</td><td>— not part of ISO</td>
+            <td>Only follows from the estimate: if it does not fit into a sprint or increment, it has to be split.</td>
           </tr>
         </tbody>
       </table>
     </div>
     <div class="callout warn">
-      <h4>Warum Stakeholder Requirements die ISO-Kriterien reißen — und das in Ordnung ist</h4>
+      <h4>Why Stakeholder Requirements break the ISO criteria — and why that is fine</h4>
       <ul>
-        <li><b>Complete / Singular:</b> ein Bündel von Funktionalität. Wird erst durch Refinement singular und vollständig.</li>
-        <li><b>Unambiguous:</b> von Natur aus breit. Die Mehrdeutigkeit wird durch das Refinement zu System Requirements aufgelöst, nicht durch Umformulieren auf dieser Ebene.</li>
-        <li><b>Verifiable:</b> Stakeholder Requirement ⇒ <b>Validation</b> (das Richtige gebaut?). System Requirement ⇒ <b>Verification</b> (richtig gebaut?).</li>
+        <li><b>Complete / Singular:</b> a bundle of functionality. Only refinement makes it singular and complete.</li>
+        <li><b>Unambiguous:</b> broad by nature. The ambiguity is resolved by refining to System Requirements, not by rewording at this level.</li>
+        <li><b>Verifiable:</b> Stakeholder Requirement ⇒ <b>Validation</b> (built the right thing?). System Requirement ⇒ <b>Verification</b> (built it right?).</li>
       </ul>
     </div>
   </section>
 
   <!-- ================= 8. QUALITAETS-FRAGE ================= -->
   <section id="qualitaet">
-    <div class="sec-head"><span class="sec-num">08</span><h2>Die Quality-Frage<span class="we"></span></h2></div>
+    <div class="sec-head"><span class="sec-num">08</span><h2>The quality question<span class="we"></span></h2></div>
     <p class="sec-lede">
-      Hier weichen wir am deutlichsten von beiden Standards ab. SAFe hängt Qualities als NFR in die
-      Acceptance Criteria; ISO 29148 führt zwar einen Quality-Typ auf System-Ebene, führt ihn aber
-      nicht weiter aus. Beides trägt nicht, sobald eine Quality mehrere Features betrifft — und das
-      ist der Normalfall.
+      This is where we depart most clearly from both standards. SAFe hangs qualities into the Acceptance Criteria as NFRs; ISO 29148 does carry a quality type at system level but never elaborates it. Neither holds up once a quality affects several features — and that is the normal case.
     </p>
 
     <div class="sheet">
       <div class="diagram">
-        <svg viewBox="0 0 980 410" role="img" aria-label="Dieselbe Quality dreifach in Acceptance Criteria kopiert, gegenüber einem Quality Scenario, das aus den Acceptance Criteria referenziert wird">
+        <svg viewBox="0 0 980 410" role="img" aria-label="The same quality copied into three sets of Acceptance Criteria, against one Quality Scenario referenced from those Acceptance Criteria">
           <defs>
             <marker id="q-ar" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
               <path d="M0 0 L10 5 L0 10 z" fill="currentColor"/>
             </marker>
           </defs>
 
-          <text class="d-h" x="20" y="18" fill="var(--warn)">SO WIE SAFe ES VORSIEHT · KOPIE</text>
-          <text class="d-h" x="470" y="18" fill="var(--t-quality)">UNSER VORSCHLAG · REFERENZ</text>
+          <text class="d-h" x="20" y="18" fill="var(--warn)">THE WAY SAFe INTENDS IT · COPY</text>
+          <text class="d-h" x="470" y="18" fill="var(--t-quality)">OUR PROPOSAL · REFERENCE</text>
 
           <!-- ===== links: dreimal dieselbe Zeile ===== -->
           <rect class="bx bx-system" x="20" y="44" width="200" height="96"/>
@@ -1740,7 +1646,7 @@ Response Measure    Persistenz: Latenz 1–30 s · Rettungsdienst informieren: 6
           <rect class="bx bx-ac" x="30" y="72" width="180" height="60"/>
           <text class="d-s" x="40" y="86">ACCEPTANCE CRITERIA</text>
           <circle class="bul" cx="46" cy="98" r="1.8"/><text class="d-n" x="56" y="102">…</text>
-          <circle class="bul" cx="46" cy="112" r="1.8"/><rect class="d-hl" x="53" y="105" width="94" height="15" rx="2"/><text class="d-n" x="56" y="116" fill="var(--warn)">„Antwort &lt; 2 s“</text>
+          <circle class="bul" cx="46" cy="112" r="1.8"/><rect class="d-hl" x="53" y="105" width="94" height="15" rx="2"/><text class="d-n" x="56" y="116" fill="var(--warn)">“response &lt; 2 s”</text>
           <circle class="bul" cx="46" cy="126" r="1.8"/><text class="d-n" x="56" y="130">…</text>
 
           <rect class="bx bx-system" x="20" y="152" width="200" height="96"/>
@@ -1748,7 +1654,7 @@ Response Measure    Persistenz: Latenz 1–30 s · Rettungsdienst informieren: 6
           <rect class="bx bx-ac" x="30" y="180" width="180" height="60"/>
           <text class="d-s" x="40" y="194">ACCEPTANCE CRITERIA</text>
           <circle class="bul" cx="46" cy="206" r="1.8"/><text class="d-n" x="56" y="210">…</text>
-          <circle class="bul" cx="46" cy="220" r="1.8"/><rect class="d-hl" x="53" y="213" width="94" height="15" rx="2"/><text class="d-n" x="56" y="224" fill="var(--warn)">„Antwort &lt; 2 s“</text>
+          <circle class="bul" cx="46" cy="220" r="1.8"/><rect class="d-hl" x="53" y="213" width="94" height="15" rx="2"/><text class="d-n" x="56" y="224" fill="var(--warn)">“response &lt; 2 s”</text>
           <circle class="bul" cx="46" cy="234" r="1.8"/><text class="d-n" x="56" y="238">…</text>
 
           <rect class="bx bx-story" x="20" y="260" width="200" height="96"/>
@@ -1756,11 +1662,11 @@ Response Measure    Persistenz: Latenz 1–30 s · Rettungsdienst informieren: 6
           <rect class="bx bx-ac" x="30" y="288" width="180" height="60"/>
           <text class="d-s" x="40" y="302">ACCEPTANCE CRITERIA</text>
           <circle class="bul" cx="46" cy="314" r="1.8"/><text class="d-n" x="56" y="318">…</text>
-          <circle class="bul" cx="46" cy="328" r="1.8"/><rect class="d-hl" x="53" y="321" width="94" height="15" rx="2"/><text class="d-n" x="56" y="332" fill="var(--warn)">„Antwort &lt; 2 s“</text>
+          <circle class="bul" cx="46" cy="328" r="1.8"/><rect class="d-hl" x="53" y="321" width="94" height="15" rx="2"/><text class="d-n" x="56" y="332" fill="var(--warn)">“response &lt; 2 s”</text>
           <circle class="bul" cx="46" cy="342" r="1.8"/><text class="d-n" x="56" y="346">…</text>
 
-          <text class="d-n" x="20" y="378" fill="var(--warn)">Dieselbe Aussage steht dreimal da.</text>
-          <text class="d-n" x="20" y="396" fill="var(--warn)">Ändert sich der Wert, ändert man ihn dreimal — oder eben nicht.</text>
+          <text class="d-n" x="20" y="378" fill="var(--warn)">The same statement stands there three times.</text>
+          <text class="d-n" x="20" y="396" fill="var(--warn)">If the value changes, you change it three times — or you do not.</text>
 
           <line x1="440" y1="30" x2="440" y2="400" stroke="var(--rule)" stroke-width="1" stroke-dasharray="4 4"/>
 
@@ -1797,7 +1703,7 @@ Response Measure    Persistenz: Latenz 1–30 s · Rettungsdienst informieren: 6
           <rect class="bx bx-quality" x="740" y="192" width="210" height="52"/>
           <text class="d-s" x="845" y="212" text-anchor="middle" fill="var(--t-quality)">QUALITY SCENARIO</text>
           <rect class="d-hl q" x="798" y="219" width="94" height="15" rx="2"/>
-          <text class="d-n" x="845" y="230" text-anchor="middle">„Antwort &lt; 2 s“</text>
+          <text class="d-n" x="845" y="230" text-anchor="middle">“response &lt; 2 s”</text>
           <g class="we-svg"><rect x="926" y="184" width="26" height="14" rx="2"/><text x="939" y="194" text-anchor="middle">WE</text></g>
 
           <path class="d-e" d="M845 148 L845 188" marker-end="url(#q-ar)" color="var(--t-quality)" stroke="var(--t-quality)"/>
@@ -1808,48 +1714,41 @@ Response Measure    Persistenz: Latenz 1–30 s · Rettungsdienst informieren: 6
           <path class="d-e-ref" d="M502 328 C 600 328, 660 292, 736 234" marker-end="url(#q-ar)" color="var(--t-quality)"/>
           <text class="d-el" x="690" y="262" fill="var(--t-quality)">n : 1</text>
 
-          <text class="d-n" x="470" y="378" fill="var(--t-quality)">Der Punkt in den Acceptance Criteria zeigt auf das Szenario,</text>
-          <text class="d-n" x="470" y="396" fill="var(--t-quality)">statt seinen Text zu wiederholen. Ändern: an einer Stelle.</text>
+          <text class="d-n" x="470" y="378" fill="var(--t-quality)">The entry in the Acceptance Criteria points at the scenario</text>
+          <text class="d-n" x="470" y="396" fill="var(--t-quality)">instead of repeating its text. Changing it: in one place.</text>
         </svg>
       </div>
 
       <div class="callout">
-        <h4>Die Regel, wann was gilt</h4>
+        <h4>The rule for which applies when</h4>
         <ul>
-          <li><b>Genau ein betroffenes Feature</b> — kopieren ist in Ordnung. Die Quality gehört in
-            die Acceptance Criteria dieses einen Features, so wie SAFe es vorsieht.</li>
-          <li><b>Mehrere betroffene Features oder User Stories</b> — die Operational Quality wird ein
-            eigener Typ, aufgebrochen in Quality Scenarios, die von den betroffenen Features und User
-            Stories referenziert werden.</li>
-          <li><b>Der Test</b>: Müsstest du beim Ändern eines Wertes an mehr als einer Stelle suchen,
-            war Kopieren die falsche Entscheidung.</li>
+          <li><b>Exactly one affected feature</b> — copying is fine. The quality belongs in that one feature’s Acceptance Criteria, just as SAFe intends.</li>
+          <li><b>Several affected features or User Stories</b> — the Operational Quality becomes a type of its own, broken into Quality Scenarios that the affected features and User Stories reference.</li>
+          <li><b>The test</b>: if changing one value would mean searching in more than one place, copying was the wrong call.</li>
         </ul>
       </div>
     </div>
 
-    <h3>Woher die Abweichung kommt</h3>
+    <h3>Where the departure comes from</h3>
     <div class="sheet scroller">
       <table>
-        <thead><tr><th>Modell</th><th>Was es zu Qualities sagt</th><th>Wo es nicht trägt</th></tr></thead>
+        <thead><tr><th>Model</th><th>What it says about qualities</th><th>Where it does not hold</th></tr></thead>
         <tbody>
           <tr>
             <td><b>SAFe</b></td>
-            <td>NFRs werden als Acceptance Criteria an Features und User Stories gehängt; sie
-              beschränken die Features, sind aber selbst keine.</td>
-            <td>Betrifft eine Quality mehrere Features, wird ihre Beschreibung in jedes davon
-              kopiert.</td>
+            <td>NFRs are hung onto features and User Stories as Acceptance Criteria; they constrain the features but are not features themselves.</td>
+            <td>If a quality affects several features, its description is copied into every one of them.</td>
           </tr>
           <tr>
             <td><b>ISO 29148</b></td>
-            <td>Auf System-Requirement-Ebene existiert der Typ <em>Quality</em> neben
-              <em>Functional</em> und <em>Constraint</em>.</td>
-            <td>Wie eine Quality konkret und prüfbar wird, führt die Norm nicht aus.</td>
+            <td>At System Requirement level the type <em>Quality</em> exists alongside
+              <em>Functional</em> and <em>Constraint</em>.</td>
+            <td>The standard does not spell out how a quality becomes concrete and checkable.</td>
           </tr>
           <tr>
-            <td><b>Unser Vorschlag</b><span class="we"></span></td>
-            <td>Operational Quality als eigener Typ, aufgebrochen in Quality Scenarios nach der
-              6-teiligen Vorlage — referenzierbar aus Features und User Stories.</td>
-            <td>Setzt voraus, dass das Werkzeug Referenzen auf mehrere Ziele führen kann.</td>
+            <td><b>Our proposal</b><span class="we"></span></td>
+            <td>Operational Quality as a type of its own, broken into Quality Scenarios following the 6-part template — referenceable from features and User Stories.</td>
+            <td>Assumes the tool can hold references to several targets.</td>
           </tr>
         </tbody>
       </table>
@@ -1858,17 +1757,14 @@ Response Measure    Persistenz: Latenz 1–30 s · Rettungsdienst informieren: 6
 
   <!-- ================= 9. KANO ================= -->
   <section id="kano">
-    <div class="sec-head"><span class="sec-num">09</span><h2>KANO — die zweite Klassifikation</h2></div>
+    <div class="sec-head"><span class="sec-num">09</span><h2>KANO — the second classification</h2></div>
     <p class="sec-lede">
-      Functional / Operational Quality / Developmental Quality sagt, <em>welcher Art</em> eine
-      Anforderung ist. KANO sagt etwas völlig anderes: <em>was ihre Erfüllung mit der Zufriedenheit
-      des Kunden macht</em>. Beide Achsen gelten gleichzeitig — ein funktionales Requirement kann
-      Basic, Performance, Delighter oder Indifferent sein.
+      Functional / Operational Quality / Developmental Quality says <em>what kind</em> a requirement is. KANO says something entirely different: <em>what meeting it does to customer satisfaction</em>. Both axes hold at once — a functional requirement can be basic, performance, delighter or indifferent.
     </p>
 
     <div class="sheet">
       <div class="diagram">
-        <svg viewBox="0 0 800 430" role="img" aria-label="KANO-Modell: Zufriedenheit über Umsetzungsgrad, mit den getrennt verlaufenden Kurven für Basic, Performance und Delighter sowie dem Decay-Pfeil">
+        <svg viewBox="0 0 800 430" role="img" aria-label="KANO model: satisfaction over degree of implementation, with separate curves for basic, performance and delighter, plus the decay arrow">
           <defs>
             <marker id="kah" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
               <path d="M 0 0 L 10 5 L 0 10 z" fill="currentColor"/>
@@ -1904,10 +1800,10 @@ Response Measure    Persistenz: Latenz 1–30 s · Rettungsdienst informieren: 6
           </g>
 
           <!-- Achsenbeschriftung wie im Original -->
-          <text class="k-axis-label" x="288" y="112" text-anchor="end">ZUFRIEDEN</text>
-          <text class="k-axis-label" x="312" y="382">UNZUFRIEDEN</text>
-          <text class="k-axis-label" x="62" y="238">GAR NICHT UMGESETZT</text>
-          <text class="k-axis-label" x="556" y="202" text-anchor="end">VOLL UMGESETZT</text>
+          <text class="k-axis-label" x="288" y="112" text-anchor="end">SATISFIED</text>
+          <text class="k-axis-label" x="312" y="382">DISSATISFIED</text>
+          <text class="k-axis-label" x="62" y="238">NOT IMPLEMENTED AT ALL</text>
+          <text class="k-axis-label" x="556" y="202" text-anchor="end">FULLY IMPLEMENTED</text>
 
           <!-- Kurven: strikt geordnet, ohne Schnittpunkte -->
           <path class="k-curve k-delight" d="M 66 196 C 220 190 350 166 560 72"/>
@@ -1929,62 +1825,52 @@ Response Measure    Persistenz: Latenz 1–30 s · Rettungsdienst informieren: 6
         </svg>
       </div>
       <p style="margin: 14px 0 0; color: var(--ink-2); font-size: 14px; max-width: none;">
-        Jede Kurve zeigt, wie die Zufriedenheit steigt, wenn dieselbe Anforderung von „gar nicht“
-        nach „voll umgesetzt“ wandert. <b>Basic</b> beginnt ganz unten und sättigt, ohne je
-        Zufriedenheit zu erzeugen · <b>Performance</b> läuft linear durch den Ursprung ·
-        <b>Delighter</b> startet dicht an der Null — Fehlen stört praktisch niemanden — und steigt dann steil.
-        Der <b>Decay</b>-Pfeil zeigt, wie ein Feature über die Zeit vom Delighter durch Performance
-        hindurch zu Basic absackt.
+        Each curve shows how satisfaction rises as the same requirement moves from “not at all” to “fully implemented”. <b>Basic</b> starts at the very bottom and saturates without ever producing satisfaction · <b>Performance</b> runs linearly through the origin ·
+        <b>Delighter</b> starts close to zero — its absence bothers practically nobody — and then rises steeply. The <b>Decay</b>arrow shows how a feature sinks over time from delighter, through performance, down to basic.
       </p>
     </div>
 
-    <h3>Die vier Kategorien</h3>
+    <h3>The four categories</h3>
     <div class="sheet scroller">
       <table class="kano-cat">
-        <thead><tr><th>Kategorie</th><th>Wenn vorhanden</th><th>Wenn sie fehlt</th><th>Beispiel Smartphone</th></tr></thead>
+        <thead><tr><th>Category</th><th>When present</th><th>When missing</th><th>Smartphone example</th></tr></thead>
         <tbody>
           <tr>
             <td><span class="kic" aria-hidden="true"><svg viewBox="0 0 30 15"><path d="M0 7.5h30" stroke="var(--rule)" stroke-width="1" stroke-dasharray="2 2"/><path d="M1 14 C 6 13.5, 9 10, 29 9" stroke="var(--warn)"/></svg></span><b>Basic / Must-be</b><br><span style="color:var(--ink-2);font-size:13px">Foundation</span></td>
-            <td>hebt die Zufriedenheit <em>nicht</em> — Kunden setzen es voraus</td>
-            <td>starke Unzufriedenheit</td>
-            <td>Telefonieren können; grundlegende Sicherheitsfunktionen</td>
+            <td>does <em>not</em> raise satisfaction — customers take it for granted</td>
+            <td>strong dissatisfaction</td>
+            <td>Being able to make calls; basic safety functions</td>
           </tr>
           <tr>
             <td><span class="kic" aria-hidden="true"><svg viewBox="0 0 30 15"><path d="M0 7.5h30" stroke="var(--rule)" stroke-width="1" stroke-dasharray="2 2"/><path d="M1 14 L29 1" stroke="var(--solution)"/></svg></span><b>Performance</b><br><span style="color:var(--ink-2);font-size:13px">Linear Value</span></td>
-            <td>je mehr, desto zufriedener — direkt und linear</td>
-            <td>sinkende Zufriedenheit, ebenfalls linear</td>
-            <td>Akkulaufzeit; Prozessorgeschwindigkeit; Speicherplatz</td>
+            <td>the more the better — directly and linearly</td>
+            <td>falling satisfaction, linear as well</td>
+            <td>Battery life; processor speed; storage</td>
           </tr>
           <tr>
-            <td><span class="kic" aria-hidden="true"><svg viewBox="0 0 30 15"><path d="M0 7.5h30" stroke="var(--rule)" stroke-width="1" stroke-dasharray="2 2"/><path d="M1 7.5 C 12 7, 20 6, 29 1" stroke="var(--ok)"/></svg></span><b>Delighter</b><br><span style="color:var(--ink-2);font-size:13px">Wow-Faktor</span></td>
-            <td>unerwartete Begeisterung, Wettbewerbsvorteil</td>
-            <td><em>keine</em> Unzufriedenheit — es wurde ja nicht erwartet</td>
-            <td>KI-Integration; ausklappbarer Projektor; Premium-Abo gratis</td>
+            <td><span class="kic" aria-hidden="true"><svg viewBox="0 0 30 15"><path d="M0 7.5h30" stroke="var(--rule)" stroke-width="1" stroke-dasharray="2 2"/><path d="M1 7.5 C 12 7, 20 6, 29 1" stroke="var(--ok)"/></svg></span><b>Delighter</b><br><span style="color:var(--ink-2);font-size:13px">Wow factor</span></td>
+            <td>unexpected delight, competitive advantage</td>
+            <td><em>no</em> dissatisfaction — it was not expected in the first place</td>
+            <td>AI integration; a fold-out projector; a free premium subscription</td>
           </tr>
           <tr>
             <td><span class="kic" aria-hidden="true"><svg viewBox="0 0 30 15"><path d="M0 7.5h30" stroke="var(--rule)" stroke-width="1" stroke-dasharray="2 2"/><path d="M1 7.5 L29 7.5" stroke="var(--ink-3)"/></svg></span><b>Indifferent</b><br><span style="color:var(--ink-2);font-size:13px">Noise</span></td>
-            <td>kaum Wirkung — investierte Ressourcen sind verschwendet</td>
-            <td>kaum Wirkung</td>
-            <td>vorinstallierte Apps, die niemand benutzt</td>
+            <td>little effect — the resources invested are wasted</td>
+            <td>little effect</td>
+            <td>pre-installed apps nobody uses</td>
           </tr>
         </tbody>
       </table>
     </div>
 
-    <h3>KANO als Suchwerkzeug, nicht nur als Etikett</h3>
+    <h3>KANO as a search tool, not just a label</h3>
     <p>
-      Angewandt wird KANO vor allem auf <b>Stakeholder</b>- und <b>System Requirements</b>. Der
-      eigentliche Nutzen liegt nicht nur im Einsortieren des Vorhandenen, sondern auch im Finden des
-      Fehlenden. Zum Beispiel sollte ein neues Produkt <b>Delighter</b>-Requirements umsetzen, die
-      wiederum zu bestimmten Business Goals/Objectives beitragen. Umgekehrt wird ein bestehendes
-      Produkt mehrere <b>Performance</b>-Requirements mit weiteren Versionen umsetzen. Falls zu
-      wenige geplant und umgesetzt sind, könnte die neue Version wenig Anklang bei Kunden und
-      Benutzern finden.
+      KANO is applied above all to <b>Stakeholder</b>and <b>System Requirements</b>. The real use is not only sorting what exists, but finding what is missing. A new product, for instance, should deliver <b>Delighter</b>requirements that in turn contribute to particular Business Goals and Objectives. An existing product, conversely, will deliver several <b>Performance</b>requirements over further releases. If too few are planned and delivered, the new version may find little favour with customers and users.
     </p>
 
     <div class="sheet">
       <div class="diagram">
-        <svg viewBox="0 0 960 250" role="img" aria-label="KANO wird auf Stakeholder und System Requirements angewandt, findet Delighter-Kandidaten und begründet sie über den Trace zum Business Objective">
+        <svg viewBox="0 0 960 250" role="img" aria-label="KANO is applied to Stakeholder and System Requirements, finds delighter candidates and justifies them through the trace to a Business Objective">
           <defs>
             <marker id="k-ar" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
               <path d="M0 0 L10 5 L0 10 z" fill="currentColor"/>
@@ -2004,12 +1890,12 @@ Response Measure    Persistenz: Latenz 1–30 s · Rettungsdienst informieren: 6
             <path class="d-e" d="M134 100 C 160 92, 164 76, 186 75" marker-end="url(#k-ar)"/>
             <path class="d-e" d="M134 120 C 160 128, 164 144, 186 145" marker-end="url(#k-ar)"/>
           </g>
-          <text class="d-el" x="20" y="70">einordnen und</text>
-          <text class="d-el" x="20" y="164">Fehlendes suchen</text>
+          <text class="d-el" x="20" y="70">sort, and</text>
+          <text class="d-el" x="20" y="164">search for what is missing</text>
 
           <rect class="bx bx-quality" x="480" y="84" width="200" height="52"/>
-          <text class="d-s" x="580" y="105" text-anchor="middle" fill="var(--t-quality)">DELIGHTER-KANDIDATEN</text>
-          <text class="d-n" x="580" y="123" text-anchor="middle">was würde überraschen?</text>
+          <text class="d-s" x="580" y="105" text-anchor="middle" fill="var(--t-quality)">DELIGHTER CANDIDATES</text>
+          <text class="d-n" x="580" y="123" text-anchor="middle">what would surprise?</text>
 
           <g color="var(--ink-3)">
             <path class="d-e" d="M424 80 C 450 88, 452 100, 476 104" marker-end="url(#k-ar)"/>
@@ -2018,31 +1904,27 @@ Response Measure    Persistenz: Latenz 1–30 s · Rettungsdienst informieren: 6
 
           <rect class="bx bx-business" x="740" y="84" width="200" height="52"/>
           <text class="d-s" x="840" y="105" text-anchor="middle" fill="var(--t-business)">BUSINESS OBJECTIVE</text>
-          <text class="d-n" x="840" y="123" text-anchor="middle">qualitativ formuliert</text>
+          <text class="d-n" x="840" y="123" text-anchor="middle">stated qualitatively</text>
 
           <path class="d-e-dash" d="M684 110 L736 110" marker-end="url(#k-ar)" color="var(--ink-3)"/>
-          <text class="d-el" x="678" y="100">traced auf</text>
+          <text class="d-el" x="678" y="100">traces to</text>
 
           <rect x="480" y="176" width="460" height="34" rx="4" fill="color-mix(in srgb, var(--ok) 14%, transparent)" stroke="var(--ok)" stroke-width="1.4"/>
-          <text class="d-s" x="710" y="198" text-anchor="middle" fill="var(--ok)">ERST DIESER TRACE MACHT AUS DER IDEE EINEN WETTBEWERBSVORTEIL</text>
+          <text class="d-s" x="710" y="198" text-anchor="middle" fill="var(--ok)">ONLY THIS TRACE TURNS THE IDEA INTO A COMPETITIVE ADVANTAGE</text>
           <path class="d-e" d="M840 140 L840 172" marker-end="url(#k-ar)" color="var(--ok)" stroke="var(--ok)"/>
 
-          <text class="d-n" x="20" y="234">Passt kein Objective, kann ein neues entstehen — dann schärft die Anforderung das Geschäftsziel, nicht umgekehrt.</text>
+          <text class="d-n" x="20" y="234">If no objective fits, a new one can emerge — then the requirement sharpens the business goal, not the other way round.</text>
         </svg>
       </div>
     </div>
 
     <div class="callout">
-      <h4>Was die Kategorie für die Arbeit bedeutet</h4>
+      <h4>What the category means for the work</h4>
       <ul>
-        <li><b>Basic:</b> keine Priorisierungsdiskussion. Fehlt es, ist das Produkt kaputt — der
-          Aufwand ist zu leisten, nicht zu verhandeln.</li>
-        <li><b>Performance:</b> gehört in ein <b>Quality Scenario</b> mit Response Measure. „Mehr ist
-          besser“ wird erst steuerbar, wenn ein Wertebereich dransteht.</li>
-        <li><b>Delighter:</b> braucht den Trace auf ein Business Objective, sonst ist er nicht von
-          Gold-Plating zu unterscheiden.</li>
-        <li><b>Indifferent:</b> streichen. Die einzige Kategorie mit einer eindeutigen
-          Handlungsempfehlung.</li>
+        <li><b>Basic:</b> no prioritization discussion. If it is missing, the product is broken — the effort is to be spent, not negotiated.</li>
+        <li><b>Performance:</b> belongs in a <b>Quality Scenario</b> with a response measure. “More is better” only becomes steerable once a range is attached.</li>
+        <li><b>Delighter:</b> needs the trace to a Business Objective, otherwise it cannot be told apart from gold-plating.</li>
+        <li><b>Indifferent:</b> drop it. The only category that comes with an unambiguous recommendation.</li>
       </ul>
     </div>
 
@@ -2050,16 +1932,15 @@ Response Measure    Persistenz: Latenz 1–30 s · Rettungsdienst informieren: 6
 
   <!-- ================= 10. FINDER ================= -->
   <section id="finder">
-    <div class="sec-head"><span class="sec-num">10</span><h2>Format-Finder für die Description</h2></div>
+    <div class="sec-head"><span class="sec-num">10</span><h2>Format finder for the description</h2></div>
     <p class="sec-lede">
-      Ebene und Klassifikation wählen — heraus kommt das Format, der Refinement-Weg und die
-      Attributvorlage.
+      Pick level and classification — out comes the format, the refinement path and the attribute template.
     </p>
 
     <div class="sheet">
       <div class="finder-controls">
         <div class="field">
-          <label for="f-level">Ebene</label>
+          <label for="f-level">Level</label>
           <select id="f-level">
             <option value="sr">Stakeholder Requirement (Epic)</option>
             <option value="sys">System Requirement (Feature)</option>
@@ -2068,7 +1949,7 @@ Response Measure    Persistenz: Latenz 1–30 s · Rettungsdienst informieren: 6
           </select>
         </div>
         <div class="field">
-          <label for="f-cat">Klassifikation</label>
+          <label for="f-cat">Classification</label>
           <select id="f-cat">
             <option value="fn">Functional</option>
             <option value="oq">Operational Quality</option>
@@ -2077,17 +1958,17 @@ Response Measure    Persistenz: Latenz 1–30 s · Rettungsdienst informieren: 6
       </div>
       <div class="finder-out">
         <div class="finder-grid">
-          <div class="fo-cell"><h4>Artefakt</h4><p id="fo-type"></p></div>
-          <div class="fo-cell"><h4>Format der Description</h4><p id="fo-form"></p></div>
-          <div class="fo-cell"><h4>Bezug nach oben</h4><p id="fo-parent"></p></div>
+          <div class="fo-cell"><h4>Artifact</h4><p id="fo-type"></p></div>
+          <div class="fo-cell"><h4>Format of the description</h4><p id="fo-form"></p></div>
+          <div class="fo-cell"><h4>Parent reference</h4><p id="fo-parent"></p></div>
           <div class="fo-cell"><h4>Acceptance Criteria</h4><p id="fo-ac"></p></div>
         </div>
         <div class="fo-cell" style="margin-top:18px">
-          <h4>Attribute</h4>
+          <h4>Attributes</h4>
           <div class="fo-fields" id="fo-fields"></div>
         </div>
         <div class="fo-cell" style="margin-top:18px">
-          <h4>Merke</h4>
+          <h4>Note</h4>
           <p id="fo-note" style="color: var(--ink-2)"></p>
         </div>
       </div>
@@ -2096,49 +1977,48 @@ Response Measure    Persistenz: Latenz 1–30 s · Rettungsdienst informieren: 6
 
   <!-- ================= 11. STRUKTUR ================= -->
   <section id="struktur">
-    <div class="sec-head"><span class="sec-num">11</span><h2>Struktur &amp; Ableitung auf einen Blick</h2></div>
+    <div class="sec-head"><span class="sec-num">11</span><h2>Structure &amp; derivation at a glance</h2></div>
     <p class="sec-lede">
-      Woher jedes Artefakt kommt, woran es hängt, womit es abgenommen wird und in welchem Zeitrahmen
-      es fertig sein soll.
+      Where each artifact comes from, what it hangs on, what it is accepted against, and in what timeframe it should be finished.
     </p>
 
     <div class="sheet scroller">
       <table>
-        <thead><tr><th>Artefakt</th><th>Entsteht aus</th><th>Bezug nach oben</th><th>Acceptance Criteria</th><th>Zeitrahmen</th></tr></thead>
+        <thead><tr><th>Artifact</th><th>Comes from</th><th>Parent reference</th><th>Acceptance Criteria</th><th>Timeframe</th></tr></thead>
         <tbody>
           <tr>
             <td><span class="ic c-stakeholder" aria-hidden="true"><svg viewBox="0 0 20 20"><rect x="2" y="3.5" width="16" height="3" rx="1.5"/><rect x="4" y="8.5" width="12" height="3" rx="1.5"/><rect x="6" y="13.5" width="8" height="3" rx="1.5"/></svg></span><b>Stakeholder Requirement</b><br><span style="color:var(--ink-2);font-size:13px">SAFe: Epic</span></td>
-            <td>Kundenwunsch, Marktanforderung, Standards und Regularien</td>
-            <td><b>traced auf</b> ein Business Objective</td>
-            <td>funktional: Elaboration Use Case · Quality: Quality Scenarios<br><span style="color:var(--ink-2);font-size:13px">beides keine Acceptance Criteria</span></td>
-            <td>2–6 Monate</td>
+            <td>customer request, market requirement, standards and regulations</td>
+            <td><b>traces to</b> a Business Objective</td>
+            <td>functional: Elaboration Use Case · quality: Quality Scenarios<br><span style="color:var(--ink-2);font-size:13px">neither one is Acceptance Criteria</span></td>
+            <td>2–6 months</td>
           </tr>
           <tr>
             <td><span class="ic c-system" aria-hidden="true"><svg viewBox="0 0 20 20"><rect x="2.5" y="4" width="15" height="12" rx="2" fill="none" stroke-width="1.6"/><rect x="5.5" y="7" width="9" height="6" rx="1"/></svg></span><b>System Requirement</b><br><span style="color:var(--ink-2);font-size:13px">SAFe: Feature</span></td>
-            <td>Success Scenario · Alternative Flow · Variation des Stakeholder-Use-Case</td>
-            <td>gehört zum Stakeholder Requirement, aus dessen Use Case es abgeleitet wurde</td>
-            <td>eigener, engerer Use Case</td>
-            <td>1 PI, 8–12 Wochen</td>
+            <td>success scenario · alternative flow · variation of the stakeholder use case</td>
+            <td>belongs to the Stakeholder Requirement from whose use case it was derived</td>
+            <td>its own, narrower use case</td>
+            <td>1 PI, 8–12 weeks</td>
           </tr>
           <tr>
             <td><span class="ic c-story" aria-hidden="true"><svg viewBox="0 0 20 20"><circle cx="10" cy="5.5" r="2.6" fill="none" stroke-width="1.6"/><path d="M4.5 16.5c0-3 2.5-5 5.5-5s5.5 2 5.5 5" fill="none" stroke-width="1.6" stroke-linecap="round"/></svg></span><b>User Story</b></td>
-            <td>eine oder mehrere Interaktionen aus den Acceptance Criteria des Features</td>
+            <td>one or more interactions from the feature’s Acceptance Criteria</td>
             <td>Feature Parent</td>
-            <td>1..n GWT-Statements</td>
-            <td>1 Sprint, 2–4 Wochen</td>
+            <td>1..n GWT statements</td>
+            <td>1 Sprint, 2–4 weeks</td>
           </tr>
           <tr>
             <td><span class="ic c-quality" aria-hidden="true"><svg viewBox="0 0 20 20"><path d="M2 14.5h4l2.5-9 3 12 2.5-7h4" fill="none" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg></span><b>Quality Scenario</b></td>
-            <td>einer Operational Quality, angewandt auf eine Feature- oder User-Story-Menge</td>
-            <td>die Operational Quality; zusätzlich die Features/User Stories, die den Stimulus bilden</td>
-            <td>ist selbst das Acceptance Criterion</td>
+            <td>of an Operational Quality, applied to a set of features or User Stories</td>
+            <td>the Operational Quality; plus the features and User Stories that form the stimulus</td>
+            <td>is itself the acceptance criterion</td>
             <td>—</td>
           </tr>
           <tr>
             <td><span class="ic c-plain" aria-hidden="true"><svg viewBox="0 0 20 20"><path d="M7.5 3.5h-4v13h4M12.5 3.5h4v13h-4" fill="none" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg></span><b>Constraint</b></td>
-            <td>Recht, Budget, Termin, Technologie, Design</td>
+            <td>law, budget, schedule, technology, design</td>
             <td>—</td>
-            <td>— wird nicht zerlegt</td>
+            <td>— not decomposed</td>
             <td>—</td>
           </tr>
         </tbody>
@@ -2162,43 +2042,43 @@ Response Measure    Persistenz: Latenz 1–30 s · Rettungsdienst informieren: 6
     var FINDER = {
       'sr|fn': {
         type: '<a class="jumplink" href="#k-stakeholder">Stakeholder Requirement <span class="tag problem">Epic</span></a>',
-        form: '<b>User-Story-Format</b> — Als &lt;Rolle&gt; möchte ich &lt;Ziel&gt;, so dass &lt;Nutzen&gt;.',
-        parent: 'traced auf ein <b>Business Objective</b>',
-        ac: '<b>ein</b> grober <b>Elaboration Use Case</b>: Success Scenario + Alternative Flows + Variationen',
+        form: '<b>User-Story format</b> — As a &lt;role&gt; I want &lt;goal&gt;, so that &lt;benefit&gt;.',
+        parent: 'traces to a <b>Business Objective</b>',
+        ac: '<b>one</b> coarse <b>Elaboration Use Case</b>: success scenario + alternative flows + variations',
         fields: ['Title', 'Owner', 'Source', 'Description', 'Estimate', 'Business Outcome', 'Leading Indicators'],
-        note: 'Bewusst grob. Nicht versuchen, sie singular oder testbar zu machen — das passiert erst beim Refinement zu Features. Anwendbare SMART-Kriterien auf dieser Ebene: nur Specific und Relevant.'
+        note: 'Deliberately coarse. Do not try to make it singular or testable — that only happens with the refinement to features. SMART criteria that apply at this level: Specific and Relevant, and no others.'
       },
       'sr|oq': {
         type: '<a class="jumplink" href="#k-stakeholder">Stakeholder Requirement <span class="tag problem">Epic</span></a>',
-        form: '<b>Requirements-Sentence-Format</b> — [Condition] Subject shall Action Object [Constraint].',
-        parent: 'traced auf ein <b>Business Objective</b>',
-        ac: '<b>Quality Scenarios</b> — typischerweise 6–7 Stück, je Feature-Menge unterschiedlich streng',
+        form: '<b>Requirements-Sentence format</b> — [Condition] Subject shall Action Object [Constraint].',
+        parent: 'traces to a <b>Business Objective</b>',
+        ac: '<b>Quality Scenarios</b> — typically 6–7 of them, each set of features held to a different standard',
         fields: ['Title', 'Owner', 'Source', 'Description', 'Estimate', 'Business Outcome', 'Leading Indicators'],
-        note: 'Aus einer Operational Quality entstehen keine funktionalen Features. Sie wird über Quality Scenarios konkret — bei genau einem betroffenen Feature als dessen Acceptance Criterion, bei mehreren als eigenes Operational Feature, das die betroffenen Features referenzieren.'
+        note: 'An Operational Quality does not give rise to functional features. It becomes concrete through Quality Scenarios — as the acceptance criterion of the one affected feature, or, when several are affected, as an Operational Feature of its own that those features reference.'
       },
       'sys|*': {
         type: '<a class="jumplink" href="#k-system">System Requirement <span class="tag solution">Feature</span></a>',
-        form: '<b>User-Story-Format</b> — dazu Problem Statement (welches Problem) und Benefit/Value (wer gewinnt was).',
-        parent: 'abgeleitet aus einem Pfad des Stakeholder-Use-Case',
-        ac: 'ein eigener, engerer <b>Use Case</b>',
+        form: '<b>User-Story format</b> — plus Problem Statement (which problem) and Benefit/Value (who gains what).',
+        parent: 'derived from one path through the stakeholder use case',
+        ac: 'its own, narrower <b>Use Case</b>',
         fields: ['Title', 'Severity', 'Description', 'Problem Statement', 'Benefit/Value', 'Acceptance Criteria'],
-        note: 'Der Regelfall ist funktional und trägt keine Kategorie. Auf derselben Ebene liegen aber auch das Operational Feature für eine Operational Quality und der Architecture Enabler für eine entwicklungsbezogene. Es muss bounded sein: vollständig in einem PI entwickelbar und testbar.'
+        note: 'The normal case is functional and carries no category. On the same level, though, sit the Operational Feature for an Operational Quality and the Architecture Enabler for a developmental one. It has to be bounded: fully developable and testable within one PI.'
       },
       'story|*': {
         type: '<a class="jumplink" href="#k-story">User Story</a>',
-        form: '<b>User-Story-Format</b> — eine einzelne Nutzerinteraktion, nicht mehr.',
-        parent: 'das <b>Feature</b>, aus dessen Acceptance Criteria sie geschnitten wurde',
-        ac: 'ein oder mehrere <b>GWT-Statements</b>',
+        form: '<b>User-Story format</b> — a single user interaction, no more.',
+        parent: 'the <b>feature</b> from whose Acceptance Criteria it was sliced',
+        ac: 'one or more <b>GWT statements</b>',
         fields: ['Title (optional)', 'Description', 'Acceptance Criteria', 'Feature Parent'],
-        note: 'ISO 29148 kennt zu dieser Ebene kein Pendant — die User Story ist eine SAFe-Ebene. Nicht verwechseln mit dem Sub-System Requirement, das manche Organisationen auf der Ebene des System Element Requirement führen: das ist bereits Lösungsraum. Damit die User Story trägt, muss sie die Subsysteme spannen und Nutzerinteraktion beschreiben, statt komponentenspezifisch zu werden.'
+        note: 'ISO 29148 has no counterpart for this level — the User Story is a SAFe level. Not to be confused with the Sub-System Requirement, which some organizations keep at the level of the System Element Requirement: that is already solution space. For the User Story to hold, it has to span the subsystems and describe user interaction rather than turning component-specific.'
       },
       'con|*': {
-        type: '<a class="jumplink" href="#k-constraint">Constraint <span class="tag plain">nicht verhandelbar</span></a>',
-        form: '<b>Requirements-Sentence-Format</b> mit dem Imperative <b>„will“</b>',
-        parent: '— ein Constraint hängt an keiner Ebene',
-        ac: '— Constraints werden nicht zerlegt',
+        type: '<a class="jumplink" href="#k-constraint">Constraint <span class="tag plain">not negotiable</span></a>',
+        form: '<b>Requirements-Sentence format</b> with the imperative <b>“will”</b>',
+        parent: '— a constraint hangs on no level at all',
+        ac: '— constraints are not decomposed',
         fields: ['Title', 'Description'],
-        note: 'Ein Constraint schränkt den Lösungsraum ein, er beschreibt kein Systemverhalten — deshalb „will“ statt „shall“.'
+        note: 'A constraint narrows the solution space; it does not describe system behavior — hence “will” rather than “shall”.'
       }
     };
 
@@ -2242,8 +2122,8 @@ Response Measure    Persistenz: Latenz 1–30 s · Rettungsdienst informieren: 6
       var bProp = document.getElementById('p-prop');
       var pnote = document.getElementById('panelnote');
       var PNOTES = {
-        base: 'Links SAFe, rechts ISO 29148, dazwischen die unstrittigen Zuordnungen. Acceptance Criteria gibt es bei SAFe in <b>zwei Ausprägungen</b>: funktionale — und nicht-funktionale, denn auch NFRs werden dort als Acceptance Criteria eines Features oder einer User Story geführt. Die NFR-Box ist optional: sie kommt dazu, sobald eine Quality dieses Feature betrifft. Auf ISO-Seite stehen Functional, Quality und Constraint als drei Klassen der System-Ebene; der Quality-Typ wird dort <b>nicht weiter ausgeführt</b>. Zur User Story hat ISO kein Pendant; das proprietäre Sub-System Requirement liegt auf der Ebene des System Element Requirement und ist bereits Lösungsraum.',
-        prop: 'Vier Dinge kommen hinzu. <b>Formate</b> je Ebene, auf beiden Seiten gleich. Das <b>Quality Scenario</b>, das referenziert statt kopiert wird. SAFe braucht davor zusätzlich die <b>Operational Quality</b> als eigenen Typ; ISO nicht, denn dort gibt es das System Requirement Quality bereits. Auf ISO-Seite die Aufteilung in Functional, Quality und Constraint <b>schon auf der Stakeholder-Ebene</b>; zwischen den beiden Constraint-Boxen läuft bewusst kein Pfeil. Und das System Requirement Functional bekommt denselben Innenaufbau wie das Feature. Für die Acceptance Criteria empfehlen wir durchgängig: am Feature bzw. System Requirement ein <b>Use Case</b>, an der User Story <b>GWT-Statements</b>. Alles andere bleibt stehen: die Enabler ebenso wie die Acceptance Criteria, denn eine Quality, die genau ein Feature betrifft, bleibt einfach dort drin.'
+        base: 'SAFe on the left, ISO 29148 on the right, the uncontested mappings in between. In SAFe, Acceptance Criteria come in <b>two forms</b>: functional — and non-functional, because NFRs are kept there as Acceptance Criteria of a feature or a User Story as well. The NFR box is optional: it appears as soon as a quality affects that feature. On the ISO side, Functional, Quality and Constraint stand as the three classes of the system level; the quality type is <b>not elaborated any further</b> there. ISO has no counterpart to the User Story; the proprietary Sub-System Requirement sits at the level of the System Element Requirement and is already solution space.',
+        prop: 'Four things are added. <b>Formats</b> per level, the same on both sides. The <b>Quality Scenario</b>, which is referenced rather than copied. Ahead of it SAFe additionally needs the <b>Operational Quality</b> as a type of its own; ISO does not, because the System Requirement Quality is already there. On the ISO side, the split into Functional, Quality and Constraint <b>already at the stakeholder level</b>; between the two constraint boxes no arrow runs, and that is deliberate. And the System Requirement Functional gets the same internal structure as the feature. For the Acceptance Criteria we recommend throughout: a <b>Use Case</b> on the feature or System Requirement, <b>GWT statements</b> on the User Story. Everything else stays as it was: the enablers as much as the Acceptance Criteria, because a quality that affects exactly one feature simply stays in there.'
       };
       var setView = function (v) {
         mp.setAttribute('data-view', v);
