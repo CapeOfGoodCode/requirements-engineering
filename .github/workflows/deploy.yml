@@ -213,7 +213,7 @@ jobs:
             echo '<ul>'
             echo '<li><a class="card" href="cheat-sheet/"><b>Cheat Sheet</b>'
             echo '<span>Alle elf Abschnitte, mit Format-Finder und ausführlichen Beispielen.</span></a></li>'
-            echo '<li><a class="card" href="poster/"><b>Plakat</b>'
+            echo '<li><a class="card" href="poster/"><b>Poster</b>'
             echo '<span>Die verdichtete Fassung auf einem Blatt &mdash; als Seite oder als A1-PDF zum Ausdrucken.</span></a></li>'
             echo '</ul>'
             echo '<h2>English</h2>'
