@@ -16,6 +16,7 @@
     --problem-bg: #efecfb;
     --solution:   #0c6360;
     --solution-bg:#e2f2f0;
+    --solution-ink: #ffffff;
     --warn:       #a03d24;
     --warn-bg:    #fbeae4;
     --ok:         #4a6b2f;
@@ -43,6 +44,7 @@
       --problem-bg: #221f3a;
       --solution:   #4ec6bd;
       --solution-bg:#0e2b2c;
+      --solution-ink: #072c2a;
       --warn:       #e89273;
       --warn-bg:    #2f1d16;
       --ok:         #a3c778;
@@ -57,7 +59,7 @@
     --ink: #121a24; --ink-2: #55616f; --ink-3: #7c8794;
     --rule: #c9d3dc; --rule-soft: #e0e7ed;
     --problem: #574aa0; --problem-bg: #efecfb;
-    --solution: #0c6360; --solution-bg: #e2f2f0;
+    --solution: #0c6360; --solution-bg: #e2f2f0; --solution-ink: #ffffff;
     --warn: #a03d24; --warn-bg: #fbeae4;
     --ok: #4a6b2f; --ok-bg: #ecf3e3;
     --shadow: 0 1px 2px rgba(18,26,36,.06), 0 8px 24px -16px rgba(18,26,36,.24);
@@ -67,7 +69,7 @@
     --ink: #e2e9f0; --ink-2: #97a4b2; --ink-3: #74818f;
     --rule: #2a3642; --rule-soft: #202b36;
     --problem: #a89cf2; --problem-bg: #221f3a;
-    --solution: #4ec6bd; --solution-bg: #0e2b2c;
+    --solution: #4ec6bd; --solution-bg: #0e2b2c; --solution-ink: #072c2a;
     --warn: #e89273; --warn-bg: #2f1d16;
     --ok: #a3c778; --ok-bg: #1c2617;
     --shadow: 0 1px 2px rgba(0,0,0,.4), 0 12px 32px -20px rgba(0,0,0,.8);
@@ -262,20 +264,22 @@
     --t-business:#a8811a; --t-stakeholder:#7b4fb0; --t-system:#2f7d43;
     --t-story:#2c6ea8; --t-task:#5a6672; --t-quality:#0f7d76;
     --t-constraint:#6b747d; --t-enabler:#6b5e1f;
-    --we-bg:#111820; --we-fg:#f3f6f9;
+    --we-bg:#111820; --we-fg:#f3f6f9; --bulb:#d9a400;
     --logo-plate:transparent; --logo-pad:0;
+    --bulb-icon: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 20 20'%3E%3Cpath d='M10 2.1c-3.3 0-6 2.7-6 6 0 2.4 1.4 3.7 2.3 4.5.5.5.8.9.9 1.4h5.6c.1-.5.4-.9.9-1.4.9-.8 2.3-2.1 2.3-4.5 0-3.3-2.7-6-6-6z' fill='%23d9a400'/%3E%3Crect x='7.6' y='14.3' width='4.8' height='2.6' rx='0.3' fill='%23f3f6f9'/%3E%3Crect x='8.3' y='17' width='3.4' height='1.2' rx='0.4' fill='%23f3f6f9'/%3E%3C/svg%3E");
   }
   @media (prefers-color-scheme: dark) {
     :root {
       --t-business:#e0c05a; --t-stakeholder:#bda1ee; --t-system:#6fc386;
       --t-story:#77b4e8; --t-task:#9aa7b4; --t-quality:#5fc9c0;
       --t-constraint:#98a2ad; --t-enabler:#dcc97a;
-      --we-bg:#e8eef4; --we-fg:#0b1017;
+      --we-bg:#e8eef4; --we-fg:#0b1017; --bulb:#8a6a00;
       --logo-plate:#ffffff; --logo-pad:6px 9px;
+      --bulb-icon: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 20 20'%3E%3Cpath d='M10 2.1c-3.3 0-6 2.7-6 6 0 2.4 1.4 3.7 2.3 4.5.5.5.8.9.9 1.4h5.6c.1-.5.4-.9.9-1.4.9-.8 2.3-2.1 2.3-4.5 0-3.3-2.7-6-6-6z' fill='%238a6a00'/%3E%3Crect x='7.6' y='14.3' width='4.8' height='2.6' rx='0.3' fill='%230b1017'/%3E%3Crect x='8.3' y='17' width='3.4' height='1.2' rx='0.4' fill='%230b1017'/%3E%3C/svg%3E");
     }
   }
-  :root[data-theme="light"]{--t-business:#a8811a;--t-stakeholder:#7b4fb0;--t-system:#2f7d43;--t-story:#2c6ea8;--t-task:#5a6672;--t-quality:#0f7d76;--t-constraint:#6b747d;--t-enabler:#6b5e1f;--we-bg:#111820;--we-fg:#f3f6f9;--logo-plate:transparent;--logo-pad:0;}
-  :root[data-theme="dark"]{--t-business:#e0c05a;--t-stakeholder:#bda1ee;--t-system:#6fc386;--t-story:#77b4e8;--t-task:#9aa7b4;--t-quality:#5fc9c0;--t-constraint:#98a2ad;--t-enabler:#dcc97a;--we-bg:#e8eef4;--we-fg:#0b1017;--logo-plate:#ffffff;--logo-pad:6px 9px;}
+  :root[data-theme="light"]{--t-business:#a8811a;--t-stakeholder:#7b4fb0;--t-system:#2f7d43;--t-story:#2c6ea8;--t-task:#5a6672;--t-quality:#0f7d76;--t-constraint:#6b747d;--t-enabler:#6b5e1f;--we-bg:#111820;--we-fg:#f3f6f9;--bulb:#d9a400;--logo-plate:transparent;--logo-pad:0;--bulb-icon:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 20 20'%3E%3Cpath d='M10 2.1c-3.3 0-6 2.7-6 6 0 2.4 1.4 3.7 2.3 4.5.5.5.8.9.9 1.4h5.6c.1-.5.4-.9.9-1.4.9-.8 2.3-2.1 2.3-4.5 0-3.3-2.7-6-6-6z' fill='%23d9a400'/%3E%3Crect x='7.6' y='14.3' width='4.8' height='2.6' rx='0.3' fill='%23f3f6f9'/%3E%3Crect x='8.3' y='17' width='3.4' height='1.2' rx='0.4' fill='%23f3f6f9'/%3E%3C/svg%3E");}
+  :root[data-theme="dark"]{--t-business:#e0c05a;--t-stakeholder:#bda1ee;--t-system:#6fc386;--t-story:#77b4e8;--t-task:#9aa7b4;--t-quality:#5fc9c0;--t-constraint:#98a2ad;--t-enabler:#dcc97a;--we-bg:#e8eef4;--we-fg:#0b1017;--bulb:#8a6a00;--logo-plate:#ffffff;--logo-pad:6px 9px;--bulb-icon:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 20 20'%3E%3Cpath d='M10 2.1c-3.3 0-6 2.7-6 6 0 2.4 1.4 3.7 2.3 4.5.5.5.8.9.9 1.4h5.6c.1-.5.4-.9.9-1.4.9-.8 2.3-2.1 2.3-4.5 0-3.3-2.7-6-6-6z' fill='%238a6a00'/%3E%3Crect x='7.6' y='14.3' width='4.8' height='2.6' rx='0.3' fill='%230b1017'/%3E%3Crect x='8.3' y='17' width='3.4' height='1.2' rx='0.4' fill='%230b1017'/%3E%3C/svg%3E");}
 
   a.jumplink { color: inherit; text-decoration: none; border-bottom: 1px dotted var(--ink-3); }
   a.jumplink:hover { border-bottom-color: var(--solution); color: var(--solution); }
@@ -286,7 +290,11 @@
     font-weight:700; letter-spacing:.1em; background:var(--we-bg); color:var(--we-fg);
     padding:2px 5px; border-radius:2px; vertical-align:2px; margin-left:7px;
   }
-  .we::before { content:"WE"; }
+  .we::before {
+    content:""; display:inline-block; width:11px; height:11px; margin-right:3px;
+    background-image:var(--bulb-icon); background-repeat:no-repeat; background-size:contain;
+  }
+  .we::after { content:"WE"; }
 
   .ic { display:inline-block; width:17px; height:17px; vertical-align:-3px; margin-right:8px; }
   .ic svg { width:17px; height:17px; display:block; }
@@ -330,12 +338,20 @@
   /* Struktur-Panel */
   .panelbar { display:flex; flex-wrap:wrap; gap:10px 14px; align-items:center; padding:0 0 16px; }
   .swlabel { font-family:var(--mono); font-size:10.5px; letter-spacing:.12em; text-transform:uppercase; color:var(--ink-3); }
-  .seg { display:inline-flex; border:1px solid var(--rule); border-radius:4px; overflow:hidden; }
-  .seg button { font-family:var(--mono); font-size:11.5px; letter-spacing:.05em; background:var(--sheet);
-    color:var(--ink-2); border:none; padding:7px 14px; cursor:pointer; }
-  .seg button + button { border-left:1px solid var(--rule); }
-  .seg button[aria-pressed="true"] { background:var(--ink); color:var(--paper); }
-  .seg button:hover:not([aria-pressed="true"]) { color:var(--ink); }
+  .seg-wrap { position:relative; display:inline-flex; }
+  .seg { display:inline-flex; background:var(--sheet-2); border:1px solid var(--rule); border-radius:6px; padding:3px; gap:2px; }
+  .seg button { font-family:var(--mono); font-size:11.5px; letter-spacing:.05em; background:transparent;
+    color:var(--ink-2); border:none; border-radius:4px; padding:6px 13px; cursor:pointer;
+    display:inline-flex; align-items:center; gap:5px; transition:box-shadow .12s ease, color .12s ease; }
+  .seg button[aria-pressed="true"] { background:var(--ink); color:var(--paper); box-shadow:0 1px 3px rgba(0,0,0,.18); }
+  .seg button[aria-pressed="true"]::before { content:"✓"; font-size:10px; }
+  .seg button:hover:not([aria-pressed="true"]) { color:var(--ink); box-shadow:inset 0 0 0 1px var(--rule); }
+  #p-prop:not([aria-pressed="true"]) { background:var(--solution-bg); color:var(--solution); font-weight:600; }
+  #p-prop svg { flex:none; }
+  #p-prop[aria-pressed="true"] .seg-arrow { display:none; }
+  .seg-tag { position:absolute; top:-11px; right:-6px; background:var(--solution); color:var(--solution-ink);
+    font-family:var(--mono); font-size:9px; letter-spacing:.06em; padding:2px 6px; border-radius:2px 2px 2px 0;
+    white-space:nowrap; pointer-events:none; }
   .panel[data-view="base"] .only-prop { display:none; }
   .panel[data-view="prop"] .only-base { display:none; }
 
@@ -374,6 +390,8 @@
   .bx-ghost{fill:none;stroke:var(--rule);stroke-dasharray:5 4}
   .we-svg rect{fill:var(--we-bg)}
   .we-svg text{fill:var(--we-fg);font-family:var(--mono);font-size:8px;font-weight:700;letter-spacing:.08em}
+  .we-svg .bulb-g{fill:var(--bulb)}
+  .we-svg .bulb-b{fill:var(--we-fg)}
 
   /* ---------- type cards ---------- */
   .cards { display: grid; grid-template-columns: repeat(auto-fill, minmax(340px, 1fr)); gap: 16px; }
@@ -736,9 +754,12 @@
     <div class="sheet">
       <div class="panelbar">
         <span class="swlabel">Ansicht</span>
-        <div class="seg" role="group" aria-label="Ansicht wählen">
-          <button id="p-base" aria-pressed="true">Original</button>
-          <button id="p-prop" aria-pressed="false">mit unseren Vorschlägen</button>
+        <div class="seg-wrap">
+          <div class="seg" role="group" aria-label="Ansicht wählen">
+            <button id="p-base" aria-pressed="true">Original</button>
+            <button id="p-prop" aria-pressed="false"><svg viewBox="0 0 20 20" width="13" height="13" aria-hidden="true"><path d="M10 2.1c-3.3 0-6 2.7-6 6 0 2.4 1.4 3.7 2.3 4.5.5.5.8.9.9 1.4h5.6c.1-.5.4-.9.9-1.4.9-.8 2.3-2.1 2.3-4.5 0-3.3-2.7-6-6-6z" fill="var(--t-business)"/><rect x="7.6" y="14.3" width="4.8" height="2.6" rx="0.3" fill="currentColor"/><rect x="8.3" y="17" width="3.4" height="1.2" rx="0.4" fill="currentColor"/></svg>mit unseren Vorschlägen <span class="seg-arrow" aria-hidden="true">›</span></button>
+          </div>
+          <span class="seg-tag" aria-hidden="true">EMPFEHLUNG</span>
         </div>
       </div>
 
@@ -769,12 +790,12 @@
             <text class="d-s" x="259" y="200" text-anchor="middle" fill="var(--t-quality)">OPERATIONAL QUALITY</text>
             <text class="d-s" x="259" y="214" text-anchor="middle">REQUIREMENTS</text>
             <text class="d-s" x="259" y="226" text-anchor="middle">SENTENCE</text>
-            <g class="we-svg"><rect x="330" y="174" width="26" height="14" rx="2"/><text x="343" y="184" text-anchor="middle">WE</text></g>
+            <g class="we-svg"><rect x="330" y="174" width="26" height="14" rx="2"/><g transform="translate(333,177) scale(0.4)"><path class="bulb-g" d="M10 2.1c-3.3 0-6 2.7-6 6 0 2.4 1.4 3.7 2.3 4.5.5.5.8.9.9 1.4h5.6c.1-.5.4-.9.9-1.4.9-.8 2.3-2.1 2.3-4.5 0-3.3-2.7-6-6-6z"/><rect class="bulb-b" x="7.6" y="14.3" width="4.8" height="2.6" rx="0.3"/><rect class="bulb-b" x="8.3" y="17" width="3.4" height="1.2" rx="0.4"/></g><text x="343" y="184" text-anchor="start">WE</text></g>
 
             <rect class="bx bx-quality" x="164" y="266" width="190" height="46"/>
             <text class="d-s" x="259" y="286" text-anchor="middle" fill="var(--t-quality)">QUALITY SCENARIO</text>
             <text class="d-s" x="259" y="300" text-anchor="middle">6-teilige Vorlage</text>
-            <g class="we-svg"><rect x="330" y="258" width="26" height="14" rx="2"/><text x="343" y="268" text-anchor="middle">WE</text></g>
+            <g class="we-svg"><rect x="330" y="258" width="26" height="14" rx="2"/><g transform="translate(333,261) scale(0.4)"><path class="bulb-g" d="M10 2.1c-3.3 0-6 2.7-6 6 0 2.4 1.4 3.7 2.3 4.5.5.5.8.9.9 1.4h5.6c.1-.5.4-.9.9-1.4.9-.8 2.3-2.1 2.3-4.5 0-3.3-2.7-6-6-6z"/><rect class="bulb-b" x="7.6" y="14.3" width="4.8" height="2.6" rx="0.3"/><rect class="bulb-b" x="8.3" y="17" width="3.4" height="1.2" rx="0.4"/></g><text x="343" y="268" text-anchor="start">WE</text></g>
 
             <path class="d-e" d="M259 234 L259 262" marker-end="url(#mp-ar)" color="var(--t-quality)" stroke="var(--t-quality)"/>
             <text class="d-el" x="267" y="254" fill="var(--t-quality)">1..n</text>
@@ -843,7 +864,7 @@
             <text class="d-s" x="1127" y="132" text-anchor="middle">REQUIREMENTS SENTENCE</text>
             <text class="d-s" x="1127" y="144" text-anchor="middle">„WILL“</text>
 
-            <g class="we-svg"><rect x="1166" y="86" width="26" height="14" rx="2"/><text x="1179" y="96" text-anchor="middle">WE</text></g>
+            <g class="we-svg"><rect x="1166" y="86" width="26" height="14" rx="2"/><g transform="translate(1169,89) scale(0.4)"><path class="bulb-g" d="M10 2.1c-3.3 0-6 2.7-6 6 0 2.4 1.4 3.7 2.3 4.5.5.5.8.9.9 1.4h5.6c.1-.5.4-.9.9-1.4.9-.8 2.3-2.1 2.3-4.5 0-3.3-2.7-6-6-6z"/><rect class="bulb-b" x="7.6" y="14.3" width="4.8" height="2.6" rx="0.3"/><rect class="bulb-b" x="8.3" y="17" width="3.4" height="1.2" rx="0.4"/></g><text x="1179" y="96" text-anchor="start">WE</text></g>
           </g>
 
           <rect class="bx bx-system" x="686" y="182" width="230" height="110"/>
@@ -870,7 +891,7 @@
             <rect class="bx bx-quality" x="924" y="320" width="130" height="46"/>
             <text class="d-s" x="989" y="340" text-anchor="middle" fill="var(--t-quality)">QUALITY SCENARIO</text>
             <text class="d-s" x="989" y="354" text-anchor="middle">6-teilige Vorlage</text>
-            <g class="we-svg"><rect x="1030" y="312" width="26" height="14" rx="2"/><text x="1043" y="322" text-anchor="middle">WE</text></g>
+            <g class="we-svg"><rect x="1030" y="312" width="26" height="14" rx="2"/><g transform="translate(1033,315) scale(0.4)"><path class="bulb-g" d="M10 2.1c-3.3 0-6 2.7-6 6 0 2.4 1.4 3.7 2.3 4.5.5.5.8.9.9 1.4h5.6c.1-.5.4-.9.9-1.4.9-.8 2.3-2.1 2.3-4.5 0-3.3-2.7-6-6-6z"/><rect class="bulb-b" x="7.6" y="14.3" width="4.8" height="2.6" rx="0.3"/><rect class="bulb-b" x="8.3" y="17" width="3.4" height="1.2" rx="0.4"/></g><text x="1043" y="322" text-anchor="start">WE</text></g>
             <path class="d-e" d="M989 292 L989 316" marker-end="url(#mp-ar)" color="var(--t-quality)" stroke="var(--t-quality)"/>
             <text class="d-el" x="997" y="310" fill="var(--t-quality)">1..n</text>
             <path class="d-e-ref" d="M908 269 C 918 292, 918 318, 921 336" marker-end="url(#mp-ar)" color="var(--t-quality)"/>
@@ -1792,13 +1813,13 @@ Response Measure    Persistenz: Latenz 1–30 s · Rettungsdienst informieren: 6
           <rect class="bx bx-quality" x="740" y="96" width="210" height="52"/>
           <text class="d-s" x="845" y="116" text-anchor="middle" fill="var(--t-quality)">OPERATIONAL QUALITY</text>
           <text class="d-n" x="845" y="134" text-anchor="middle">REQUIREMENTS SENTENCE</text>
-          <g class="we-svg"><rect x="926" y="88" width="26" height="14" rx="2"/><text x="939" y="98" text-anchor="middle">WE</text></g>
+          <g class="we-svg"><rect x="926" y="88" width="26" height="14" rx="2"/><g transform="translate(929,91) scale(0.4)"><path class="bulb-g" d="M10 2.1c-3.3 0-6 2.7-6 6 0 2.4 1.4 3.7 2.3 4.5.5.5.8.9.9 1.4h5.6c.1-.5.4-.9.9-1.4.9-.8 2.3-2.1 2.3-4.5 0-3.3-2.7-6-6-6z"/><rect class="bulb-b" x="7.6" y="14.3" width="4.8" height="2.6" rx="0.3"/><rect class="bulb-b" x="8.3" y="17" width="3.4" height="1.2" rx="0.4"/></g><text x="939" y="98" text-anchor="start">WE</text></g>
 
           <rect class="bx bx-quality" x="740" y="192" width="210" height="52"/>
           <text class="d-s" x="845" y="212" text-anchor="middle" fill="var(--t-quality)">QUALITY SCENARIO</text>
           <rect class="d-hl q" x="798" y="219" width="94" height="15" rx="2"/>
           <text class="d-n" x="845" y="230" text-anchor="middle">„Antwort &lt; 2 s“</text>
-          <g class="we-svg"><rect x="926" y="184" width="26" height="14" rx="2"/><text x="939" y="194" text-anchor="middle">WE</text></g>
+          <g class="we-svg"><rect x="926" y="184" width="26" height="14" rx="2"/><g transform="translate(929,187) scale(0.4)"><path class="bulb-g" d="M10 2.1c-3.3 0-6 2.7-6 6 0 2.4 1.4 3.7 2.3 4.5.5.5.8.9.9 1.4h5.6c.1-.5.4-.9.9-1.4.9-.8 2.3-2.1 2.3-4.5 0-3.3-2.7-6-6-6z"/><rect class="bulb-b" x="7.6" y="14.3" width="4.8" height="2.6" rx="0.3"/><rect class="bulb-b" x="8.3" y="17" width="3.4" height="1.2" rx="0.4"/></g><text x="939" y="194" text-anchor="start">WE</text></g>
 
           <path class="d-e" d="M845 148 L845 188" marker-end="url(#q-ar)" color="var(--t-quality)" stroke="var(--t-quality)"/>
           <text class="d-el" x="853" y="174" fill="var(--t-quality)">1..n</text>
